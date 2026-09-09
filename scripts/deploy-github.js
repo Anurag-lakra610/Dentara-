@@ -167,9 +167,19 @@ async function deploy() {
     await atomicCommitBranch('gh-pages', 'Deploy built production dist to GitHub Pages', distFiles);
   }
 
+  // 3. Direct Vercel Production Deployment
+  try {
+    console.log(`\n▲ Deploying directly to Vercel Production...`);
+    const { execSync } = await import('child_process');
+    execSync('npx vercel --prod --yes', { stdio: 'inherit', cwd: projectRoot });
+  } catch (vErr) {
+    console.log(`  ℹ️ Vercel CLI deploy notice:`, vErr.message);
+  }
+
   console.log(`\n🎉 DEPLOYMENT COMPLETE!`);
   console.log(`🌐 Repository: https://github.com/${REPO_OWNER}/${REPO_NAME}`);
-  console.log(`⚡ Live Website URL (Instant GitHub Pages): https://anurag-lakra610.github.io/Dentara-/`);
+  console.log(`⚡ Live Vercel URL: https://dentara-one.vercel.app`);
+  console.log(`⚡ Live GitHub Pages: https://anurag-lakra610.github.io/Dentara-/`);
 }
 
 deploy().catch(err => {

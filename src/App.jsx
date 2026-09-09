@@ -151,7 +151,7 @@ export default function App() {
 
       </div>
 
-      {/* ABOUT US SECTION - Full Screen Ratio with Seamless Transition */}
+      {/* ABOUT US SECTION - Full Screen Ratio with Reference Typography & Colors */}
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-16 pb-24 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
           
@@ -173,26 +173,26 @@ export default function App() {
             <div className="lg:col-span-4 text-center flex flex-col items-center justify-between">
               <div>
                 {/* Tag Badge: (about us) with subtle side lines */}
-                <div className="flex items-center justify-center gap-3 text-[#0284C7] font-medium text-xs sm:text-sm tracking-wide mb-4">
-                  <span className="h-[1px] w-8 bg-[#0284C7]/30"></span>
+                <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-normal text-xs sm:text-sm tracking-wide mb-4">
+                  <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
                   <span>(about us)</span>
-                  <span className="h-[1px] w-8 bg-[#0284C7]/30"></span>
+                  <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
                 </div>
 
-                {/* Main Heading - font-semibold as requested */}
-                <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-semibold tracking-tight text-[#111827] leading-[1.15]">
+                {/* Main Heading - font-normal as requested */}
+                <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal tracking-tight text-[#111827] leading-[1.15]">
                   A Simple Way to Save
                   <br />
                   on Dental Care
                 </h2>
 
                 {/* Paragraph Subtitle */}
-                <p className="mt-5 mb-7 text-[#6B7280] text-xs sm:text-sm leading-relaxed max-w-[460px] mx-auto font-normal">
+                <p className="mt-5 mb-7 text-[#4B5563] text-xs sm:text-sm leading-relaxed max-w-[460px] mx-auto font-normal">
                   Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each and every patient. We offer a wide range of services.
                 </p>
 
-                {/* Blue Gradient CTA Button */}
-                <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#38BDF8] to-[#0284C7] text-white font-semibold text-sm hover:opacity-95 active:scale-95 transition-all shadow-sm cursor-pointer mx-auto">
+                {/* Blue Cerulean Gradient CTA Button */}
+                <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#32A7DC] via-[#2A94D1] to-[#1C81BD] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-md shadow-[#2A94D1]/20 cursor-pointer mx-auto">
                   <span>Book Appointment</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -218,12 +218,12 @@ export default function App() {
                 />
               </div>
 
-              {/* Stat Badge under right image - font-semibold as requested */}
+              {/* Stat Badge under right image - font-normal as requested */}
               <div className="w-full max-w-[420px] mt-6 text-left">
-                <div className="text-5xl sm:text-6xl font-semibold text-[#0284C7] tracking-tight">
+                <div className="text-5xl sm:text-6xl lg:text-7xl font-normal text-[#2A91CF] tracking-tight">
                   98%
                 </div>
-                <p className="text-xs sm:text-sm text-[#6B7280] font-normal mt-1 leading-snug">
+                <p className="text-xs sm:text-sm text-[#4B5563] font-normal mt-1 leading-snug">
                   Client satisfaction with our service
                 </p>
               </div>
