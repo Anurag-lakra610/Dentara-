@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Phone, ArrowRight, Menu, X } from 'lucide-react';
 import logoImg from './assets/logo.png';
 import heroBgImg from './assets/hero-bg.jpg';
+import toothEmojiImg from './assets/tooth-emoji.png';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
@@ -12,13 +13,13 @@ export default function App() {
   return (
     <div className="relative w-full min-h-screen bg-[#080808] font-sans antialiased overflow-hidden flex flex-col justify-between">
       
-      {/* Background Image - Untouched as requested */}
+      {/* Fullscreen Background Image with Dark Vignette */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
           style={{ backgroundImage: `url(${heroBgImg})` }}
         />
-        {/* Dark vignette overlay for left text contrast */}
+        {/* Dark vignette overlay for text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30 sm:to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
       </div>
@@ -102,51 +103,38 @@ export default function App() {
         </div>
       )}
 
-      {/* Hero Content - Scaled down title & subtext to match exact reference image */}
+      {/* Hero Content - Precise Quantitative Sizing */}
       <main className="relative z-10 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-12 md:py-16 max-w-2xl">
-        {/* Title */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.08]">
+        {/* Header Text - Exactly 61px */}
+        <h1 className="text-[38px] sm:text-[48px] md:text-[54px] lg:text-[61px] font-bold text-white tracking-tight leading-[1.08]">
           Seamless
           <br />
           <span className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
             <span>Dental</span>
             
-            {/* Tooth Emoji Badge - Exact matching reference image */}
-            <span className="inline-flex items-center justify-center mx-0.5 transform translate-y-[-2px]">
-              <svg 
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 drop-shadow-md" 
-                viewBox="0 0 100 100" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Main Tooth Body */}
-                <path 
-                  d="M72 18C62 18 55 24 50 29C45 24 38 18 28 18C16 18 8 28 8 42C8 60 16 72 23 82C27 88 31 94 38 94C43 94 45 89 46 82C48 74 49 66 50 66C51 66 52 74 54 82C55 89 57 94 62 94C69 94 73 88 77 82C84 72 92 60 92 42C92 28 84 18 72 18Z" 
-                  fill="white" 
-                />
-                {/* Tooth Shadow/Cavity Detail matching reference */}
-                <path 
-                  d="M38 48C34 50 32 55 34 60C36 65 42 66 45 61C47 57 44 50 38 48Z" 
-                  fill="#7A604D" 
-                  opacity="0.85"
-                />
-              </svg>
+            {/* User Provided 3D Tooth Emoji PNG */}
+            <span className="inline-flex items-center justify-center mx-1 transform translate-y-[-2px]">
+              <img 
+                src={toothEmojiImg} 
+                alt="Tooth Emoji" 
+                className="h-[42px] sm:h-[50px] lg:h-[55px] w-auto object-contain drop-shadow-lg"
+              />
             </span>
 
             <span>Care</span>
           </span>
         </h1>
 
-        {/* Muted exact subtext with matching font size and layout */}
-        <p className="mt-4 sm:mt-5 mb-7 text-white/70 text-xs sm:text-sm md:text-[15px] font-normal leading-relaxed max-w-md tracking-wide">
+        {/* Subtext - Exactly 12px */}
+        <p className="mt-4 sm:mt-5 mb-7 text-white/70 text-[12px] font-normal leading-relaxed max-w-md tracking-wide">
           Whether it's a leaky faucet or a major plumbing emergency, our experienced professionals are just a call away
         </p>
 
-        {/* CTA Button */}
+        {/* CTA Button - Exactly 130px width, 35px height, 12px inner text */}
         <div>
-          <button className="group flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
-            <span>Book Appointment</span>
-            <ArrowRight className="w-4 h-4 stroke-[2.2] group-hover:translate-x-1 transition-transform duration-200" />
+          <button className="group flex items-center justify-center gap-1.5 w-[130px] h-[35px] rounded-full bg-white text-black font-semibold text-[12px] hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
+            <span className="truncate">Book Appointment</span>
+            <ArrowRight className="w-3.5 h-3.5 shrink-0 stroke-[2.2] group-hover:translate-x-0.5 transition-transform duration-200" />
           </button>
         </div>
       </main>
