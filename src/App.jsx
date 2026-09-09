@@ -11,24 +11,25 @@ export default function App() {
   const navItems = ['Home', 'About', 'Product', 'Services', 'Appointment'];
 
   return (
-    <div className="w-full min-h-screen bg-[#f3f4f6] p-3 sm:p-5 md:p-8 flex items-center justify-center font-sans antialiased">
+    /* Outer Screen Container - 10px padding around top, left, right, bottom */
+    <div className="w-full min-h-screen bg-[#f3f4f6] p-[10px] flex items-center justify-center font-sans antialiased">
       
-      {/* Hero Outer Rounded Container - Ditto Copy of Mockup Frame */}
-      <div className="relative w-full max-w-[1380px] min-h-[640px] sm:min-h-[720px] md:min-h-[780px] lg:min-h-[820px] rounded-[32px] sm:rounded-[40px] md:rounded-[48px] overflow-hidden flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 shadow-2xl">
+      {/* Inner Hero Card - Full Screen Ratio with 10px outer gap */}
+      <div className="relative w-full min-h-[calc(100vh-20px)] rounded-[28px] sm:rounded-[36px] md:rounded-[40px] overflow-hidden flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 shadow-2xl">
         
-        {/* Background Image - Exact Unflipped Dental Care Photo */}
+        {/* Background Image - Dental Care Photo */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{ backgroundImage: `url(${heroBgImg})` }}
         >
-          {/* Subtle dark gradient overlay on left for optimal text contrast */}
+          {/* Subtle dark gradient overlay on left */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
         </div>
 
-        {/* Top Header Navigation */}
+        {/* Header Navigation */}
         <header className="relative z-20 w-full flex items-center justify-between">
-          {/* Logo - Exact Dentara Script Logo */}
+          {/* Logo */}
           <a href="#" className="flex items-center gap-2 group focus:outline-none">
             <img 
               src={logoImg} 
@@ -105,9 +106,8 @@ export default function App() {
           </div>
         )}
 
-        {/* Hero Section Content - Ditto Copy of Mockup */}
+        {/* Hero Section Content */}
         <main className="relative z-10 my-auto py-8 sm:py-12 md:py-16 max-w-xl">
-          {/* Main Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold text-white tracking-tight leading-[1.05]">
             Seamless
             <br />
@@ -127,12 +127,10 @@ export default function App() {
             </span>
           </h1>
 
-          {/* Subtext */}
           <p className="mt-5 mb-8 text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md tracking-wide">
             Whether it's a leaky faucet or a major plumbing emergency, our experienced professionals are just a call away
           </p>
 
-          {/* CTA Button */}
           <div>
             <button className="group flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
               <span>Book Appointment</span>
