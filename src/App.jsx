@@ -25,19 +25,20 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
       </div>
 
-      {/* Header Navigation */}
-      <header className="relative z-20 w-full px-6 sm:px-12 md:px-16 lg:px-20 py-6 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group focus:outline-none">
+      {/* Header Navigation - Shifted down 15px (pt-[39px]), Parallel 45px Height UX Alignment */}
+      <header className="relative z-20 w-full px-6 sm:px-12 md:px-16 lg:px-20 pt-[39px] pb-6 flex items-center justify-between">
+        
+        {/* Logo - Perfectly centered vertically alongside 45px navbar & button */}
+        <a href="#" className="flex items-center h-[45px] group focus:outline-none">
           <img 
             src={logoImg} 
             alt="Dentara Logo" 
-            className="h-8 sm:h-9 md:h-10 w-auto object-contain mix-blend-screen drop-shadow-md transition-transform group-hover:scale-105"
+            className="h-[32px] sm:h-[36px] w-auto object-contain mix-blend-screen drop-shadow-md transition-transform group-hover:scale-105"
           />
         </a>
 
-        {/* Desktop Navigation Capsule */}
-        <nav className="hidden md:flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-xl">
+        {/* Desktop Navigation Capsule - 45px Height Parallel Alignment */}
+        <nav className="hidden md:flex items-center h-[45px] gap-1 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-xl">
           {navItems.map((item) => {
             const isActive = activeNav === item;
             return (
@@ -56,20 +57,20 @@ export default function App() {
           })}
         </nav>
 
-        {/* Right Action Button (Call Now) - Height set to exactly 50px as requested */}
+        {/* Right Action Button (Call Now) - Height set to exactly 45px as requested */}
         <div className="flex items-center gap-3">
           <a
             href="tel:+1234567890"
-            className="hidden sm:flex items-center justify-center gap-2.5 h-[50px] px-8 rounded-full bg-white text-black text-base font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-xl cursor-pointer"
+            className="hidden sm:flex items-center justify-center gap-2.5 h-[45px] px-7 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-xl cursor-pointer"
           >
-            <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
+            <Phone className="w-4 h-4 stroke-[2.4]" />
             <span>Call Now</span>
           </a>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
+            className="md:hidden p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -96,9 +97,9 @@ export default function App() {
           ))}
           <a
             href="tel:+1234567890"
-            className="sm:hidden flex items-center justify-center gap-2.5 mt-2 h-[50px] px-8 rounded-full bg-white text-black font-semibold text-base text-center"
+            className="sm:hidden flex items-center justify-center gap-2.5 mt-2 h-[45px] px-7 rounded-full bg-white text-black font-semibold text-sm text-center"
           >
-            <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
+            <Phone className="w-4 h-4 stroke-[2.4]" />
             <span>Call Now</span>
           </a>
         </div>
@@ -112,12 +113,12 @@ export default function App() {
           <span className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
             <span>Dental</span>
             
-            {/* Tooth Emoji Asset */}
+            {/* Tooth Emoji Asset - Scaled up by 3px (49px/59px/67px) as requested */}
             <span className="inline-flex items-center justify-center mx-1 transform translate-y-[-2px]">
               <img 
                 src={toothEmojiImg} 
                 alt="Tooth Emoji" 
-                className="h-[46px] sm:h-[56px] md:h-[64px] w-auto object-contain drop-shadow-md"
+                className="h-[49px] sm:h-[59px] md:h-[67px] w-auto object-contain drop-shadow-md"
               />
             </span>
 
