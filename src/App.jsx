@@ -151,43 +151,31 @@ export default function App() {
 
       </div>
 
-      {/* ABOUT US SECTION - Full Screen Ratio with Reference Typography & Colors */}
-      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-16 pb-24 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
+      {/* ABOUT US SECTION - Ultra-Responsive Full Screen Ratio with 100px Padding */}
+      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
+        <div className="max-w-[1650px] mx-auto">
           
           {/* Main 3-Column Grid Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-start">
             
-            {/* Left Column - High Definition Image Card */}
-            <div className="lg:col-span-4 flex justify-center lg:justify-start lg:pt-14">
-              <div className="relative w-full max-w-[420px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
-                <img 
-                  src={aboutLeftImg} 
-                  alt="Dental Team at Work" 
-                  className="w-full h-[400px] sm:h-[460px] lg:h-[500px] object-cover block"
-                />
-              </div>
-            </div>
-
-            {/* Middle Column - Content & Bottom Center Image */}
-            <div className="lg:col-span-4 text-center flex flex-col items-center justify-between">
-              <div>
-                {/* Tag Badge: (about us) with subtle side lines */}
-                <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-normal text-xs sm:text-sm tracking-wide mb-4">
-                  <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
+            {/* Middle Column - Content & Bottom Center Image (Appears first on Mobile for UX flow) */}
+            <div className="order-1 lg:order-2 lg:col-span-4 text-center flex flex-col items-center justify-between">
+              <div className="w-full flex flex-col items-center">
+                {/* Tag Badge: (about us) */}
+                <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
+                  <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
                   <span>(about us)</span>
-                  <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
+                  <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
                 </div>
 
-                {/* Main Heading - font-normal as requested */}
-                <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal tracking-tight text-[#111827] leading-[1.15]">
-                  A Simple Way to Save
-                  <br />
-                  on Dental Care
+                {/* Main Heading - Responsive font scaling & wide max-w container */}
+                <h2 className="text-2xl sm:text-[38px] lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.2] mb-4 text-center w-full max-w-[520px]">
+                  <span className="block sm:inline lg:block">A Simple Way to Save</span>
+                  <span className="block sm:inline lg:block"> on Dental Care</span>
                 </h2>
 
                 {/* Paragraph Subtitle */}
-                <p className="mt-5 mb-7 text-[#4B5563] text-xs sm:text-sm leading-relaxed max-w-[460px] mx-auto font-normal">
+                <p className="mb-6 text-[#4B5563] text-xs sm:text-sm leading-relaxed max-w-[460px] mx-auto font-normal px-2 sm:px-0">
                   Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each and every patient. We offer a wide range of services.
                 </p>
 
@@ -199,33 +187,46 @@ export default function App() {
               </div>
 
               {/* Center Bottom High Definition Image Card */}
-              <div className="w-full max-w-[480px] rounded-[24px] overflow-hidden shadow-md mt-10 sm:mt-12 transition-transform duration-300 hover:scale-[1.01]">
+              <div className="w-full max-w-[460px] rounded-[24px] overflow-hidden shadow-md mt-10 sm:mt-12 transition-transform duration-300 hover:scale-[1.01]">
                 <img 
                   src={aboutCenterImg} 
                   alt="Dental Teeth Cleaning Procedure" 
-                  className="w-full h-[210px] sm:h-[240px] object-cover block"
+                  className="w-full h-[190px] sm:h-[230px] object-cover block"
                 />
               </div>
             </div>
 
-            {/* Right Column - Image Card & 98% Satisfaction Stat */}
-            <div className="lg:col-span-4 flex flex-col items-center lg:items-end">
-              <div className="relative w-full max-w-[420px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
+            {/* Left Column - High Definition Image Card */}
+            <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center lg:justify-start lg:pt-[72px]">
+              <div className="relative w-full max-w-[380px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
                 <img 
-                  src={aboutRightImg} 
-                  alt="Teeth Whitening Procedure" 
-                  className="w-full h-[440px] sm:h-[500px] lg:h-[540px] object-cover block"
+                  src={aboutLeftImg} 
+                  alt="Dental Team at Work" 
+                  className="w-full h-[340px] sm:h-[420px] lg:h-[470px] object-cover block"
                 />
               </div>
+            </div>
 
-              {/* Stat Badge under right image - font-normal as requested */}
-              <div className="w-full max-w-[420px] mt-6 text-left">
-                <div className="text-5xl sm:text-6xl lg:text-7xl font-normal text-[#2A91CF] tracking-tight">
-                  98%
+            {/* Right Column - Image Card & 98% Satisfaction Stat (Bottom aligned parallel with center bottom image) */}
+            <div className="order-3 lg:order-3 lg:col-span-4 flex justify-center lg:justify-end h-full">
+              <div className="w-full max-w-[380px] flex flex-col justify-between h-full items-start">
+                <div className="relative w-full rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
+                  <img 
+                    src={aboutRightImg} 
+                    alt="Teeth Whitening Procedure" 
+                    className="w-full h-[400px] sm:h-[440px] object-cover block"
+                  />
                 </div>
-                <p className="text-xs sm:text-sm text-[#4B5563] font-normal mt-1 leading-snug">
-                  Client satisfaction with our service
-                </p>
+
+                {/* Stat Badge directly under right image (Bottom edge parallel with middle bottom image) */}
+                <div className="mt-6 sm:mt-8 text-left">
+                  <div className="text-4xl sm:text-6xl lg:text-[66px] font-medium text-[#2C8ECB] tracking-tight leading-none mb-1.5">
+                    98%
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-snug">
+                    Client satisfaction with our service
+                  </p>
+                </div>
               </div>
             </div>
 
