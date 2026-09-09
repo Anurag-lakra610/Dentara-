@@ -25,10 +25,10 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
       </div>
 
-      {/* Header Navigation - Shifted down 15px (pt-[39px]), Parallel 45px Height UX Alignment */}
+      {/* Header Navigation - 15px Top Offset & Parallel Alignment */}
       <header className="relative z-20 w-full px-6 sm:px-12 md:px-16 lg:px-20 pt-[39px] pb-6 flex items-center justify-between">
         
-        {/* Logo - Perfectly centered vertically alongside 45px navbar & button */}
+        {/* Logo */}
         <a href="#" className="flex items-center h-[45px] group focus:outline-none">
           <img 
             src={logoImg} 
@@ -37,7 +37,7 @@ export default function App() {
           />
         </a>
 
-        {/* Desktop Navigation Capsule - 45px Height Parallel Alignment */}
+        {/* Desktop Navigation Capsule */}
         <nav className="hidden md:flex items-center h-[45px] gap-1 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-xl">
           {navItems.map((item) => {
             const isActive = activeNav === item;
@@ -57,14 +57,15 @@ export default function App() {
           })}
         </nav>
 
-        {/* Right Action Button (Call Now) - Height set to exactly 45px as requested */}
+        {/* Right Action Button (Call Now) - Ditto copy of reference image icon, text, and gap */}
         <div className="flex items-center gap-3">
           <a
             href="tel:+1234567890"
-            className="hidden sm:flex items-center justify-center gap-2.5 h-[45px] px-7 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-xl cursor-pointer"
+            className="hidden sm:flex items-center justify-center gap-3 h-[45px] px-7 rounded-full bg-white text-black text-[15px] font-semibold hover:bg-white/95 active:scale-95 transition-all shadow-xl cursor-pointer"
           >
-            <Phone className="w-4 h-4 stroke-[2.4]" />
-            <span>Call Now</span>
+            {/* Phone Handset Line Icon matching Figma reference */}
+            <Phone className="w-[19px] h-[19px] stroke-[2.2] text-black" />
+            <span className="tracking-tight">Call Now</span>
           </a>
 
           {/* Mobile Hamburger Button */}
@@ -97,9 +98,9 @@ export default function App() {
           ))}
           <a
             href="tel:+1234567890"
-            className="sm:hidden flex items-center justify-center gap-2.5 mt-2 h-[45px] px-7 rounded-full bg-white text-black font-semibold text-sm text-center"
+            className="sm:hidden flex items-center justify-center gap-3 mt-2 h-[45px] px-7 rounded-full bg-white text-black font-semibold text-[15px] text-center"
           >
-            <Phone className="w-4 h-4 stroke-[2.4]" />
+            <Phone className="w-[19px] h-[19px] stroke-[2.2] text-black" />
             <span>Call Now</span>
           </a>
         </div>
@@ -113,7 +114,7 @@ export default function App() {
           <span className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
             <span>Dental</span>
             
-            {/* Tooth Emoji Asset - Scaled up by 3px (49px/59px/67px) as requested */}
+            {/* Tooth Emoji Asset */}
             <span className="inline-flex items-center justify-center mx-1 transform translate-y-[-2px]">
               <img 
                 src={toothEmojiImg} 
