@@ -146,16 +146,13 @@ export default function App() {
           </div>
         </main>
 
-        {/* Footer Bar */}
-        <footer className="relative z-10 w-full px-6 sm:px-12 md:px-16 lg:px-20 py-6 border-t border-white/10 flex justify-between items-center text-xs text-white/40">
-          <span>&copy; {new Date().getFullYear()} Dentara Clinic. All rights reserved.</span>
-          <span className="hidden sm:inline">Crafted with Inter Variable typography</span>
-        </footer>
+        {/* Bottom Hero Spacer for Seamless Transition */}
+        <div className="relative z-10 h-12" />
 
       </div>
 
-      {/* ABOUT US SECTION - 100px Space After Hero */}
-      <section className="w-full bg-[#FAF8F5] text-[#111827] mt-[100px] py-16 sm:py-20 md:py-24 px-6 sm:px-10 lg:px-16">
+      {/* ABOUT US SECTION - Seamless Transition without Black Gap */}
+      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-20 pb-20 sm:pb-24 px-6 sm:px-10 lg:px-16">
         <div className="max-w-[1300px] mx-auto">
           
           {/* Main Grid Container */}
@@ -236,6 +233,12 @@ export default function App() {
 
         </div>
       </section>
+
+      {/* Global Footer */}
+      <footer className="w-full bg-[#111827] text-white/50 px-6 sm:px-12 py-8 flex flex-col sm:flex-row justify-between items-center text-xs gap-3">
+        <span>&copy; {new Date().getFullYear()} Dentara Clinic. All rights reserved.</span>
+        <span>Crafted with Inter Variable typography</span>
+      </footer>
 
     </div>
   );
