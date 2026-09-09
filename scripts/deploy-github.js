@@ -68,7 +68,8 @@ function getAllFiles(dirPath, arrayOfFiles = [], baseDir = dirPath) {
       file === 'dist' || 
       file === '.DS_Store' ||
       file === '.env' ||
-      file.endsWith('.log')
+      file.endsWith('.log') ||
+      fullPath.includes('.github') // Skip workflow directory to avoid token scope 404
     ) {
       return;
     }
@@ -84,82 +85,39 @@ function getAllFiles(dirPath, arrayOfFiles = [], baseDir = dirPath) {
 }
 
 async function deploy() {
-  console.log(`🚀 Starting Atomic GitHub Deployment to https://github.com/${REPO_OWNER}/${REPO_NAME}...`);
+  console.log(`🚀 Starting GitHub Deployment to https://github.com/${REPO_OWNER}/${REPO_NAME}...`);
 
   const files = getAllFiles(projectRoot);
-  console.log(`📁 Found ${files.length} project files for atomic commit.`);
+  console.log(`📁 Found ${files.length} project files for commit.`);
 
-  // 1. Get reference to latest commit on main branch
-  let latestCommitSha = null;
-  let baseTreeSha = null;
-
-  try {
-    const refData = await githubRequest('GET', `/repos/${REPO_OWNER}/${REPO_NAME}/git/ref/heads/${BRANCH}`);
-    latestCommitSha = refData.object.sha;
-    const commitData = await githubRequest('GET', `/repos/${REPO_OWNER}/${REPO_NAME}/git/commits/${latestCommitSha}`);
-    baseTreeSha = commitData.tree.sha;
-    console.log(`📌 Found latest commit ${latestCommitSha.substring(0, 7)} on branch '${BRANCH}'`);
-  } catch (err) {
-    console.log(`ℹ️ Branch '${BRANCH}' initialized.`);
-  }
-
-  // 2. Upload file contents as Git Blobs
-  console.log(`⏳ Uploading file blobs to Git Data API...`);
-  const treeItems = [];
-
-  for (const file of files) {
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
     const fileBuffer = fs.readFileSync(file.fullPath);
     const contentBase64 = fileBuffer.toString('base64');
+    const pathUrl = file.relativePath.split('/').map(encodeURIComponent).join('/');
 
-    const blobRes = await githubRequest('POST', `/repos/${REPO_OWNER}/${REPO_NAME}/git/blobs`, {
+    let sha = null;
+    try {
+      const existing = await githubRequest('GET', `/repos/${REPO_OWNER}/${REPO_NAME}/contents/${pathUrl}?ref=${BRANCH}`);
+      sha = existing.sha;
+    } catch (e) {
+      // New file
+    }
+
+    const payload = {
+      message: `Update ${file.relativePath}`,
       content: contentBase64,
-      encoding: 'base64'
-    });
+      branch: BRANCH
+    };
+    if (sha) {
+      payload.sha = sha;
+    }
 
-    treeItems.push({
-      path: file.relativePath,
-      mode: '100644',
-      type: 'blob',
-      sha: blobRes.sha
-    });
-
-    console.log(`  ✓ Blob created: ${file.relativePath}`);
+    await githubRequest('PUT', `/repos/${REPO_OWNER}/${REPO_NAME}/contents/${pathUrl}`, payload);
+    console.log(`  ✓ Uploaded [${i + 1}/${files.length}] ${file.relativePath}`);
   }
 
-  // 3. Create a Single Git Tree
-  console.log(`🌳 Creating Single Git Tree...`);
-  const treePayload = { tree: treeItems };
-  if (baseTreeSha) {
-    treePayload.base_tree = baseTreeSha;
-  }
-  const newTree = await githubRequest('POST', `/repos/${REPO_OWNER}/${REPO_NAME}/git/trees`, treePayload);
-
-  // 4. Create a Single Atomic Commit
-  console.log(`📝 Creating Single Atomic Commit...`);
-  const commitPayload = {
-    message: 'Update Dentara website hero section & layout',
-    tree: newTree.sha
-  };
-  if (latestCommitSha) {
-    commitPayload.parents = [latestCommitSha];
-  }
-  const newCommit = await githubRequest('POST', `/repos/${REPO_OWNER}/${REPO_NAME}/git/commits`, commitPayload);
-
-  // 5. Update Git Branch Reference
-  console.log(`📌 Updating Git Branch reference '${BRANCH}' to commit ${newCommit.sha.substring(0, 7)}...`);
-  if (latestCommitSha) {
-    await githubRequest('PATCH', `/repos/${REPO_OWNER}/${REPO_NAME}/git/refs/heads/${BRANCH}`, {
-      sha: newCommit.sha,
-      force: true
-    });
-  } else {
-    await githubRequest('POST', `/repos/${REPO_OWNER}/${REPO_NAME}/git/refs`, {
-      ref: `refs/heads/${BRANCH}`,
-      sha: newCommit.sha
-    });
-  }
-
-  console.log(`\n✅ SUCCESS! All ${files.length} files committed in 1 single atomic commit on '${BRANCH}' branch.`);
+  console.log(`\n✅ SUCCESS! All ${files.length} project files uploaded to main branch.`);
   console.log(`🌐 Repository URL: https://github.com/${REPO_OWNER}/${REPO_NAME}`);
 }
 
