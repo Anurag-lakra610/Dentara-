@@ -56,23 +56,23 @@ export default function App() {
           })}
         </nav>
 
-        {/* Right Action Button (Call Now) - Sized perfectly matching reference image */}
+        {/* Right Action Button (Call Now) - Height set to exactly 50px as requested */}
         <div className="flex items-center gap-3">
           <a
             href="tel:+1234567890"
-            className="hidden sm:flex items-center gap-2.5 px-6 py-2.5 sm:px-7 sm:py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-lg cursor-pointer"
+            className="hidden sm:flex items-center justify-center gap-2.5 h-[50px] px-8 rounded-full bg-white text-black text-base font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-xl cursor-pointer"
           >
-            <Phone className="w-4 h-4 stroke-[2.4]" />
+            <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
             <span>Call Now</span>
           </a>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
+            className="md:hidden p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </header>
@@ -96,9 +96,9 @@ export default function App() {
           ))}
           <a
             href="tel:+1234567890"
-            className="sm:hidden flex items-center justify-center gap-2 mt-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-sm text-center"
+            className="sm:hidden flex items-center justify-center gap-2.5 mt-2 h-[50px] px-8 rounded-full bg-white text-black font-semibold text-base text-center"
           >
-            <Phone className="w-4 h-4 stroke-[2.4]" />
+            <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
             <span>Call Now</span>
           </a>
         </div>
