@@ -12,39 +12,39 @@ export default function App() {
   return (
     <div className="relative w-full min-h-screen bg-[#080808] font-sans antialiased overflow-hidden flex flex-col justify-between">
       
-      {/* Fullscreen Background Image with Horizontal Flip (Right Shift/Rotate) & Dark Gradient Overlay */}
+      {/* Background Image - Untouched as requested */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105 transition-transform duration-700"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
           style={{ backgroundImage: `url(${heroBgImg})` }}
         />
-        {/* Left-to-right vignette gradient for ultra clear text visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/35 sm:to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40" />
+        {/* Dark vignette overlay for left text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
       </div>
 
-      {/* Header Navigation - Full Width Container */}
+      {/* Header Navigation */}
       <header className="relative z-20 w-full px-6 sm:px-12 md:px-16 lg:px-20 py-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group focus:outline-none">
           <img 
             src={logoImg} 
             alt="Dentara Logo" 
-            className="h-10 sm:h-12 md:h-14 w-auto object-contain mix-blend-screen drop-shadow-lg transition-transform group-hover:scale-105"
+            className="h-9 sm:h-11 md:h-12 w-auto object-contain mix-blend-screen drop-shadow-md transition-transform group-hover:scale-105"
           />
         </a>
 
         {/* Desktop Navigation Capsule */}
-        <nav className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-2xl">
+        <nav className="hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-xl">
           {navItems.map((item) => {
             const isActive = activeNav === item;
             return (
               <button
                 key={item}
                 onClick={() => setActiveNav(item)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-white text-black font-semibold shadow-lg'
+                    ? 'bg-white text-black font-semibold shadow-md'
                     : 'text-white/80 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -55,29 +55,29 @@ export default function App() {
         </nav>
 
         {/* Right Action Button (Call Now) & Mobile Menu Toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
             href="tel:+1234567890"
-            className="hidden sm:flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-lg cursor-pointer"
+            className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-white/90 active:scale-95 transition-all shadow-md cursor-pointer"
           >
-            <Phone className="w-4 h-4 stroke-[2.5]" />
+            <Phone className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Call Now</span>
           </a>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
+            className="md:hidden p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden relative z-30 mx-6 p-5 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/15 flex flex-col gap-3 animate-in fade-in duration-200">
+        <div className="md:hidden relative z-30 mx-6 p-4 rounded-2xl bg-black/95 backdrop-blur-xl border border-white/15 flex flex-col gap-2 animate-in fade-in duration-200">
           {navItems.map((item) => (
             <button
               key={item}
@@ -85,7 +85,7 @@ export default function App() {
                 setActiveNav(item);
                 setMobileMenuOpen(false);
               }}
-              className={`w-full text-left px-4 py-3 rounded-xl text-base font-medium transition ${
+              className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition ${
                 activeNav === item ? 'bg-white text-black font-semibold' : 'text-white/80 hover:bg-white/10'
               }`}
             >
@@ -94,30 +94,42 @@ export default function App() {
           ))}
           <a
             href="tel:+1234567890"
-            className="sm:hidden flex items-center justify-center gap-2 mt-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-center"
+            className="sm:hidden flex items-center justify-center gap-2 mt-2 px-5 py-2.5 rounded-full bg-white text-black font-semibold text-xs text-center"
           >
-            <Phone className="w-4 h-4 stroke-[2.5]" />
+            <Phone className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Call Now</span>
           </a>
         </div>
       )}
 
-      {/* Hero Content - Fullscreen Left Alignment */}
-      <main className="relative z-10 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 py-12 sm:py-16 md:py-24 max-w-4xl">
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[96px] font-semibold text-white tracking-tight leading-[1.02] sm:leading-[1.05]">
+      {/* Hero Content - Scaled down title & subtext to match exact reference image */}
+      <main className="relative z-10 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-12 md:py-16 max-w-2xl">
+        {/* Title */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-white tracking-tight leading-[1.08]">
           Seamless
           <br />
-          <span className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 mt-2">
+          <span className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
             <span>Dental</span>
             
-            {/* White Tooth Badge Icon */}
-            <span className="inline-flex items-center justify-center p-2.5 sm:p-3.5 md:p-4 rounded-2xl sm:rounded-3xl bg-white/15 backdrop-blur-md border border-white/25 text-white shadow-inner">
-              <svg
-                className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 fill-white drop-shadow"
-                viewBox="0 0 24 24"
+            {/* Tooth Emoji Badge - Exact matching reference image */}
+            <span className="inline-flex items-center justify-center mx-0.5 transform translate-y-[-2px]">
+              <svg 
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 drop-shadow-md" 
+                viewBox="0 0 100 100" 
+                fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M17 2C14.5 2 13 3.5 12 4.5C11 3.5 9.5 2 7 2C4 2 2 4.5 2 8C2 12.5 4 15.5 5.5 18C6.5 19.8 7.5 22 9.5 22C10.8 22 11.2 20.8 11.5 19C11.7 17.8 11.8 16 12 16C12.2 16 12.3 17.8 12.5 19C12.8 20.8 13.2 22 14.5 22C16.5 22 17.5 19.8 18.5 18C20 15.5 22 12.5 22 8C22 4.5 20 2 17 2Z" />
+                {/* Main Tooth Body */}
+                <path 
+                  d="M72 18C62 18 55 24 50 29C45 24 38 18 28 18C16 18 8 28 8 42C8 60 16 72 23 82C27 88 31 94 38 94C43 94 45 89 46 82C48 74 49 66 50 66C51 66 52 74 54 82C55 89 57 94 62 94C69 94 73 88 77 82C84 72 92 60 92 42C92 28 84 18 72 18Z" 
+                  fill="white" 
+                />
+                {/* Tooth Shadow/Cavity Detail matching reference */}
+                <path 
+                  d="M38 48C34 50 32 55 34 60C36 65 42 66 45 61C47 57 44 50 38 48Z" 
+                  fill="#7A604D" 
+                  opacity="0.85"
+                />
               </svg>
             </span>
 
@@ -125,21 +137,22 @@ export default function App() {
           </span>
         </h1>
 
-        <p className="mt-6 sm:mt-8 mb-8 sm:mb-10 text-white/80 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-xl tracking-wide">
+        {/* Muted exact subtext with matching font size and layout */}
+        <p className="mt-4 sm:mt-5 mb-7 text-white/70 text-xs sm:text-sm md:text-[15px] font-normal leading-relaxed max-w-md tracking-wide">
           Whether it's a leaky faucet or a major plumbing emergency, our experienced professionals are just a call away
         </p>
 
-        {/* Book Appointment CTA Button */}
+        {/* CTA Button */}
         <div>
-          <button className="group flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-white text-black font-semibold text-base sm:text-lg hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-2xl cursor-pointer">
+          <button className="group flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
             <span>Book Appointment</span>
-            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2] group-hover:translate-x-1.5 transition-transform duration-200" />
+            <ArrowRight className="w-4 h-4 stroke-[2.2] group-hover:translate-x-1 transition-transform duration-200" />
           </button>
         </div>
       </main>
 
-      {/* Footer Bar - Fullscreen Width */}
-      <footer className="relative z-10 w-full px-6 sm:px-12 md:px-16 lg:px-20 py-6 border-t border-white/10 flex justify-between items-center text-xs text-white/40">
+      {/* Footer Bar */}
+      <footer className="relative z-10 w-full px-6 sm:px-12 md:px-16 lg:px-20 py-5 border-t border-white/10 flex justify-between items-center text-[11px] text-white/40">
         <span>&copy; {new Date().getFullYear()} Dentara Clinic. All rights reserved.</span>
         <span className="hidden sm:inline">Crafted with Inter Variable typography</span>
       </footer>
