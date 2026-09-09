@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, ArrowRight, Menu, X } from 'lucide-react';
 import logoImg from './assets/logo.png';
-import heroBgImg from './assets/hero-bg.png';
+import heroBgImg from './assets/hero-bg.jpg';
 import toothEmojiImg from './assets/tooth-emoji.png';
 
 export default function App() {
@@ -17,14 +17,15 @@ export default function App() {
       {/* Inner Hero Card - Full Screen Ratio with 10px outer gap */}
       <div className="relative w-full min-h-[calc(100vh-20px)] rounded-[28px] sm:rounded-[36px] md:rounded-[40px] overflow-hidden flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 shadow-2xl">
         
-        {/* Background Image - Dental Care Photo */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{ backgroundImage: `url(${heroBgImg})` }}
-        >
-          {/* Subtle dark gradient overlay on left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+        {/* New Hero Background Image with Horizontal Flip (Right Side Shift) & Dark Vignette */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
+            style={{ backgroundImage: `url(${heroBgImg})` }}
+          />
+          {/* Multi-stage dark gradient overlay for crystal clear text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30 sm:to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
         </div>
 
         {/* Header Navigation */}
