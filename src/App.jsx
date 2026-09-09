@@ -151,20 +151,20 @@ export default function App() {
 
       </div>
 
-      {/* ABOUT US SECTION - Seamless Transition without Black Gap */}
-      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-16 pb-24 sm:py-24 px-6 sm:px-10 lg:px-16 overflow-hidden">
-        <div className="max-w-[1240px] mx-auto">
+      {/* ABOUT US SECTION - Full Screen Ratio with Seamless Transition */}
+      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-16 pb-24 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
           
           {/* Main 3-Column Grid Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
             
-            {/* Left Column - Image Card */}
-            <div className="lg:col-span-4 flex justify-center lg:justify-start lg:pt-16">
-              <div className="relative w-full max-w-[340px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
+            {/* Left Column - High Definition Image Card */}
+            <div className="lg:col-span-4 flex justify-center lg:justify-start lg:pt-14">
+              <div className="relative w-full max-w-[420px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
                 <img 
                   src={aboutLeftImg} 
                   alt="Dental Team at Work" 
-                  className="w-full h-[360px] sm:h-[420px] object-cover block"
+                  className="w-full h-[400px] sm:h-[460px] lg:h-[500px] object-cover block"
                 />
               </div>
             </div>
@@ -173,54 +173,54 @@ export default function App() {
             <div className="lg:col-span-4 text-center flex flex-col items-center justify-between">
               <div>
                 {/* Tag Badge: (about us) with subtle side lines */}
-                <div className="flex items-center justify-center gap-3 text-[#0284C7] font-medium text-xs sm:text-sm tracking-wide mb-3">
+                <div className="flex items-center justify-center gap-3 text-[#0284C7] font-medium text-xs sm:text-sm tracking-wide mb-4">
                   <span className="h-[1px] w-8 bg-[#0284C7]/30"></span>
                   <span>(about us)</span>
                   <span className="h-[1px] w-8 bg-[#0284C7]/30"></span>
                 </div>
 
-                {/* Main Heading */}
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight text-[#111827] leading-[1.18]">
+                {/* Main Heading - font-semibold as requested */}
+                <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-semibold tracking-tight text-[#111827] leading-[1.15]">
                   A Simple Way to Save
                   <br />
                   on Dental Care
                 </h2>
 
                 {/* Paragraph Subtitle */}
-                <p className="mt-4 mb-6 text-[#6B7280] text-xs sm:text-sm leading-relaxed max-w-[420px] mx-auto font-normal">
+                <p className="mt-5 mb-7 text-[#6B7280] text-xs sm:text-sm leading-relaxed max-w-[460px] mx-auto font-normal">
                   Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each and every patient. We offer a wide range of services.
                 </p>
 
                 {/* Blue Gradient CTA Button */}
-                <button className="group inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-[#38BDF8] to-[#0284C7] text-white font-semibold text-sm hover:opacity-95 active:scale-95 transition-all shadow-sm cursor-pointer mx-auto">
+                <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#38BDF8] to-[#0284C7] text-white font-semibold text-sm hover:opacity-95 active:scale-95 transition-all shadow-sm cursor-pointer mx-auto">
                   <span>Book Appointment</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
 
-              {/* Center Bottom Image Card */}
-              <div className="w-full max-w-[420px] rounded-[24px] overflow-hidden shadow-md mt-10 transition-transform duration-300 hover:scale-[1.01]">
+              {/* Center Bottom High Definition Image Card */}
+              <div className="w-full max-w-[480px] rounded-[24px] overflow-hidden shadow-md mt-10 sm:mt-12 transition-transform duration-300 hover:scale-[1.01]">
                 <img 
                   src={aboutCenterImg} 
                   alt="Dental Teeth Cleaning Procedure" 
-                  className="w-full h-[190px] sm:h-[210px] object-cover block"
+                  className="w-full h-[210px] sm:h-[240px] object-cover block"
                 />
               </div>
             </div>
 
             {/* Right Column - Image Card & 98% Satisfaction Stat */}
             <div className="lg:col-span-4 flex flex-col items-center lg:items-end">
-              <div className="relative w-full max-w-[340px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
+              <div className="relative w-full max-w-[420px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
                 <img 
                   src={aboutRightImg} 
                   alt="Teeth Whitening Procedure" 
-                  className="w-full h-[400px] sm:h-[460px] object-cover block"
+                  className="w-full h-[440px] sm:h-[500px] lg:h-[540px] object-cover block"
                 />
               </div>
 
-              {/* Stat Badge under right image */}
-              <div className="w-full max-w-[340px] mt-5 text-left">
-                <div className="text-4xl sm:text-5xl font-bold text-[#0284C7] tracking-tight">
+              {/* Stat Badge under right image - font-semibold as requested */}
+              <div className="w-full max-w-[420px] mt-6 text-left">
+                <div className="text-5xl sm:text-6xl font-semibold text-[#0284C7] tracking-tight">
                   98%
                 </div>
                 <p className="text-xs sm:text-sm text-[#6B7280] font-normal mt-1 leading-snug">
