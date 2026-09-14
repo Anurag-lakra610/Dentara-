@@ -268,22 +268,22 @@ export default function App() {
             </div>
           </div>
 
-          {/* Service Cards Container (All 4 cards 350px height, Cavity Protection 450px width) */}
+          {/* Service Cards Container (All 4 cards 350px height, Cavity Protection 550px width, Root Canal & Oral Surgery equal 420px width) */}
           <div className="relative flex flex-col gap-6 lg:gap-8">
             
-            {/* Vertical Divider with "our services" text in the whitespace gap, shifted right near Root Canal Treatment box */}
-            <div className="hidden lg:flex absolute left-[470px] xl:left-[500px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
-              <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3 translate-x-2">
+            {/* Vertical Divider with "our services" text in the whitespace gap, shifted right next to Root Canal Treatment box */}
+            <div className="hidden lg:flex absolute right-[435px] xl:right-[445px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
+              <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3">
                 our services
               </span>
               <div className="w-[1px] h-28 bg-[#CBD5E1]"></div>
             </div>
 
-            {/* Row 1: Cavity Protection (450px) + Empty Whitespace + Root Canal Treatment */}
-            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-12">
+            {/* Row 1: Cavity Protection (550px) + Empty Whitespace + Root Canal Treatment (420px) */}
+            <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8">
               
-              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 450px, Height 350px) */}
-              <div className="w-full lg:w-[450px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 550px, Height 350px) */}
+              <div className="w-full lg:w-[550px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
                     <img src={iconCavity} alt="Cavity Protection Icon" className="w-7 h-7 object-contain" />
@@ -297,7 +297,7 @@ export default function App() {
                   <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] mb-2 tracking-tight">
                     Cavity Protection
                   </h3>
-                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[340px] mb-6">
+                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-md mb-6">
                     As we move into this new era of technology, we tend to look at the future with confidence and pride, which is why our theme.
                   </p>
                   <div>
@@ -309,8 +309,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Height 350px) */}
-              <div className="flex-1 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 420px, Height 350px) */}
+              <div className="w-full lg:w-[420px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
                     <img src={iconRootCanal} alt="Root Canal Treatment Icon" className="w-7 h-7 object-contain" />
@@ -337,11 +337,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Row 2: Oral Surgery (450px) + Video Image Card (Fills remaining width) */}
-            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-12">
+            {/* Row 2: Oral Surgery (420px - EXACT match with Root Canal Treatment) + Video Image Card (Fills remaining width) */}
+            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
               
-              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 450px, Height 350px) */}
-              <div className="w-full lg:w-[450px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 420px, Height 350px - EXACT match with Root Canal Treatment) */}
+              <div className="w-full lg:w-[420px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
                     <img src={iconOralSurgery} alt="Oral Surgery Icon" className="w-7 h-7 object-contain" />
