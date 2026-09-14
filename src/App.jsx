@@ -12,6 +12,7 @@ import iconRootCanal from './assets/icon-root-canal.png';
 import iconOralSurgery from './assets/icon-oral-surgery.png';
 import iconCavityReal from './assets/icon-cavity-real.png';
 import iconRootCanalReal from './assets/icon-root-canal-real.png';
+import iconOralSurgeryReal from './assets/icon-oral-surgery-real.png';
 import consultationMainImg from './assets/consultation-main.jpg';
 import consultationRightImg from './assets/consultation-right.png';
 import consultationVideoImg from './assets/consultation-video.png';
@@ -284,8 +285,8 @@ export default function App() {
             {/* Row 1: Cavity Protection (700px) + Empty Whitespace + Root Canal Treatment (500px) */}
             <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8">
               
-              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 700px, Height 350px) */}
-              <div className="w-full lg:w-[700px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 850px, Height 350px) */}
+              <div className="w-full lg:w-[850px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -349,7 +350,7 @@ export default function App() {
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
-                    <img src={iconRootCanalReal} alt="Oral Surgery Icon" className="w-7 h-7 object-contain" />
+                    <img src={iconOralSurgeryReal} alt="Oral Surgery Icon" className="w-7 h-7 object-contain" />
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
