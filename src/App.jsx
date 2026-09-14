@@ -268,111 +268,119 @@ export default function App() {
             </div>
           </div>
 
-          {/* Service Cards Asymmetric Grid (Top: 7/5 cols, Bottom: 5/7 cols, All 550px height) */}
-          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          {/* Service Cards Container (All 4 cards 350px height, Cavity Protection 450px width) */}
+          <div className="relative flex flex-col gap-6 lg:gap-8">
             
-            {/* Vertical Divider with "our services" text shifted right near Root Canal Treatment box */}
-            <div className="hidden lg:flex absolute left-[59.5%] top-0 bottom-1/2 -translate-x-1/2 z-10 flex-col items-center pointer-events-none">
-              <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3 translate-x-1">
+            {/* Vertical Divider with "our services" text in the whitespace gap, shifted right near Root Canal Treatment box */}
+            <div className="hidden lg:flex absolute left-[470px] xl:left-[500px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
+              <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3 translate-x-2">
                 our services
               </span>
-              <div className="w-[1px] h-36 bg-[#CBD5E1]"></div>
+              <div className="w-[1px] h-28 bg-[#CBD5E1]"></div>
             </div>
 
-            {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Wider Col-7, Height 550px) */}
-            <div className="lg:col-span-7 bg-[#CFECF0] rounded-[36px] p-8 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[550px]">
-              <div className="flex items-start justify-between w-full">
-                <div className="w-16 h-16 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-4 shadow-sm">
-                  <img src={iconCavity} alt="Cavity Protection Icon" className="w-8 h-8 object-contain" />
-                </div>
-                <svg className="w-7 h-7 text-black/15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                </svg>
-              </div>
-
-              <div className="mt-auto mb-2">
-                <h3 className="text-2xl sm:text-[28px] font-medium text-[#111827] mb-3 tracking-tight">
-                  Cavity Protection
-                </h3>
-                <p className="text-xs sm:text-[14px] text-[#475569] font-normal leading-[1.65] max-w-md mb-8">
-                  As we move into this new era of technology, we tend to look at the future with confidence and pride, which is why our theme.
-                </p>
-                <div>
-                  <a href="#" className="inline-flex items-center gap-2 text-xs sm:text-[14px] font-semibold text-[#111827] hover:text-[#0284C7] transition-colors group/link">
-                    <span className="underline underline-offset-4 decoration-1">Read More</span>
-                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Col-5, Height 550px) */}
-            <div className="lg:col-span-5 bg-[#FBF9BA] rounded-[36px] p-8 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[550px]">
-              <div className="flex items-start justify-between w-full">
-                <div className="w-16 h-16 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-4 shadow-sm">
-                  <img src={iconRootCanal} alt="Root Canal Treatment Icon" className="w-8 h-8 object-contain" />
-                </div>
-                <svg className="w-7 h-7 text-black/15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                </svg>
-              </div>
-
-              <div className="mt-auto mb-2">
-                <h3 className="text-2xl sm:text-[28px] font-medium text-[#111827] mb-3 tracking-tight">
-                  Root Canal Treatment
-                </h3>
-                <p className="text-xs sm:text-[14px] text-[#475569] font-normal leading-[1.65] max-w-sm mb-8">
-                  In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
-                </p>
-                <div>
-                  <a href="#" className="inline-flex items-center gap-2 text-xs sm:text-[14px] font-semibold text-[#111827] hover:text-[#0284C7] transition-colors group/link">
-                    <span className="underline underline-offset-4 decoration-1">Read More</span>
-                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Col-5 - EXACT SAME width & height as Card 2) */}
-            <div className="lg:col-span-5 bg-[#FCBCFF] rounded-[36px] p-8 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[550px]">
-              <div className="flex items-start justify-between w-full">
-                <div className="w-16 h-16 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-4 shadow-sm">
-                  <img src={iconOralSurgery} alt="Oral Surgery Icon" className="w-8 h-8 object-contain" />
-                </div>
-                <svg className="w-7 h-7 text-black/15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                </svg>
-              </div>
-
-              <div className="mt-auto mb-2">
-                <h3 className="text-2xl sm:text-[28px] font-medium text-[#111827] mb-3 tracking-tight">
-                  Oral Surgery
-                </h3>
-                <p className="text-xs sm:text-[14px] text-[#475569] font-normal leading-[1.65] max-w-sm mb-8">
-                  In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
-                </p>
-                <div>
-                  <a href="#" className="inline-flex items-center gap-2 text-xs sm:text-[14px] font-semibold text-[#111827] hover:text-[#0284C7] transition-colors group/link">
-                    <span className="underline underline-offset-4 decoration-1">Read More</span>
-                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4: High Definition Video Image Card (Wider Col-7, Fills remaining space, Height 550px) */}
-            <div className="lg:col-span-7 relative rounded-[36px] overflow-hidden shadow-md cursor-pointer group h-[550px]">
-              <img 
-                src={servicesVideoImg} 
-                alt="Dental Procedure Patient Video" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+            {/* Row 1: Cavity Protection (450px) + Empty Whitespace + Root Canal Treatment */}
+            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-12">
               
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                  <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white text-white translate-x-[2px]" />
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 450px, Height 350px) */}
+              <div className="w-full lg:w-[450px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+                <div className="flex items-start justify-between w-full">
+                  <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
+                    <img src={iconCavity} alt="Cavity Protection Icon" className="w-7 h-7 object-contain" />
+                  </div>
+                  <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                  </svg>
+                </div>
+
+                <div className="mt-auto mb-1">
+                  <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] mb-2 tracking-tight">
+                    Cavity Protection
+                  </h3>
+                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[340px] mb-6">
+                    As we move into this new era of technology, we tend to look at the future with confidence and pride, which is why our theme.
+                  </p>
+                  <div>
+                    <a href="#" className="inline-flex items-center gap-2 text-xs sm:text-[13.5px] font-semibold text-[#111827] hover:text-[#0284C7] transition-colors group/link">
+                      <span className="underline underline-offset-4 decoration-1">Read More</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Height 350px) */}
+              <div className="flex-1 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+                <div className="flex items-start justify-between w-full">
+                  <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
+                    <img src={iconRootCanal} alt="Root Canal Treatment Icon" className="w-7 h-7 object-contain" />
+                  </div>
+                  <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                  </svg>
+                </div>
+
+                <div className="mt-auto mb-1">
+                  <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] mb-2 tracking-tight">
+                    Root Canal Treatment
+                  </h3>
+                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[340px] mb-6">
+                    In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
+                  </p>
+                  <div>
+                    <a href="#" className="inline-flex items-center gap-2 text-xs sm:text-[13.5px] font-semibold text-[#111827] hover:text-[#0284C7] transition-colors group/link">
+                      <span className="underline underline-offset-4 decoration-1">Read More</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Row 2: Oral Surgery (450px) + Video Image Card (Fills remaining width) */}
+            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-12">
+              
+              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 450px, Height 350px) */}
+              <div className="w-full lg:w-[450px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+                <div className="flex items-start justify-between w-full">
+                  <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
+                    <img src={iconOralSurgery} alt="Oral Surgery Icon" className="w-7 h-7 object-contain" />
+                  </div>
+                  <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                  </svg>
+                </div>
+
+                <div className="mt-auto mb-1">
+                  <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] mb-2 tracking-tight">
+                    Oral Surgery
+                  </h3>
+                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[340px] mb-6">
+                    In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
+                  </p>
+                  <div>
+                    <a href="#" className="inline-flex items-center gap-2 text-xs sm:text-[13.5px] font-semibold text-[#111827] hover:text-[#0284C7] transition-colors group/link">
+                      <span className="underline underline-offset-4 decoration-1">Read More</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: Video Image Card (Fills remaining width, Height 350px) */}
+              <div className="flex-1 relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group h-[350px]">
+                <img 
+                  src={servicesVideoImg} 
+                  alt="Dental Procedure Patient Video" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                    <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-white translate-x-[2px]" />
+                  </div>
                 </div>
               </div>
             </div>
