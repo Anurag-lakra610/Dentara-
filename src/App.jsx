@@ -10,6 +10,8 @@ import servicesVideoImg from './assets/services-video.jpg';
 import iconCavity from './assets/icon-cavity.png';
 import iconRootCanal from './assets/icon-root-canal.png';
 import iconOralSurgery from './assets/icon-oral-surgery.png';
+import iconCavityReal from './assets/icon-cavity-real.png';
+import iconRootCanalReal from './assets/icon-root-canal-real.png';
 import consultationMainImg from './assets/consultation-main.jpg';
 import consultationRightImg from './assets/consultation-right.png';
 import consultationVideoImg from './assets/consultation-video.png';
@@ -285,12 +287,9 @@ export default function App() {
               {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 700px, Height 350px) */}
               <div className="w-full lg:w-[700px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
-                  {/* Single White Circle Badge (No inner blue gradient) */}
-                  <div className="w-14 h-14 rounded-full bg-white/70 border border-white/90 flex items-center justify-center shadow-sm">
-                    <svg className="w-7 h-7 text-[#1E293B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 4.5C9 4.5 7 6.5 7 10C7 13.5 8 16.5 9 19.5C9.5 21 10.5 21.5 12 21.5C13.5 21.5 14.5 21 15 19.5C16 16.5 17 13.5 17 10C17 6.5 15 4.5 12 4.5Z" />
-                      <circle cx="12" cy="9" r="2" strokeWidth="1.4" />
-                    </svg>
+                  {/* Single White Circle Badge with Real Icon */}
+                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                    <img src={iconCavityReal} alt="Cavity Protection Icon" className="w-7 h-7 object-contain" />
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
@@ -316,11 +315,9 @@ export default function App() {
               {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 500px, Height 350px) */}
               <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
-                  {/* Single White Circle Badge (No inner blue gradient) */}
-                  <div className="w-14 h-14 rounded-full bg-white/70 border border-white/90 flex items-center justify-center shadow-sm">
-                    <svg className="w-7 h-7 text-[#1E293B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 4.5C9 4.5 7 6 7 9.5C7 13 8 16 9.5 19.5C10 20.5 10.5 21.5 11.5 21.5C12.5 21.5 12 18 12 15M12 4.5C15 4.5 17 6 17 9.5C17 13 16 16 14.5 19.5C14 20.5 13.5 21.5 12.5 21.5C11.5 21.5 12 18 12 15" />
-                    </svg>
+                  {/* Single White Circle Badge with Real Icon */}
+                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                    <img src={iconRootCanalReal} alt="Root Canal Treatment Icon" className="w-7 h-7 object-contain" />
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
@@ -350,12 +347,9 @@ export default function App() {
               {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 500px, Height 350px - EXACT match with Root Canal Treatment) */}
               <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
-                  {/* Single White Circle Badge (No inner blue gradient) */}
-                  <div className="w-14 h-14 rounded-full bg-white/70 border border-white/90 flex items-center justify-center shadow-sm">
-                    <svg className="w-7 h-7 text-[#1E293B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 3.5C9 3.5 7 5 7 8.5C7 12 8 14 9.5 17C10 18 10.5 18.5 11.5 18.5C12.5 18.5 12 16 12 14M12 3.5C15 3.5 17 5 17 8.5C17 12 16 14 14.5 17C14 18 13.5 18.5 12.5 18.5C11.5 18.5 12 16 12 14" />
-                      <path d="M9 20.5H15M10.5 18.5V22.5M13.5 18.5V22.5" />
-                    </svg>
+                  {/* Single White Circle Badge with Real Icon */}
+                  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                    <img src={iconRootCanalReal} alt="Oral Surgery Icon" className="w-7 h-7 object-contain" />
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
