@@ -22,6 +22,7 @@ import consultationMainImg from './assets/consultation-main.jpg';
 import consultationRightImg from './assets/consultation-right.png';
 import consultationVideoImg from './assets/consultation-video.png';
 import flossEmojiImg from './assets/floss-emoji.png';
+import insightDentalImg from './assets/insight-dental.jpg';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
@@ -724,6 +725,96 @@ export default function App() {
                 </div>
               ))}
             </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* LATEST INSIGHTS SECTION (Between Testimonials & Footer) */}
+      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.04]">
+        <div className="max-w-[1650px] mx-auto">
+          
+          {/* Section Header */}
+          <div className="mb-10 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
+              Latest Insights
+            </h2>
+          </div>
+
+          {/* 3-Card Layout Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            
+            {/* Card 1: Cream Card Left */}
+            <div className="bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+              {/* Top Date Capsule Badge */}
+              <div className="px-4 py-1.5 rounded-full border border-black/20 text-[12.5px] font-medium text-[#111827]/70 bg-white/40 backdrop-blur-sm">
+                July 9, 2025
+              </div>
+
+              {/* Center Title */}
+              <div className="my-auto py-8">
+                <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] tracking-tight leading-snug max-w-[240px] mx-auto">
+                  Medicare And Long Term Care
+                </h3>
+              </div>
+
+              {/* Bottom Paragraph */}
+              <p className="text-xs sm:text-[13px] text-[#475569] font-normal leading-relaxed max-w-[280px] mx-auto">
+                As seniors age, understanding Medicare and the range of long-term care options becomes. Many families are unsure which services
+              </p>
+            </div>
+
+            {/* Card 2: AI Dental Image Background with Blur & Overlay (Middle) */}
+            <div className="relative rounded-[32px] overflow-hidden p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-md min-h-[460px] sm:min-h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
+              
+              {/* AI Generated Dental Image with Blur */}
+              <img 
+                src={insightDentalImg} 
+                alt="Medicare And Long Term Care Dental Procedure" 
+                className="absolute inset-0 w-full h-full object-cover blur-[2.5px] scale-[1.05] transition-transform duration-500 group-hover:scale-110"
+              />
+              
+              {/* Dark Gradient Overlay for Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/45" />
+
+              {/* Top Date Capsule Badge */}
+              <div className="relative z-10 px-4 py-1.5 rounded-full border border-white/40 text-[12.5px] font-medium text-white/90 bg-black/20 backdrop-blur-md">
+                July 9, 2025
+              </div>
+
+              {/* Center Title */}
+              <div className="relative z-10 my-auto py-8">
+                <h3 className="text-xl sm:text-[24px] font-medium text-white tracking-tight leading-snug max-w-[240px] mx-auto">
+                  Medicare And Long Term Care
+                </h3>
+              </div>
+
+              {/* Bottom Paragraph */}
+              <p className="relative z-10 text-xs sm:text-[13px] text-white/85 font-normal leading-relaxed max-w-[280px] mx-auto">
+                As seniors age, understanding Medicare and the range of long-term care options becomes. Many families are unsure which services
+              </p>
+            </div>
+
+            {/* Card 3: Cream Card Right */}
+            <div className="bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+              {/* Top Date Capsule Badge */}
+              <div className="px-4 py-1.5 rounded-full border border-black/20 text-[12.5px] font-medium text-[#111827]/70 bg-white/40 backdrop-blur-sm">
+                July 9, 2025
+              </div>
+
+              {/* Center Title */}
+              <div className="my-auto py-8">
+                <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] tracking-tight leading-snug max-w-[240px] mx-auto">
+                  Medicare And Long Term Care
+                </h3>
+              </div>
+
+              {/* Bottom Paragraph */}
+              <p className="text-xs sm:text-[13px] text-[#475569] font-normal leading-relaxed max-w-[280px] mx-auto">
+                As seniors age, understanding Medicare and the range of long-term care options becomes. Many families are unsure which services
+              </p>
+            </div>
+
           </div>
 
         </div>
