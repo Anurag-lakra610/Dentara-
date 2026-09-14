@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, ArrowRight, Menu, X, Play, Plus } from 'lucide-react';
+import { Phone, ArrowRight, ArrowLeft, Star, Menu, X, Play, Plus } from 'lucide-react';
 import logoImg from './assets/logo.png';
 import heroBgImg from './assets/hero-bg.jpg';
 import toothEmojiImg from './assets/tooth-emoji.png';
@@ -632,10 +632,208 @@ export default function App() {
         </div>
       </section>
 
-      {/* Global Footer */}
-      <footer className="w-full bg-[#111827] text-white/50 px-6 sm:px-12 py-8 flex flex-col sm:flex-row justify-between items-center text-xs gap-3">
-        <span>&copy; {new Date().getFullYear()} Dentara Clinic. All rights reserved.</span>
-        <span>Crafted with Inter Variable typography</span>
+      {/* TESTIMONIALS SECTION ("What Our Clients Say") */}
+      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[40px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
+        <div className="max-w-[1650px] mx-auto bg-[#E2F1F8] rounded-[44px] p-8 sm:p-12 lg:p-16 relative">
+          
+          {/* Header Row: Title & Subtitle on Left, Arrow Navigation on Right */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
+            <div>
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25] mb-2">
+                What Our Clients Say
+              </h2>
+              <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-md">
+                Team carefully evaluates your results to provide actionable insights for improving your health & lifespan.
+              </p>
+            </div>
+
+            {/* Navigation Arrow Buttons */}
+            <div className="flex items-center gap-3 self-start sm:self-auto">
+              <button 
+                aria-label="Previous Testimonial" 
+                className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-sm hover:bg-gray-50 active:scale-95 transition-all cursor-pointer"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+              <button 
+                aria-label="Next Testimonial" 
+                className="w-12 h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* 3 Testimonial Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            
+            {/* Card 1 */}
+            <div className="bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]">
+              <div>
+                {/* Avatar */}
+                <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
+                  <img src={avatarGlassesImg} alt="Alex Morgan" className="w-full h-full object-cover" />
+                </div>
+                
+                {/* Content */}
+                <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
+                  Schedules that work for you
+                </h3>
+                <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
+                  "Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."
+                </p>
+              </div>
+
+              {/* Card Footer: Name & Rating */}
+              <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
+                <span className="font-medium text-sm text-[#111827]">Alex Morgan</span>
+                <div className="flex items-center gap-1 text-[#F59E0B]">
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]">
+              <div>
+                {/* Avatar */}
+                <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
+                  <img src={avatarBeardedImg} alt="David Miller" className="w-full h-full object-cover" />
+                </div>
+                
+                {/* Content */}
+                <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
+                  Health screenings for seniors
+                </h3>
+                <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
+                  "Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."
+                </p>
+              </div>
+
+              {/* Card Footer: Name & Rating */}
+              <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
+                <span className="font-medium text-sm text-[#111827]">David Miller</span>
+                <div className="flex items-center gap-1 text-[#F59E0B]">
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]">
+              <div>
+                {/* Avatar */}
+                <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
+                  <img src={avatarFemaleDoctor} alt="Sarah Jenkins" className="w-full h-full object-cover" />
+                </div>
+                
+                {/* Content */}
+                <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
+                  Seniors stay independent
+                </h3>
+                <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
+                  "Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."
+                </p>
+              </div>
+
+              {/* Card Footer: Name & Rating */}
+              <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
+                <span className="font-medium text-sm text-[#111827]">Sarah Jenkins</span>
+                <div className="flex items-center gap-1 text-[#F59E0B]">
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* GLOBAL FOOTER SECTION */}
+      <footer className="w-full bg-[#FAF8F5] pb-12 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
+        <div className="max-w-[1650px] mx-auto bg-[#070707] rounded-[44px] p-8 sm:p-12 lg:p-16 relative overflow-hidden text-white">
+          
+          {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10">
+            
+            {/* Left Column: Heading & Newsletter Form */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
+              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-8">
+                <span className="block">Offerings From Bright</span>
+                <span className="block">News & Social</span>
+              </h2>
+
+              {/* Email Input Field with Bottom Border & Arrow */}
+              <div className="relative max-w-sm w-full border-b border-white/30 pb-3 flex items-center justify-between group">
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full pr-4 font-normal"
+                />
+                <button 
+                  aria-label="Subscribe to newsletter"
+                  className="text-white group-hover:translate-x-1 transition-transform cursor-pointer flex-shrink-0"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: 3 Navigation Link Columns */}
+            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 text-xs sm:text-[13.5px]">
+              
+              {/* Column 1 */}
+              <ul className="space-y-3 font-normal text-[#9CA3AF]">
+                <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Why our network</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Charging solutions</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Technology</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
+              </ul>
+
+              {/* Column 2 */}
+              <ul className="space-y-3 font-normal text-[#9CA3AF]">
+                <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Press releases</a></li>
+              </ul>
+
+              {/* Column 3 */}
+              <ul className="space-y-3 font-normal text-[#9CA3AF]">
+                <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Linkedin</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Youtube</a></li>
+              </ul>
+
+            </div>
+
+          </div>
+
+          {/* Bottom Watermark Branding Text */}
+          <div className="pt-16 sm:pt-24 lg:pt-32 text-center lg:text-left pointer-events-none select-none -mb-6 sm:-mb-10 lg:-mb-16">
+            <h1 className="text-[100px] sm:text-[170px] lg:text-[240px] xl:text-[280px] font-medium text-white/[0.08] tracking-tight leading-none">
+              Dentara
+            </h1>
+          </div>
+
+        </div>
       </footer>
 
     </div>
