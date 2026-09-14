@@ -26,6 +26,24 @@ import flossEmojiImg from './assets/floss-emoji.png';
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+  const testimonialsList = [
+    { id: 1, name: 'Alex Morgan', title: 'Schedules that work for you', avatar: avatarGlassesImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+    { id: 2, name: 'David Miller', title: 'Health screenings for seniors', avatar: avatarBeardedImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+    { id: 3, name: 'Sarah Jenkins', title: 'Seniors stay independent', avatar: avatarFemaleDoctor, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+    { id: 4, name: 'Alex Morgan', title: 'Schedules that work for you', avatar: avatarGlassesImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+    { id: 5, name: 'David Miller', title: 'Health screenings for seniors', avatar: avatarBeardedImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+    { id: 6, name: 'Sarah Jenkins', title: 'Seniors stay independent', avatar: avatarFemaleDoctor, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+  ];
+
+  const handleNextTestimonial = () => {
+    setTestimonialIndex((prev) => (prev + 1) % 3);
+  };
+
+  const handlePrevTestimonial = () => {
+    setTestimonialIndex((prev) => (prev - 1 + 3) % 3);
+  };
 
   const navItems = ['Home', 'About', 'Product', 'Services', 'Appointment'];
 
@@ -632,11 +650,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION ("What Our Clients Say") */}
-      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[40px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
-        <div className="max-w-[1650px] mx-auto bg-[#E2F1F8] rounded-[44px] p-8 sm:p-12 lg:p-16 relative">
+      {/* TESTIMONIALS SECTION ("What Our Clients Say" - Full Ratio Screen Width) */}
+      <section className="w-full bg-[#E2F1F8] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.03]">
+        <div className="max-w-[1650px] mx-auto relative">
           
-          {/* Header Row: Title & Subtitle on Left, Arrow Navigation on Right */}
+          {/* Header Row: Title & Subtitle on Left, Arrow Navigation Buttons on Right */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25] mb-2">
@@ -647,15 +665,17 @@ export default function App() {
               </p>
             </div>
 
-            {/* Navigation Arrow Buttons */}
+            {/* Interactive Infinite Slider Arrow Navigation Buttons */}
             <div className="flex items-center gap-3 self-start sm:self-auto">
               <button 
+                onClick={handlePrevTestimonial}
                 aria-label="Previous Testimonial" 
-                className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-sm hover:bg-gray-50 active:scale-95 transition-all cursor-pointer"
+                className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-sm hover:bg-gray-100 active:scale-95 transition-all cursor-pointer"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <button 
+                onClick={handleNextTestimonial}
                 aria-label="Next Testimonial" 
                 className="w-12 h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
               >
@@ -664,107 +684,54 @@ export default function App() {
             </div>
           </div>
 
-          {/* 3 Testimonial Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-            
-            {/* Card 1 */}
-            <div className="bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]">
-              <div>
-                {/* Avatar */}
-                <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
-                  <img src={avatarGlassesImg} alt="Alex Morgan" className="w-full h-full object-cover" />
-                </div>
-                
-                {/* Content */}
-                <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
-                  Schedules that work for you
-                </h3>
-                <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
-                  "Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."
-                </p>
-              </div>
+          {/* Interactive Testimonial Cards Carousel Slider */}
+          <div className="overflow-hidden w-full">
+            <div 
+              className="flex gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${testimonialIndex * (100 / 3)}%)` }}
+            >
+              {testimonialsList.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0 bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]"
+                >
+                  <div>
+                    {/* Avatar */}
+                    <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
+                      <img src={item.avatar} alt={item.name} className="w-full h-full object-cover" />
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
+                      {item.quote}
+                    </p>
+                  </div>
 
-              {/* Card Footer: Name & Rating */}
-              <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
-                <span className="font-medium text-sm text-[#111827]">Alex Morgan</span>
-                <div className="flex items-center gap-1 text-[#F59E0B]">
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  {/* Card Footer: Name & Rating */}
+                  <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
+                    <span className="font-medium text-sm text-[#111827]">{item.name}</span>
+                    <div className="flex items-center gap-1 text-[#F59E0B]">
+                      <Star className="w-4 h-4 fill-[#F59E0B]" />
+                      <Star className="w-4 h-4 fill-[#F59E0B]" />
+                      <Star className="w-4 h-4 fill-[#F59E0B]" />
+                      <Star className="w-4 h-4 fill-[#F59E0B]" />
+                      <Star className="w-4 h-4 fill-[#F59E0B]" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-
-            {/* Card 2 */}
-            <div className="bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]">
-              <div>
-                {/* Avatar */}
-                <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
-                  <img src={avatarBeardedImg} alt="David Miller" className="w-full h-full object-cover" />
-                </div>
-                
-                {/* Content */}
-                <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
-                  Health screenings for seniors
-                </h3>
-                <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
-                  "Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."
-                </p>
-              </div>
-
-              {/* Card Footer: Name & Rating */}
-              <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
-                <span className="font-medium text-sm text-[#111827]">David Miller</span>
-                <div className="flex items-center gap-1 text-[#F59E0B]">
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]">
-              <div>
-                {/* Avatar */}
-                <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
-                  <img src={avatarFemaleDoctor} alt="Sarah Jenkins" className="w-full h-full object-cover" />
-                </div>
-                
-                {/* Content */}
-                <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
-                  Seniors stay independent
-                </h3>
-                <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
-                  "Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."
-                </p>
-              </div>
-
-              {/* Card Footer: Name & Rating */}
-              <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
-                <span className="font-medium text-sm text-[#111827]">Sarah Jenkins</span>
-                <div className="flex items-center gap-1 text-[#F59E0B]">
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                  <Star className="w-4 h-4 fill-[#F59E0B]" />
-                </div>
-              </div>
-            </div>
-
           </div>
 
         </div>
       </section>
 
-      {/* GLOBAL FOOTER SECTION */}
-      <footer className="w-full bg-[#FAF8F5] pb-12 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
-        <div className="max-w-[1650px] mx-auto bg-[#070707] rounded-[44px] p-8 sm:p-12 lg:p-16 relative overflow-hidden text-white">
+      {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background) */}
+      <footer className="w-full bg-[#070707] text-white pt-14 sm:pt-20 lg:pt-24 pb-8 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative">
+        <div className="max-w-[1650px] mx-auto relative z-10">
           
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10">
@@ -826,14 +793,15 @@ export default function App() {
 
           </div>
 
-          {/* Bottom Watermark Branding Text */}
-          <div className="pt-16 sm:pt-24 lg:pt-32 text-center lg:text-left pointer-events-none select-none -mb-6 sm:-mb-10 lg:-mb-16">
-            <h1 className="text-[100px] sm:text-[170px] lg:text-[240px] xl:text-[280px] font-medium text-white/[0.08] tracking-tight leading-none">
-              Dentara
-            </h1>
-          </div>
-
         </div>
+
+        {/* Bottom Watermark Branding Text - PERFECTLY CENTERED */}
+        <div className="w-full text-center pointer-events-none select-none pt-16 sm:pt-24 lg:pt-32 -mb-8 sm:-mb-12 lg:-mb-18">
+          <h1 className="text-[110px] sm:text-[190px] lg:text-[280px] xl:text-[330px] font-medium text-white/[0.08] tracking-tight leading-none text-center inline-block mx-auto">
+            Dentara
+          </h1>
+        </div>
+
       </footer>
 
     </div>
