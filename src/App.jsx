@@ -729,8 +729,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background) */}
-      <footer className="w-full bg-[#070707] text-white pt-14 sm:pt-20 lg:pt-24 pb-8 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative">
+      {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background, 100px Gap Above) */}
+      <footer className="w-full bg-[#070707] text-white pt-14 sm:pt-20 lg:pt-24 pb-8 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-[100px]">
         <div className="max-w-[1650px] mx-auto relative z-10">
           
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
