@@ -13,6 +13,10 @@ import iconOralSurgery from './assets/icon-oral-surgery.png';
 import iconCavityReal from './assets/icon-cavity-real.png';
 import iconRootCanalReal from './assets/icon-root-canal-real.png';
 import iconOralSurgeryReal from './assets/icon-oral-surgery-real.png';
+import workTeethImg from './assets/work-teeth-straightening.jpg';
+import workImplantImg from './assets/work-dental-implant.png';
+import avatarGlassesImg from './assets/avatar-man-glasses.png';
+import avatarBeardedImg from './assets/avatar-man-bearded.png';
 import consultationMainImg from './assets/consultation-main.jpg';
 import consultationRightImg from './assets/consultation-right.png';
 import consultationVideoImg from './assets/consultation-video.png';
@@ -396,7 +400,113 @@ export default function App() {
         </div>
       </section>
 
-      {/* DOCTOR CONSULTATIONS SECTION - 4th Section (Full Screen Ratio) */}
+      {/* OUR WORKS / SERVICES WE PROVIDE ARE LISTED BELOW SECTION */}
+      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[40px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
+        <div className="max-w-[1650px] mx-auto bg-[#EBEBEB] rounded-[44px] p-8 sm:p-12 lg:p-16 relative">
+          
+          {/* Top Header Row: (our works) badge on left, Title on right */}
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-12 sm:mb-16">
+            
+            {/* Top Left: (our works) Badge with horizontal line */}
+            <div className="flex items-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide">
+              <span>(our works)</span>
+              <span className="h-[1px] w-20 sm:w-28 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+            </div>
+
+            {/* Top Right: Main Section Title with 74px Line Height */}
+            <div>
+              <h2 className="text-3xl sm:text-4xl lg:text-[54px] font-medium tracking-tight text-[#111827] leading-[1.15] lg:leading-[74px] text-left">
+                <span className="block">Services We Provide</span>
+                <span className="block">Are Listed Below</span>
+              </h2>
+            </div>
+          </div>
+
+          {/* Main Grid Content: Left text & CTA button + Right 2 Image Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+            
+            {/* Left Column: Description Paragraph, CTA Button, and 10K+ Happy Member Avatar Stack */}
+            <div className="lg:col-span-4 flex flex-col justify-between h-full min-h-[340px]">
+              <div>
+                <p className="text-xs sm:text-[14px] text-[#475569] leading-relaxed font-normal max-w-sm mb-8">
+                  Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each.
+                </p>
+                <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+                  <span>Book Appointment</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+
+              {/* Bottom Left: 10K+ Happy Member Overlapping Avatars */}
+              <div className="flex items-center gap-3 mt-12 lg:mt-auto pt-4">
+                <div className="flex items-center -space-x-3.5">
+                  <img 
+                    src={avatarBeardedImg} 
+                    alt="Happy Member" 
+                    className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
+                  />
+                  <img 
+                    src={avatarGlassesImg} 
+                    alt="Happy Member" 
+                    className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
+                  />
+                </div>
+                <div className="text-[#2A91CF] font-medium text-xs sm:text-[13.5px] leading-tight">
+                  <span className="block">10K+ happy</span>
+                  <span className="block">member</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: 2 Image Cards (Teeth Straightening & Dental Implant) */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+              
+              {/* Image Card 1: Teeth Straightening */}
+              <div className="flex flex-col">
+                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full group">
+                  <img 
+                    src={workTeethImg} 
+                    alt="Teeth Straightening Procedure" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="pt-4 px-2">
+                  <h3 className="text-lg sm:text-[20px] font-medium text-[#111827] mb-1 tracking-tight">
+                    Teeth Straightening
+                  </h3>
+                  <p className="text-xs sm:text-[13px] text-[#6B7280]">
+                    Improve your smile with cleaning.
+                  </p>
+                </div>
+              </div>
+
+              {/* Image Card 2: Dental Implant */}
+              <div className="flex flex-col">
+                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full group">
+                  <img 
+                    src={workImplantImg} 
+                    alt="Dental Implant Procedure" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="pt-4 px-2">
+                  <h3 className="text-lg sm:text-[20px] font-medium text-[#111827] mb-1 tracking-tight">
+                    Dental Implant
+                  </h3>
+                  <p className="text-xs sm:text-[13px] text-[#6B7280]">
+                    Improve your smile with cleaning.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* DOCTOR CONSULTATIONS SECTION - 5th Section (Full Screen Ratio) */}
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.04]">
         <div className="max-w-[1650px] mx-auto">
           
