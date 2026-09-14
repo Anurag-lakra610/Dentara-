@@ -268,25 +268,29 @@ export default function App() {
             </div>
           </div>
 
-          {/* Service Cards Container (All 4 cards 350px height, Cavity Protection 550px width, Root Canal & Oral Surgery equal 420px width) */}
+          {/* Service Cards Container (All 4 cards 350px height, Cavity Protection 700px width, Root Canal & Oral Surgery equal 500px width) */}
           <div className="relative flex flex-col gap-6 lg:gap-8">
             
             {/* Vertical Divider with "our services" text in the whitespace gap, shifted right next to Root Canal Treatment box */}
-            <div className="hidden lg:flex absolute right-[435px] xl:right-[445px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
+            <div className="hidden lg:flex absolute right-[515px] xl:right-[525px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
               <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3">
                 our services
               </span>
               <div className="w-[1px] h-28 bg-[#CBD5E1]"></div>
             </div>
 
-            {/* Row 1: Cavity Protection (550px) + Empty Whitespace + Root Canal Treatment (420px) */}
+            {/* Row 1: Cavity Protection (700px) + Empty Whitespace + Root Canal Treatment (500px) */}
             <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8">
               
-              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 550px, Height 350px) */}
-              <div className="w-full lg:w-[550px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 700px, Height 350px) */}
+              <div className="w-full lg:w-[700px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
-                  <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
-                    <img src={iconCavity} alt="Cavity Protection Icon" className="w-7 h-7 object-contain" />
+                  {/* Single White Circle Badge (No inner blue gradient) */}
+                  <div className="w-14 h-14 rounded-full bg-white/70 border border-white/90 flex items-center justify-center shadow-sm">
+                    <svg className="w-7 h-7 text-[#1E293B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 4.5C9 4.5 7 6.5 7 10C7 13.5 8 16.5 9 19.5C9.5 21 10.5 21.5 12 21.5C13.5 21.5 14.5 21 15 19.5C16 16.5 17 13.5 17 10C17 6.5 15 4.5 12 4.5Z" />
+                      <circle cx="12" cy="9" r="2" strokeWidth="1.4" />
+                    </svg>
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
@@ -309,11 +313,14 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 420px, Height 350px) */}
-              <div className="w-full lg:w-[420px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 500px, Height 350px) */}
+              <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
-                  <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
-                    <img src={iconRootCanal} alt="Root Canal Treatment Icon" className="w-7 h-7 object-contain" />
+                  {/* Single White Circle Badge (No inner blue gradient) */}
+                  <div className="w-14 h-14 rounded-full bg-white/70 border border-white/90 flex items-center justify-center shadow-sm">
+                    <svg className="w-7 h-7 text-[#1E293B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 4.5C9 4.5 7 6 7 9.5C7 13 8 16 9.5 19.5C10 20.5 10.5 21.5 11.5 21.5C12.5 21.5 12 18 12 15M12 4.5C15 4.5 17 6 17 9.5C17 13 16 16 14.5 19.5C14 20.5 13.5 21.5 12.5 21.5C11.5 21.5 12 18 12 15" />
+                    </svg>
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
@@ -324,7 +331,7 @@ export default function App() {
                   <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] mb-2 tracking-tight">
                     Root Canal Treatment
                   </h3>
-                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[340px] mb-6">
+                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[360px] mb-6">
                     In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
                   </p>
                   <div>
@@ -337,14 +344,18 @@ export default function App() {
               </div>
             </div>
 
-            {/* Row 2: Oral Surgery (420px - EXACT match with Root Canal Treatment) + Video Image Card (Fills remaining width) */}
+            {/* Row 2: Oral Surgery (500px - EXACT match with Root Canal Treatment) + Video Image Card (Fills remaining width) */}
             <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
               
-              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 420px, Height 350px - EXACT match with Root Canal Treatment) */}
-              <div className="w-full lg:w-[420px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 500px, Height 350px - EXACT match with Root Canal Treatment) */}
+              <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
-                  <div className="w-14 h-14 rounded-full bg-white/50 border border-white/60 flex items-center justify-center p-3.5 shadow-sm">
-                    <img src={iconOralSurgery} alt="Oral Surgery Icon" className="w-7 h-7 object-contain" />
+                  {/* Single White Circle Badge (No inner blue gradient) */}
+                  <div className="w-14 h-14 rounded-full bg-white/70 border border-white/90 flex items-center justify-center shadow-sm">
+                    <svg className="w-7 h-7 text-[#1E293B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 3.5C9 3.5 7 5 7 8.5C7 12 8 14 9.5 17C10 18 10.5 18.5 11.5 18.5C12.5 18.5 12 16 12 14M12 3.5C15 3.5 17 5 17 8.5C17 12 16 14 14.5 17C14 18 13.5 18.5 12.5 18.5C11.5 18.5 12 16 12 14" />
+                      <path d="M9 20.5H15M10.5 18.5V22.5M13.5 18.5V22.5" />
+                    </svg>
                   </div>
                   <svg className="w-6 h-6 text-black/15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
@@ -355,7 +366,7 @@ export default function App() {
                   <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] mb-2 tracking-tight">
                     Oral Surgery
                   </h3>
-                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[340px] mb-6">
+                  <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.6] max-w-[360px] mb-6">
                     In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
                   </p>
                   <div>
