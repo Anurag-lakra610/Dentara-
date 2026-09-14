@@ -730,7 +730,7 @@ export default function App() {
       </section>
 
       {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background, 100px Gap Above) */}
-      <footer className="w-full bg-[#070707] text-white pt-14 sm:pt-20 lg:pt-24 pb-8 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-[100px]">
+      <footer className="w-full bg-[#070707] text-white pt-14 sm:pt-20 lg:pt-24 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-[100px]">
         <div className="max-w-[1650px] mx-auto relative z-10">
           
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
@@ -795,9 +795,9 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - PERFECTLY CENTERED */}
-        <div className="w-full text-center pointer-events-none select-none pt-16 sm:pt-24 lg:pt-32 -mb-8 sm:-mb-12 lg:-mb-18">
-          <h1 className="text-[110px] sm:text-[190px] lg:text-[280px] xl:text-[330px] font-medium text-white/[0.08] tracking-tight leading-none text-center inline-block mx-auto">
+        {/* Bottom Watermark Branding Text - PERFECTLY CENTERED AND TOUCHING BOTTOM EDGE */}
+        <div className="w-full text-center pointer-events-none select-none pt-12 sm:pt-16 lg:pt-20 translate-y-[12%] sm:translate-y-[14%] lg:translate-y-[16%] overflow-hidden">
+          <h1 className="text-[110px] sm:text-[190px] lg:text-[280px] xl:text-[330px] font-medium text-white/[0.08] tracking-tight leading-[0.75] text-center inline-block mx-auto">
             Dentara
           </h1>
         </div>
