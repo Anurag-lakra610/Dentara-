@@ -17,6 +17,7 @@ import workTeethImg from './assets/work-teeth-straightening.jpg';
 import workImplantImg from './assets/work-dental-implant.png';
 import avatarGlassesImg from './assets/avatar-man-glasses.png';
 import avatarBeardedImg from './assets/avatar-man-bearded.png';
+import avatarFemaleDoctor from './assets/avatar-female-doctor.jpg';
 import consultationMainImg from './assets/consultation-main.jpg';
 import consultationRightImg from './assets/consultation-right.png';
 import consultationVideoImg from './assets/consultation-video.png';
@@ -413,10 +414,10 @@ export default function App() {
               <span className="h-[1px] w-20 sm:w-28 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
             </div>
 
-            {/* Top Right: Main Section Title with 74px Line Height */}
+            {/* Top Right: Main Section Title matching other sections */}
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[54px] font-medium tracking-tight text-[#111827] leading-[1.15] lg:leading-[74px] text-left">
-                <span className="block">Services We Provide</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
+                <span className="block mb-1.5">Services We Provide</span>
                 <span className="block">Are Listed Below</span>
               </h2>
             </div>
@@ -437,7 +438,7 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Bottom Left: 10K+ Happy Member Overlapping Avatars */}
+              {/* Bottom Left: 10K+ Happy Member 3 Overlapping Avatars */}
               <div className="flex items-center gap-3 mt-12 lg:mt-auto pt-4">
                 <div className="flex items-center -space-x-3.5">
                   <img 
@@ -447,6 +448,11 @@ export default function App() {
                   />
                   <img 
                     src={avatarGlassesImg} 
+                    alt="Happy Member" 
+                    className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
+                  />
+                  <img 
+                    src={avatarFemaleDoctor} 
                     alt="Happy Member" 
                     className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
                   />
@@ -461,13 +467,13 @@ export default function App() {
             {/* Right Column: 2 Image Cards (Teeth Straightening & Dental Implant) */}
             <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               
-              {/* Image Card 1: Teeth Straightening */}
+              {/* Image Card 1: Teeth Straightening (Static Image - No Zoom on Hover) */}
               <div className="flex flex-col">
-                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full group">
+                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full">
                   <img 
                     src={workTeethImg} 
                     alt="Teeth Straightening Procedure" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="pt-4 px-2">
@@ -480,13 +486,13 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Image Card 2: Dental Implant */}
+              {/* Image Card 2: Dental Implant (Static Image - No Zoom on Hover) */}
               <div className="flex flex-col">
-                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full group">
+                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full">
                   <img 
                     src={workImplantImg} 
                     alt="Dental Implant Procedure" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="pt-4 px-2">
