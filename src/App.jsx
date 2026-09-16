@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, ArrowRight, ArrowLeft, Star, Menu, X, Play, Plus } from 'lucide-react';
 import logoImg from './assets/logo.png';
 import heroBgImg from './assets/hero-bg.jpg';
@@ -27,23 +27,39 @@ import insightDentalImg from './assets/insight-dental.jpg';
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
-  const testimonialsList = [
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const testimonialsBase = [
     { id: 1, name: 'Alex Morgan', title: 'Schedules that work for you', avatar: avatarGlassesImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
     { id: 2, name: 'David Miller', title: 'Health screenings for seniors', avatar: avatarBeardedImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
     { id: 3, name: 'Sarah Jenkins', title: 'Seniors stay independent', avatar: avatarFemaleDoctor, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
-    { id: 4, name: 'Alex Morgan', title: 'Schedules that work for you', avatar: avatarGlassesImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
-    { id: 5, name: 'David Miller', title: 'Health screenings for seniors', avatar: avatarBeardedImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
-    { id: 6, name: 'Sarah Jenkins', title: 'Seniors stay independent', avatar: avatarFemaleDoctor, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
   ];
 
+  // Extended array for seamless, infinite wrap-around slider
+  const testimonialsList = [
+    ...testimonialsBase,
+    ...testimonialsBase,
+    ...testimonialsBase,
+    ...testimonialsBase,
+    ...testimonialsBase,
+  ];
+
+  const [testimonialIndex, setTestimonialIndex] = useState(3);
+
   const handleNextTestimonial = () => {
-    setTestimonialIndex((prev) => (prev + 1) % 3);
+    const maxIdx = testimonialsList.length - (isMobile ? 1 : 2);
+    setTestimonialIndex((prev) => (prev + 1) % maxIdx);
   };
 
   const handlePrevTestimonial = () => {
-    setTestimonialIndex((prev) => (prev - 1 + 3) % 3);
+    const maxIdx = testimonialsList.length - (isMobile ? 1 : 2);
+    setTestimonialIndex((prev) => (prev - 1 + maxIdx) % maxIdx);
   };
 
   const navItems = ['Home', 'About', 'Product', 'Services', 'Appointment'];
@@ -946,8 +962,8 @@ export default function App() {
       <section className="w-full bg-[#E2F1F8] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.03]">
         <div className="max-w-[1650px] mx-auto relative">
           
-          {/* Header Row: Title & Subtitle on Left, Arrow Navigation Buttons on Right */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 text-center sm:text-left items-center sm:items-end">
+          {/* Header Row: Title & Subtitle on Left, Desktop Navigation Buttons on Right */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 sm:mb-16 text-center sm:text-left items-center sm:items-end">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25] mb-2 text-center sm:text-left">
                 What Our Clients Say
@@ -957,8 +973,8 @@ export default function App() {
               </p>
             </div>
 
-            {/* Interactive Infinite Slider Arrow Navigation Buttons */}
-            <div className="flex items-center gap-3 justify-center sm:justify-start self-center sm:self-auto">
+            {/* Desktop Navigation Arrow Buttons (Hidden on Mobile) */}
+            <div className="hidden sm:flex items-center gap-3">
               <button 
                 onClick={handlePrevTestimonial}
                 aria-label="Previous Testimonial" 
@@ -979,8 +995,8 @@ export default function App() {
           {/* Interactive Testimonial Cards Carousel Slider */}
           <div className="overflow-hidden w-full">
             <div 
-              className="flex gap-6 lg:gap-8 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${testimonialIndex * (100 / 3)}%)` }}
+              className="flex gap-6 lg:gap-8 transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${testimonialIndex * (isMobile ? 100 : 100 / 3)}%)` }}
             >
               {testimonialsList.map((item, idx) => (
                 <div 
@@ -1016,6 +1032,24 @@ export default function App() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Mobile Navigation Arrow Buttons (BELOW TESTIMONIAL CARDS ON MOBILE) */}
+          <div className="sm:hidden flex items-center justify-center gap-4 mt-6">
+            <button 
+              onClick={handlePrevTestimonial}
+              aria-label="Previous Testimonial" 
+              className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-md hover:bg-gray-100 active:scale-95 transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={handleNextTestimonial}
+              aria-label="Next Testimonial" 
+              className="w-12 h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
 
         </div>
@@ -1118,27 +1152,31 @@ export default function App() {
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10 text-center lg:text-left">
             
-            {/* Left Column: Heading & Newsletter Form */}
+            {/* Left Column: Heading & Rectangle Newsletter Form */}
             <div className="lg:col-span-5 flex flex-col items-center lg:items-start justify-between">
               <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-8 text-center lg:text-left">
                 <span className="block">Offerings From Bright</span>
                 <span className="block">News & Social</span>
               </h2>
 
-              {/* Email Input Field with Bottom Border & Arrow */}
-              <div className="relative max-w-sm w-full border-b border-white/30 pb-3 flex items-center justify-between group mx-auto lg:mx-0">
-                <input 
-                  type="email" 
-                  placeholder="Your Email" 
-                  className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full pr-4 font-normal text-center lg:text-left"
-                />
-                <button 
-                  aria-label="Subscribe to newsletter"
-                  className="text-white group-hover:translate-x-1 transition-transform cursor-pointer flex-shrink-0"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+              {/* Distinct Rectangle Email Input Box */}
+              <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
+                <div className="relative flex items-center bg-[#181818] border border-white/20 focus-within:border-white/60 rounded-2xl p-1.5 shadow-xl transition-all">
+                  <input 
+                    type="email" 
+                    placeholder="Your Email" 
+                    className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full px-4 py-2.5 font-normal text-left"
+                    required
+                  />
+                  <button 
+                    type="submit"
+                    aria-label="Subscribe to newsletter"
+                    className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white flex items-center justify-center shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer flex-shrink-0"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </form>
             </div>
 
             {/* Right Column: 3 Navigation Link Columns */}
@@ -1177,9 +1215,9 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - PERFECTLY CENTERED AND TOUCHING BOTTOM EDGE */}
-        <div className="w-full text-center pointer-events-none select-none pt-12 sm:pt-16 lg:pt-20 translate-y-[12%] sm:translate-y-[14%] lg:translate-y-[16%] overflow-hidden">
-          <h1 className="text-[110px] sm:text-[190px] lg:text-[280px] xl:text-[330px] font-medium text-white/[0.08] tracking-tight leading-[0.75] text-center inline-block mx-auto">
+        {/* Bottom Watermark Branding Text - PERFECTLY CENTERED AND UNCLIPPED TOUCHING BOTTOM EDGE */}
+        <div className="w-full text-center pointer-events-none select-none pt-10 sm:pt-16 lg:pt-20 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
+          <h1 className="text-[52px] min-[380px]:text-[64px] sm:text-[130px] md:text-[180px] lg:text-[250px] xl:text-[310px] font-medium text-white/[0.08] tracking-tight leading-none text-center whitespace-nowrap inline-block mx-auto">
             Dentara
           </h1>
         </div>
