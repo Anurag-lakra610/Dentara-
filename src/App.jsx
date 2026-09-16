@@ -60,9 +60,9 @@ export default function App() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
             style={{ backgroundImage: `url(${heroBgImg})` }}
           />
-          {/* Dark vignette gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30 sm:to-black/15" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+          {/* Top and Bottom gradient overlays showing center image clearly */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/30 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/75" />
         </div>
 
         {/* Header Navigation */}
@@ -234,14 +234,8 @@ export default function App() {
               Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each and every patient. We offer a wide range of services.
             </p>
 
-            {/* Blue Cerulean Gradient CTA Button */}
-            <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#32A7DC] via-[#2A94D1] to-[#1C81BD] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-md shadow-[#2A94D1]/20 cursor-pointer mb-8">
-              <span>Book Appointment</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            {/* Stat Badge */}
-            <div className="text-center">
+            {/* Stat Badge (Above CTA Button on Mobile) */}
+            <div className="text-center mb-6">
               <div className="text-4xl sm:text-6xl font-medium text-[#2C8ECB] tracking-tight leading-none mb-1.5">
                 98%
               </div>
@@ -249,6 +243,12 @@ export default function App() {
                 Client satisfaction with our service
               </p>
             </div>
+
+            {/* Blue Cerulean Gradient CTA Button (Below Stat Badge on Mobile) */}
+            <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#32A7DC] via-[#2A94D1] to-[#1C81BD] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-md shadow-[#2A94D1]/20 cursor-pointer">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
           {/* DESKTOP VIEW (Preserved 100% Unchanged) */}
@@ -336,7 +336,7 @@ export default function App() {
         <div className="max-w-[1650px] mx-auto">
           
           {/* Section Header: Title & Description centered on mobile */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 text-center md:text-left items-center md:items-end">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-16 text-center md:text-left items-center md:items-end">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
                 <span className="block mb-1.5">Services We Provide</span>
@@ -344,12 +344,12 @@ export default function App() {
               </h2>
             </div>
 
-            {/* Right Side: Description Text & CTA Button centered on mobile */}
+            {/* Right Side: Description Text on Top (CTA Button moved below boxes on mobile) */}
             <div className="flex flex-col items-center md:items-end gap-3.5 text-center md:text-right max-w-md">
               <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed font-normal">
                 The blocks & components you need to build a professional website are based drivers.
               </p>
-              <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+              <button className="hidden md:inline-flex group items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
                 <span>Book Appointment</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -357,89 +357,97 @@ export default function App() {
           </div>
 
           {/* MOBILE VIEW CAROUSEL SLIDER (< lg) */}
-          <div className="lg:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none">
-            {/* Card 1 */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#CFECF0] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
-              <div className="flex items-start justify-between w-full">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
-                  <img src={iconCavityReal} alt="Cavity Protection Icon" className="w-6 h-6 object-contain" />
+          <div className="lg:hidden flex flex-col items-center">
+            <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none mb-6">
+              {/* Card 1 */}
+              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#CFECF0] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+                <div className="flex items-start justify-between w-full">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                    <img src={iconCavityReal} alt="Cavity Protection Icon" className="w-6 h-6 object-contain" />
+                  </div>
+                  <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                  </svg>
                 </div>
-                <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                </svg>
+                <div className="mt-auto mb-1 text-center">
+                  <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Cavity Protection</h3>
+                  <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
+                    As we move into this new era of technology, we tend to look at the future with confidence and pride.
+                  </p>
+                  <div>
+                    <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
+                      <span className="underline underline-offset-4">Read More</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="mt-auto mb-1 text-center">
-                <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Cavity Protection</h3>
-                <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
-                  As we move into this new era of technology, we tend to look at the future with confidence and pride.
-                </p>
-                <div>
-                  <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
-                    <span className="underline underline-offset-4">Read More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+
+              {/* Card 2 */}
+              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FBF9BA] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+                <div className="flex items-start justify-between w-full">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                    <img src={iconRootCanalReal} alt="Root Canal Treatment Icon" className="w-6 h-6 object-contain" />
+                  </div>
+                  <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                  </svg>
+                </div>
+                <div className="mt-auto mb-1 text-center">
+                  <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Root Canal Treatment</h3>
+                  <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
+                    In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
+                  </p>
+                  <div>
+                    <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
+                      <span className="underline underline-offset-4">Read More</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FCBCFF] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+                <div className="flex items-start justify-between w-full">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                    <img src={iconOralSurgeryReal} alt="Oral Surgery Icon" className="w-6 h-6 object-contain" />
+                  </div>
+                  <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                  </svg>
+                </div>
+                <div className="mt-auto mb-1 text-center">
+                  <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Oral Surgery</h3>
+                  <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
+                    In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
+                  </p>
+                  <div>
+                    <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
+                      <span className="underline underline-offset-4">Read More</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4 (Video) */}
+              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] relative rounded-[32px] overflow-hidden h-[340px] shadow-md group cursor-pointer">
+                <img src={servicesVideoImg} alt="Dental Procedure Patient Video" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl">
+                    <Play className="w-6 h-6 fill-white text-white translate-x-[2px]" />
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FBF9BA] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
-              <div className="flex items-start justify-between w-full">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
-                  <img src={iconRootCanalReal} alt="Root Canal Treatment Icon" className="w-6 h-6 object-contain" />
-                </div>
-                <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                </svg>
-              </div>
-              <div className="mt-auto mb-1 text-center">
-                <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Root Canal Treatment</h3>
-                <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
-                  In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
-                </p>
-                <div>
-                  <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
-                    <span className="underline underline-offset-4">Read More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FCBCFF] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
-              <div className="flex items-start justify-between w-full">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
-                  <img src={iconOralSurgeryReal} alt="Oral Surgery Icon" className="w-6 h-6 object-contain" />
-                </div>
-                <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                </svg>
-              </div>
-              <div className="mt-auto mb-1 text-center">
-                <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Oral Surgery</h3>
-                <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
-                  In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
-                </p>
-                <div>
-                  <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
-                    <span className="underline underline-offset-4">Read More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4 (Video) */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] relative rounded-[32px] overflow-hidden h-[340px] shadow-md group cursor-pointer">
-              <img src={servicesVideoImg} alt="Dental Procedure Patient Video" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl">
-                  <Play className="w-6 h-6 fill-white text-white translate-x-[2px]" />
-                </div>
-              </div>
-            </div>
+            {/* Mobile CTA Button (Below Carousel Boxes) */}
+            <button className="md:hidden group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
           {/* DESKTOP VIEW CARDS CONTAINER (Preserved 100% Unchanged) */}
@@ -607,17 +615,13 @@ export default function App() {
               </div>
             </div>
 
-            {/* Description & CTA */}
+            {/* Description & 10K+ Happy Members Avatar Stack (Above CTA Button on Mobile) */}
             <p className="text-xs sm:text-[14px] text-[#475569] leading-relaxed font-normal max-w-sm mb-6">
               Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each.
             </p>
-            <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap mb-8">
-              <span>Book Appointment</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
 
-            {/* 10K+ Happy Members Avatar Stack */}
-            <div className="flex items-center justify-center gap-3 pt-2">
+            {/* 10K+ Happy Members Avatar Stack (Above CTA) */}
+            <div className="flex items-center justify-center gap-3 mb-6">
               <div className="flex items-center -space-x-3.5">
                 <img src={avatarBeardedImg} alt="Happy Member" className="w-11 h-11 rounded-full border-2 border-white object-cover shadow-sm" />
                 <img src={avatarGlassesImg} alt="Happy Member" className="w-11 h-11 rounded-full border-2 border-white object-cover shadow-sm" />
@@ -628,6 +632,12 @@ export default function App() {
                 <span className="block">member</span>
               </div>
             </div>
+
+            {/* CTA Button (Below Avatar Stack on Mobile) */}
+            <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
           {/* DESKTOP VIEW (Preserved 100% Unchanged) */}
@@ -748,8 +758,9 @@ export default function App() {
           <div className="lg:hidden flex flex-col items-center text-center">
             {/* Tag Badge */}
             <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
+              <span className="h-[1px] w-10 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
               <span>(cost care)</span>
-              <span className="h-[1px] w-12 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+              <span className="h-[1px] w-10 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
             </div>
 
             {/* Title */}
@@ -822,6 +833,7 @@ export default function App() {
               <div>
                 {/* Tag Badge: (cost care) */}
                 <div className="flex items-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-4">
+                  <span className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
                   <span>(cost care)</span>
                   <span className="h-[1px] w-12 sm:w-16 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
                 </div>
