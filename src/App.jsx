@@ -51,16 +51,43 @@ export default function App() {
   ];
 
   const [testimonialIndex, setTestimonialIndex] = useState(3);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   const handleNextTestimonial = () => {
-    const maxIdx = testimonialsList.length - (isMobile ? 1 : 2);
-    setTestimonialIndex((prev) => (prev + 1) % maxIdx);
+    if (!isTransitioning) return;
+    setTestimonialIndex((prev) => prev + 1);
   };
 
   const handlePrevTestimonial = () => {
-    const maxIdx = testimonialsList.length - (isMobile ? 1 : 2);
-    setTestimonialIndex((prev) => (prev - 1 + maxIdx) % maxIdx);
+    if (!isTransitioning) return;
+    setTestimonialIndex((prev) => prev - 1);
   };
+
+  useEffect(() => {
+    if (testimonialIndex >= 9) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setTestimonialIndex(3);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+    if (testimonialIndex <= 0) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setTestimonialIndex(6);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [testimonialIndex]);
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
 
   const navItems = ['Home', 'About', 'Product', 'Services', 'Appointment'];
 
@@ -466,22 +493,14 @@ export default function App() {
             </button>
           </div>
 
-          {/* DESKTOP VIEW CARDS CONTAINER (Preserved 100% Unchanged) */}
-          <div className="hidden lg:flex lg:flex-col gap-6 lg:gap-8">
+          {/* DESKTOP VIEW CARDS CONTAINER */}
+          <div className="hidden lg:flex lg:flex-col gap-6 lg:gap-8 relative">
             
-            {/* Vertical Divider with "our services" text in the whitespace gap, shifted right next to Root Canal Treatment box */}
-            <div className="hidden lg:flex absolute right-[515px] xl:right-[525px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
-              <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3">
-                our services
-              </span>
-              <div className="w-[1px] h-28 bg-[#CBD5E1]"></div>
-            </div>
-
-            {/* Row 1: Cavity Protection (700px) + Empty Whitespace + Root Canal Treatment (500px) */}
-            <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8">
+            {/* Row 1: Cavity Protection (flex-1) + Vertical Label 'our services' + Root Canal Treatment (500px) */}
+            <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8 relative">
               
-              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 850px, Height 350px) */}
-              <div className="w-full lg:w-[850px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, flex-1, Height 350px) */}
+              <div className="flex-1 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -506,6 +525,14 @@ export default function App() {
                     </a>
                   </div>
                 </div>
+              </div>
+
+              {/* Vertical Divider with "our services" text in the whitespace gap, placed beside Root Canal Treatment box */}
+              <div className="hidden lg:flex flex-col items-center justify-center pointer-events-none px-2 self-center flex-shrink-0">
+                <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3 whitespace-nowrap">
+                  our services
+                </span>
+                <div className="w-[1px] h-24 bg-[#CBD5E1]"></div>
               </div>
 
               {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 500px, Height 350px) */}
@@ -974,7 +1001,7 @@ export default function App() {
             </div>
 
             {/* Desktop Navigation Arrow Buttons (Hidden on Mobile) */}
-            <div className="hidden sm:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-3">
               <button 
                 onClick={handlePrevTestimonial}
                 aria-label="Previous Testimonial" 
@@ -995,8 +1022,8 @@ export default function App() {
           {/* Interactive Testimonial Cards Carousel Slider */}
           <div className="overflow-hidden w-full">
             <div 
-              className="flex gap-6 lg:gap-8 transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${testimonialIndex * (isMobile ? 100 : 100 / 3)}%)` }}
+              className={`flex gap-6 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
+              style={{ transform: `translateX(-${testimonialIndex * (isMobile ? 100 : 33.333333)}%)` }}
             >
               {testimonialsList.map((item, idx) => (
                 <div 
@@ -1035,7 +1062,7 @@ export default function App() {
           </div>
 
           {/* Mobile Navigation Arrow Buttons (BELOW TESTIMONIAL CARDS ON MOBILE) */}
-          <div className="sm:hidden flex items-center justify-center gap-4 mt-6">
+          <div className="md:hidden flex items-center justify-center gap-4 mt-6">
             <button 
               onClick={handlePrevTestimonial}
               aria-label="Previous Testimonial" 
@@ -1215,9 +1242,9 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - PERFECTLY CENTERED AND UNCLIPPED TOUCHING BOTTOM EDGE */}
-        <div className="w-full text-center pointer-events-none select-none pt-10 sm:pt-16 lg:pt-20 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
-          <h1 className="text-[52px] min-[380px]:text-[64px] sm:text-[130px] md:text-[180px] lg:text-[250px] xl:text-[310px] font-medium text-white/[0.08] tracking-tight leading-none text-center whitespace-nowrap inline-block mx-auto">
+        {/* Bottom Watermark Branding Text - CENTERED WITH BOTTOM PORTION VANISHING PAST CONTAINER EDGE */}
+        <div className="w-full text-center pointer-events-none select-none pt-12 sm:pt-16 lg:pt-20 flex justify-center items-end overflow-hidden">
+          <h1 className="text-[60px] min-[380px]:text-[76px] sm:text-[140px] md:text-[190px] lg:text-[260px] xl:text-[320px] font-medium text-white/[0.08] tracking-tight leading-[0.8] text-center whitespace-nowrap translate-y-[22%] mx-auto">
             Dentara
           </h1>
         </div>
