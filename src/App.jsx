@@ -103,9 +103,9 @@ export default function App() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
             style={{ backgroundImage: `url(${heroBgImg})` }}
           />
-          {/* Top and Bottom gradient overlays showing center image clearly */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/30 to-black/85" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/75" />
+          {/* Left-to-Right dark gradient overlay for website view text readability + subtle top/bottom gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/75" />
         </div>
 
         {/* Header Navigation */}
@@ -499,8 +499,8 @@ export default function App() {
             {/* Row 1: Cavity Protection (flex-1) + Vertical Label 'our services' + Root Canal Treatment (500px) */}
             <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8 relative">
               
-              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, flex-1, Height 350px) */}
-              <div className="flex-1 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 800px - increased by 50px, Height 350px) */}
+              <div className="w-full lg:w-[800px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -527,16 +527,18 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Vertical Divider with "our services" text in the whitespace gap, placed beside Root Canal Treatment box */}
-              <div className="hidden lg:flex flex-col items-center justify-center pointer-events-none px-2 self-center flex-shrink-0">
-                <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3 whitespace-nowrap">
-                  our services
-                </span>
-                <div className="w-[1px] h-24 bg-[#CBD5E1]"></div>
-              </div>
+              {/* Right Group: 'our services' vertical label attached right next to Yellow Box */}
+              <div className="flex items-center gap-4 lg:gap-5 ml-auto">
+                {/* Vertical Divider with "our services" text attached to yellow box */}
+                <div className="hidden lg:flex flex-col items-center justify-center pointer-events-none px-1 self-center flex-shrink-0">
+                  <span className="text-[#475569]/80 text-[12px] font-normal tracking-[0.2em] lowercase [writing-mode:vertical-lr] rotate-180 mb-3 whitespace-nowrap">
+                    our services
+                  </span>
+                  <div className="w-[1px] h-24 bg-[#CBD5E1]"></div>
+                </div>
 
-              {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 500px, Height 350px) */}
-              <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+                {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 500px, Height 350px) */}
+                <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -562,6 +564,7 @@ export default function App() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
 
             {/* Row 2: Oral Surgery (500px - EXACT match with Root Canal Treatment) + Video Image Card (Fills remaining width) */}
@@ -618,9 +621,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* OUR WORKS / SERVICES WE PROVIDE ARE LISTED BELOW SECTION */}
-      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[40px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
-        <div className="max-w-[1650px] mx-auto bg-[#EBEBEB] rounded-[44px] p-6 sm:p-12 lg:p-16 relative">
+      {/* OUR WORKS / SERVICES WE PROVIDE ARE LISTED BELOW SECTION - FULL SCREEN RATIO GREY BACKGROUND */}
+      <section className="w-full bg-[#EBEBEB] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.04]">
+        <div className="max-w-[1650px] mx-auto relative">
           
           {/* MOBILE VIEW (< lg) */}
           <div className="lg:hidden flex flex-col items-center text-center">
@@ -1093,76 +1096,76 @@ export default function App() {
             </h2>
           </div>
 
-          {/* 3-Card Touch-Snap Slider on Mobile (< md) & Grid on Desktop (>= md) */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:pb-0 md:mx-0 md:px-0">
+          {/* 3-Card Grid on Desktop & Hidden Scrollbar Touch Slider on Mobile */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:pb-0 md:mx-0 md:px-0 md:overflow-visible">
             
-            {/* Card 1: Cream Card Left */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:w-auto bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
-              {/* Top Date Capsule Badge */}
-              <div className="px-4 py-1.5 rounded-full border border-black/20 text-[12.5px] font-medium text-[#111827]/70 bg-white/40 backdrop-blur-sm">
+            {/* Card 1: Cream Card Left (Warm Peach-Cream #F2E7E1) */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-none md:w-full bg-[#F2E7E1] rounded-[28px] p-7 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-sm h-[450px] sm:h-[480px] lg:h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+              {/* Top Date Capsule Badge with Spacious Padding */}
+              <div className="px-6 py-2 rounded-full border border-black/20 text-xs sm:text-[13px] font-medium tracking-wide text-[#111827]/75 bg-white/50 backdrop-blur-sm">
                 July 9, 2025
               </div>
 
               {/* Center Title */}
-              <div className="my-auto py-8">
-                <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] tracking-tight leading-snug max-w-[240px] mx-auto">
+              <div className="my-auto py-4">
+                <h3 className="text-xl sm:text-[25px] lg:text-[28px] font-medium text-[#111827] tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
                   Medicare And Long Term Care
                 </h3>
               </div>
 
               {/* Bottom Paragraph */}
-              <p className="text-xs sm:text-[13px] text-[#475569] font-normal leading-relaxed max-w-[280px] mx-auto">
+              <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-relaxed max-w-[340px] lg:max-w-[380px] mx-auto">
                 As seniors age, understanding Medicare and the range of long-term care options becomes. Many families are unsure which services
               </p>
             </div>
 
-            {/* Card 2: AI Dental Image Background with Blur & Overlay (Middle) */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:w-auto relative rounded-[32px] overflow-hidden p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-md min-h-[460px] sm:min-h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
+            {/* Card 2: User Provided Dental Image Background (media_1789572195511.jpg) */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-none md:w-full relative rounded-[28px] overflow-hidden p-7 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-md h-[450px] sm:h-[480px] lg:h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
               
-              {/* AI Generated Dental Image with Blur */}
+              {/* User Provided Exact Dental Image */}
               <img 
                 src={insightDentalImg} 
                 alt="Medicare And Long Term Care Dental Procedure" 
-                className="absolute inset-0 w-full h-full object-cover blur-[2.5px] scale-[1.05] transition-transform duration-500 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               
-              {/* Dark Gradient Overlay for Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/45" />
+              {/* Subtle Dark Gradient Overlay for Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20" />
 
-              {/* Top Date Capsule Badge */}
-              <div className="relative z-10 px-4 py-1.5 rounded-full border border-white/40 text-[12.5px] font-medium text-white/90 bg-black/20 backdrop-blur-md">
+              {/* Top Date Capsule Badge with Spacious Padding */}
+              <div className="relative z-10 px-6 py-2 rounded-full border border-white/40 text-xs sm:text-[13px] font-medium tracking-wide text-white/95 bg-black/25 backdrop-blur-sm">
                 July 9, 2025
               </div>
 
               {/* Center Title */}
-              <div className="relative z-10 my-auto py-8">
-                <h3 className="text-xl sm:text-[24px] font-medium text-white tracking-tight leading-snug max-w-[240px] mx-auto">
+              <div className="relative z-10 my-auto py-4">
+                <h3 className="text-xl sm:text-[25px] lg:text-[28px] font-medium text-white tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
                   Medicare And Long Term Care
                 </h3>
               </div>
 
               {/* Bottom Paragraph */}
-              <p className="relative z-10 text-xs sm:text-[13px] text-white/85 font-normal leading-relaxed max-w-[280px] mx-auto">
+              <p className="relative z-10 text-xs sm:text-[13.5px] text-white/95 font-normal leading-relaxed max-w-[340px] lg:max-w-[380px] mx-auto">
                 As seniors age, understanding Medicare and the range of long-term care options becomes. Many families are unsure which services
               </p>
             </div>
 
-            {/* Card 3: Cream Card Right */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:w-auto bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
-              {/* Top Date Capsule Badge */}
-              <div className="px-4 py-1.5 rounded-full border border-black/20 text-[12.5px] font-medium text-[#111827]/70 bg-white/40 backdrop-blur-sm">
+            {/* Card 3: Cream Card Right (Warm Peach-Cream #F2E7E1) */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-none md:w-full bg-[#F2E7E1] rounded-[28px] p-7 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-sm h-[450px] sm:h-[480px] lg:h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+              {/* Top Date Capsule Badge with Spacious Padding */}
+              <div className="px-6 py-2 rounded-full border border-black/20 text-xs sm:text-[13px] font-medium tracking-wide text-[#111827]/75 bg-white/50 backdrop-blur-sm">
                 July 9, 2025
               </div>
 
               {/* Center Title */}
-              <div className="my-auto py-8">
-                <h3 className="text-xl sm:text-[24px] font-medium text-[#111827] tracking-tight leading-snug max-w-[240px] mx-auto">
+              <div className="my-auto py-4">
+                <h3 className="text-xl sm:text-[25px] lg:text-[28px] font-medium text-[#111827] tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
                   Medicare And Long Term Care
                 </h3>
               </div>
 
               {/* Bottom Paragraph */}
-              <p className="text-xs sm:text-[13px] text-[#475569] font-normal leading-relaxed max-w-[280px] mx-auto">
+              <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-relaxed max-w-[340px] lg:max-w-[380px] mx-auto">
                 As seniors age, understanding Medicare and the range of long-term care options becomes. Many families are unsure which services
               </p>
             </div>
@@ -1172,8 +1175,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background, 100px Gap Above) */}
-      <footer className="w-full bg-[#070707] text-white pt-14 sm:pt-20 lg:pt-24 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-[100px]">
+      {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background) */}
+      <footer className="w-full bg-[#070707] text-white pt-8 sm:pt-10 lg:pt-12 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-[60px] sm:mt-[80px]">
         <div className="max-w-[1650px] mx-auto relative z-10">
           
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
@@ -1186,21 +1189,21 @@ export default function App() {
                 <span className="block">News & Social</span>
               </h2>
 
-              {/* Distinct Rectangle Email Input Box */}
+              {/* Underline Email Newsletter Form matching reference mockup */}
               <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
-                <div className="relative flex items-center bg-[#181818] border border-white/20 focus-within:border-white/60 rounded-2xl p-1.5 shadow-xl transition-all">
+                <div className="relative flex items-center border-b border-white/30 focus-within:border-white pb-3 transition-colors">
                   <input 
                     type="email" 
                     placeholder="Your Email" 
-                    className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full px-4 py-2.5 font-normal text-left"
+                    className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full font-normal text-left pr-8"
                     required
                   />
                   <button 
                     type="submit"
                     aria-label="Subscribe to newsletter"
-                    className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white flex items-center justify-center shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer flex-shrink-0"
+                    className="text-white hover:text-white/80 active:scale-95 transition-all cursor-pointer absolute right-0 bottom-3"
                   >
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4.5 h-4.5" />
                   </button>
                 </div>
               </form>
@@ -1242,9 +1245,9 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - CENTERED WITH BOTTOM PORTION VANISHING PAST CONTAINER EDGE */}
-        <div className="w-full text-center pointer-events-none select-none pt-12 sm:pt-16 lg:pt-20 flex justify-center items-end overflow-hidden">
-          <h1 className="text-[60px] min-[380px]:text-[76px] sm:text-[140px] md:text-[190px] lg:text-[260px] xl:text-[320px] font-medium text-white/[0.08] tracking-tight leading-[0.8] text-center whitespace-nowrap translate-y-[22%] mx-auto">
+        {/* Bottom Watermark Branding Text - SHIFTED AN ADDITIONAL 5PX DOWN (TOTAL 10PX DOWN) */}
+        <div className="w-full text-center pointer-events-none select-none pt-8 sm:pt-12 lg:pt-14 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
+          <h1 className="text-[52px] min-[380px]:text-[64px] sm:text-[130px] md:text-[180px] lg:text-[250px] xl:text-[310px] font-medium text-white/[0.08] tracking-tight leading-none text-center whitespace-nowrap inline-block mx-auto translate-y-[10px]">
             Dentara
           </h1>
         </div>
