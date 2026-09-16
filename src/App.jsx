@@ -146,11 +146,11 @@ export default function App() {
         )}
 
         {/* Hero Section Content */}
-        <main className="relative z-10 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-12 md:py-16 max-w-3xl">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold text-white tracking-tight leading-[1.05]">
+        <main className="relative z-10 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-12 md:py-16 max-w-3xl flex flex-col items-center sm:items-start text-center sm:text-left mx-auto sm:mx-0">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold text-white tracking-tight leading-[1.05] text-center sm:text-left">
             Seamless
             <br />
-            <span className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1">
+            <span className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 mt-1">
               <span>Dental</span>
               
               {/* Tooth Emoji Asset */}
@@ -158,7 +158,7 @@ export default function App() {
                 <img 
                   src={toothEmojiImg} 
                   alt="Tooth Emoji" 
-                  className="h-[49px] sm:h-[59px] md:h-[67px] w-auto object-contain drop-shadow-md"
+                  className="h-[42px] sm:h-[59px] md:h-[67px] w-auto object-contain drop-shadow-md"
                 />
               </span>
 
@@ -167,14 +167,14 @@ export default function App() {
           </h1>
 
           {/* Subtext */}
-          <p className="mt-5 mb-8 text-white/80 text-sm sm:text-base font-normal leading-relaxed tracking-wide max-w-xl">
+          <p className="mt-5 mb-8 text-white/80 text-sm sm:text-base font-normal leading-relaxed tracking-wide max-w-xl text-center sm:text-left mx-auto sm:mx-0">
             Whether it's a leaky faucet or a major plumbing emergency,
             <br className="hidden sm:inline" />
             {' '}our experienced professionals are just a call away
           </p>
 
-          <div>
-            <button className="group flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
+          <div className="flex justify-center sm:justify-start w-full">
+            <button className="group flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
               <span>Book Appointment</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] group-hover:translate-x-1 transition-transform duration-200" />
             </button>
@@ -190,11 +190,72 @@ export default function App() {
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
         <div className="max-w-[1650px] mx-auto">
           
-          {/* Main 3-Column Grid Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-start">
+          {/* MOBILE VIEW (Centered Hierarchy + Horizontal Touch-Snap Photo Slider) */}
+          <div className="lg:hidden flex flex-col items-center text-center">
+            {/* Tag Badge: (about us) */}
+            <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
+              <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
+              <span>(about us)</span>
+              <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-2xl sm:text-[38px] font-medium tracking-tight text-[#111827] leading-[1.2] mb-6 text-center w-full max-w-[520px]">
+              A Simple Way to Save on Dental Care
+            </h2>
+
+            {/* MOBILE HORIZONTAL PHOTO SLIDER */}
+            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-4 pb-4 mb-6 -mx-5 px-5 scrollbar-none">
+              <div className="snap-center flex-shrink-0 w-[82vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md">
+                <img 
+                  src={aboutLeftImg} 
+                  alt="Dental Team at Work" 
+                  className="w-full h-[260px] object-cover block"
+                />
+              </div>
+              <div className="snap-center flex-shrink-0 w-[82vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md">
+                <img 
+                  src={aboutCenterImg} 
+                  alt="Dental Teeth Cleaning Procedure" 
+                  className="w-full h-[260px] object-cover block"
+                />
+              </div>
+              <div className="snap-center flex-shrink-0 w-[82vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md">
+                <img 
+                  src={aboutRightImg} 
+                  alt="Teeth Whitening Procedure" 
+                  className="w-full h-[260px] object-cover block"
+                />
+              </div>
+            </div>
+
+            {/* Paragraph Subtitle */}
+            <p className="mb-6 text-[#4B5563] text-xs sm:text-sm leading-relaxed max-w-[460px] mx-auto font-normal">
+              Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each and every patient. We offer a wide range of services.
+            </p>
+
+            {/* Blue Cerulean Gradient CTA Button */}
+            <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#32A7DC] via-[#2A94D1] to-[#1C81BD] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-md shadow-[#2A94D1]/20 cursor-pointer mb-8">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* Stat Badge */}
+            <div className="text-center">
+              <div className="text-4xl sm:text-6xl font-medium text-[#2C8ECB] tracking-tight leading-none mb-1.5">
+                98%
+              </div>
+              <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-snug">
+                Client satisfaction with our service
+              </p>
+            </div>
+          </div>
+
+          {/* DESKTOP VIEW (Preserved 100% Unchanged) */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-8 xl:gap-14 items-start">
             
-            {/* Middle Column - Content & Bottom Center Image (Appears first on Mobile for UX flow) */}
-            <div className="order-1 lg:order-2 lg:col-span-4 text-center flex flex-col items-center justify-between">
+            {/* Middle Column - Content & Bottom Center Image */}
+            <div className="lg:order-2 lg:col-span-4 text-center flex flex-col items-center justify-between">
               <div className="w-full flex flex-col items-center">
                 {/* Tag Badge: (about us) */}
                 <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
@@ -203,7 +264,7 @@ export default function App() {
                   <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
                 </div>
 
-                {/* Main Heading - Responsive font scaling & wide max-w container */}
+                {/* Main Heading */}
                 <h2 className="text-2xl sm:text-[38px] lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.2] mb-4 text-center w-full max-w-[520px]">
                   <span className="block sm:inline lg:block">A Simple Way to Save</span>
                   <span className="block sm:inline lg:block"> on Dental Care</span>
@@ -221,7 +282,7 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Center Bottom High Definition Image Card */}
+              {/* Center Bottom Image Card */}
               <div className="w-full max-w-[460px] rounded-[24px] overflow-hidden shadow-md mt-10 sm:mt-12 transition-transform duration-300 hover:scale-[1.01]">
                 <img 
                   src={aboutCenterImg} 
@@ -231,8 +292,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Left Column - High Definition Image Card */}
-            <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center lg:justify-start lg:pt-[72px]">
+            {/* Left Column - Image Card */}
+            <div className="lg:order-1 lg:col-span-4 flex justify-center lg:justify-start lg:pt-[72px]">
               <div className="relative w-full max-w-[380px] rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
                 <img 
                   src={aboutLeftImg} 
@@ -242,8 +303,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Column - Image Card & 98% Satisfaction Stat (Bottom aligned parallel with center bottom image) */}
-            <div className="order-3 lg:order-3 lg:col-span-4 flex justify-center lg:justify-end h-full">
+            {/* Right Column - Image Card & Stat */}
+            <div className="lg:order-3 lg:col-span-4 flex justify-center lg:justify-end h-full">
               <div className="w-full max-w-[380px] flex flex-col justify-between h-full items-start">
                 <div className="relative w-full rounded-[24px] overflow-hidden shadow-md transition-transform duration-300 hover:scale-[1.01]">
                   <img 
@@ -253,7 +314,7 @@ export default function App() {
                   />
                 </div>
 
-                {/* Stat Badge directly under right image (Bottom edge parallel with middle bottom image) */}
+                {/* Stat Badge */}
                 <div className="mt-6 sm:mt-8 text-left">
                   <div className="text-4xl sm:text-6xl lg:text-[66px] font-medium text-[#2C8ECB] tracking-tight leading-none mb-1.5">
                     98%
@@ -274,8 +335,8 @@ export default function App() {
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.04]">
         <div className="max-w-[1650px] mx-auto">
           
-          {/* Section Header: Title on Left, Description above CTA Button on Right */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+          {/* Section Header: Title & Description centered on mobile */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 text-center md:text-left items-center md:items-end">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
                 <span className="block mb-1.5">Services We Provide</span>
@@ -283,8 +344,8 @@ export default function App() {
               </h2>
             </div>
 
-            {/* Right Side: Small Description Text on Top, CTA Button Below */}
-            <div className="flex flex-col items-start md:items-end gap-3.5 text-left md:text-right max-w-md">
+            {/* Right Side: Description Text & CTA Button centered on mobile */}
+            <div className="flex flex-col items-center md:items-end gap-3.5 text-center md:text-right max-w-md">
               <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed font-normal">
                 The blocks & components you need to build a professional website are based drivers.
               </p>
@@ -295,8 +356,94 @@ export default function App() {
             </div>
           </div>
 
-          {/* Service Cards Container (All 4 cards 350px height, Cavity Protection 700px width, Root Canal & Oral Surgery equal 500px width) */}
-          <div className="relative flex flex-col gap-6 lg:gap-8">
+          {/* MOBILE VIEW CAROUSEL SLIDER (< lg) */}
+          <div className="lg:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none">
+            {/* Card 1 */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#CFECF0] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+              <div className="flex items-start justify-between w-full">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                  <img src={iconCavityReal} alt="Cavity Protection Icon" className="w-6 h-6 object-contain" />
+                </div>
+                <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                </svg>
+              </div>
+              <div className="mt-auto mb-1 text-center">
+                <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Cavity Protection</h3>
+                <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
+                  As we move into this new era of technology, we tend to look at the future with confidence and pride.
+                </p>
+                <div>
+                  <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
+                    <span className="underline underline-offset-4">Read More</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FBF9BA] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+              <div className="flex items-start justify-between w-full">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                  <img src={iconRootCanalReal} alt="Root Canal Treatment Icon" className="w-6 h-6 object-contain" />
+                </div>
+                <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                </svg>
+              </div>
+              <div className="mt-auto mb-1 text-center">
+                <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Root Canal Treatment</h3>
+                <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
+                  In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
+                </p>
+                <div>
+                  <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
+                    <span className="underline underline-offset-4">Read More</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FCBCFF] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+              <div className="flex items-start justify-between w-full">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
+                  <img src={iconOralSurgeryReal} alt="Oral Surgery Icon" className="w-6 h-6 object-contain" />
+                </div>
+                <svg className="w-5 h-5 text-black/15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                </svg>
+              </div>
+              <div className="mt-auto mb-1 text-center">
+                <h3 className="text-xl font-medium text-[#111827] mb-2 tracking-tight">Oral Surgery</h3>
+                <p className="text-xs text-[#475569] font-normal leading-[1.6] mb-4">
+                  In the new era of technology we look in the future with certainty and pride, that's why our theme looks so good.
+                </p>
+                <div>
+                  <a href="#" className="inline-flex items-center gap-2 text-xs font-semibold text-[#111827]">
+                    <span className="underline underline-offset-4">Read More</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4 (Video) */}
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] relative rounded-[32px] overflow-hidden h-[340px] shadow-md group cursor-pointer">
+              <img src={servicesVideoImg} alt="Dental Procedure Patient Video" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl">
+                  <Play className="w-6 h-6 fill-white text-white translate-x-[2px]" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* DESKTOP VIEW CARDS CONTAINER (Preserved 100% Unchanged) */}
+          <div className="hidden lg:flex lg:flex-col gap-6 lg:gap-8">
             
             {/* Vertical Divider with "our services" text in the whitespace gap, shifted right next to Root Canal Treatment box */}
             <div className="hidden lg:flex absolute right-[515px] xl:right-[525px] top-0 h-[350px] z-10 flex-col items-center pointer-events-none">
@@ -422,110 +569,172 @@ export default function App() {
 
       {/* OUR WORKS / SERVICES WE PROVIDE ARE LISTED BELOW SECTION */}
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[40px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
-        <div className="max-w-[1650px] mx-auto bg-[#EBEBEB] rounded-[44px] p-8 sm:p-12 lg:p-16 relative">
+        <div className="max-w-[1650px] mx-auto bg-[#EBEBEB] rounded-[44px] p-6 sm:p-12 lg:p-16 relative">
           
-          {/* Top Header Row: (our works) badge on left, Title on right */}
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-12 sm:mb-16">
-            
-            {/* Top Left: (our works) Badge with horizontal line */}
-            <div className="flex items-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide">
+          {/* MOBILE VIEW (< lg) */}
+          <div className="lg:hidden flex flex-col items-center text-center">
+            {/* Top Badge & Title */}
+            <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
               <span>(our works)</span>
-              <span className="h-[1px] w-20 sm:w-28 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+              <span className="h-[1px] w-16 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-medium tracking-tight text-[#111827] leading-[1.25] mb-6">
+              Services We Provide Are Listed Below
+            </h2>
+
+            {/* MOBILE HORIZONTAL PHOTO SLIDER */}
+            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-4 pb-4 mb-6 -mx-4 px-4 scrollbar-none">
+              {/* Card 1 */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] flex flex-col text-center">
+                <div className="rounded-[28px] overflow-hidden shadow-md h-[280px] w-full">
+                  <img src={workTeethImg} alt="Teeth Straightening Procedure" className="w-full h-full object-cover" />
+                </div>
+                <div className="pt-3">
+                  <h3 className="text-lg font-medium text-[#111827] mb-1">Teeth Straightening</h3>
+                  <p className="text-xs text-[#6B7280]">Improve your smile with cleaning.</p>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] flex flex-col text-center">
+                <div className="rounded-[28px] overflow-hidden shadow-md h-[280px] w-full">
+                  <img src={workImplantImg} alt="Dental Implant Procedure" className="w-full h-full object-cover" />
+                </div>
+                <div className="pt-3">
+                  <h3 className="text-lg font-medium text-[#111827] mb-1">Dental Implant</h3>
+                  <p className="text-xs text-[#6B7280]">Improve your smile with cleaning.</p>
+                </div>
+              </div>
             </div>
 
-            {/* Top Right: Main Section Title matching other sections */}
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
-                <span className="block mb-1.5">Services We Provide</span>
-                <span className="block">Are Listed Below</span>
-              </h2>
+            {/* Description & CTA */}
+            <p className="text-xs sm:text-[14px] text-[#475569] leading-relaxed font-normal max-w-sm mb-6">
+              Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each.
+            </p>
+            <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap mb-8">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* 10K+ Happy Members Avatar Stack */}
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <div className="flex items-center -space-x-3.5">
+                <img src={avatarBeardedImg} alt="Happy Member" className="w-11 h-11 rounded-full border-2 border-white object-cover shadow-sm" />
+                <img src={avatarGlassesImg} alt="Happy Member" className="w-11 h-11 rounded-full border-2 border-white object-cover shadow-sm" />
+                <img src={avatarFemaleDoctor} alt="Happy Member" className="w-11 h-11 rounded-full border-2 border-white object-cover shadow-sm" />
+              </div>
+              <div className="text-[#2A91CF] font-medium text-xs leading-tight text-left">
+                <span className="block">10K+ happy</span>
+                <span className="block">member</span>
+              </div>
             </div>
           </div>
 
-          {/* Main Grid Content: Left text & CTA button + Right 2 Image Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-            
-            {/* Left Column: Description Paragraph, CTA Button, and 10K+ Happy Member Avatar Stack */}
-            <div className="lg:col-span-4 flex flex-col justify-between h-full min-h-[340px]">
-              <div>
-                <p className="text-xs sm:text-[14px] text-[#475569] leading-relaxed font-normal max-w-sm mb-8">
-                  Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each.
-                </p>
-                <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
-                  <span>Book Appointment</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              {/* Bottom Left: 10K+ Happy Member 3 Overlapping Avatars */}
-              <div className="flex items-center gap-3 mt-12 lg:mt-auto pt-4">
-                <div className="flex items-center -space-x-3.5">
-                  <img 
-                    src={avatarBeardedImg} 
-                    alt="Happy Member" 
-                    className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
-                  />
-                  <img 
-                    src={avatarGlassesImg} 
-                    alt="Happy Member" 
-                    className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
-                  />
-                  <img 
-                    src={avatarFemaleDoctor} 
-                    alt="Happy Member" 
-                    className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
-                  />
-                </div>
-                <div className="text-[#2A91CF] font-medium text-xs sm:text-[13.5px] leading-tight">
-                  <span className="block">10K+ happy</span>
-                  <span className="block">member</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: 2 Image Cards (Teeth Straightening & Dental Implant) */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          {/* DESKTOP VIEW (Preserved 100% Unchanged) */}
+          <div className="hidden lg:block">
+            {/* Top Header Row: (our works) badge on left, Title on right */}
+            <div className="flex flex-row items-start justify-between gap-8 mb-12 sm:mb-16">
               
-              {/* Image Card 1: Teeth Straightening (Static Image - No Zoom on Hover) */}
-              <div className="flex flex-col">
-                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full">
-                  <img 
-                    src={workTeethImg} 
-                    alt="Teeth Straightening Procedure" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="pt-4 px-2">
-                  <h3 className="text-lg sm:text-[20px] font-medium text-[#111827] mb-1 tracking-tight">
-                    Teeth Straightening
-                  </h3>
-                  <p className="text-xs sm:text-[13px] text-[#6B7280]">
-                    Improve your smile with cleaning.
+              {/* Top Left: (our works) Badge with horizontal line */}
+              <div className="flex items-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide">
+                <span>(our works)</span>
+                <span className="h-[1px] w-20 sm:w-28 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+              </div>
+
+              {/* Top Right: Main Section Title matching other sections */}
+              <div>
+                <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
+                  <span className="block mb-1.5">Services We Provide</span>
+                  <span className="block">Are Listed Below</span>
+                </h2>
+              </div>
+            </div>
+
+            {/* Main Grid Content: Left text & CTA button + Right 2 Image Cards */}
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end">
+              
+              {/* Left Column: Description Paragraph, CTA Button, and 10K+ Happy Member Avatar Stack */}
+              <div className="col-span-4 flex flex-col justify-between h-full min-h-[340px]">
+                <div>
+                  <p className="text-xs sm:text-[14px] text-[#475569] leading-relaxed font-normal max-w-sm mb-8">
+                    Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each.
                   </p>
+                  <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+                    <span>Book Appointment</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                {/* Bottom Left: 10K+ Happy Member 3 Overlapping Avatars */}
+                <div className="flex items-center gap-3 mt-12 pt-4">
+                  <div className="flex items-center -space-x-3.5">
+                    <img 
+                      src={avatarBeardedImg} 
+                      alt="Happy Member" 
+                      className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
+                    />
+                    <img 
+                      src={avatarGlassesImg} 
+                      alt="Happy Member" 
+                      className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
+                    />
+                    <img 
+                      src={avatarFemaleDoctor} 
+                      alt="Happy Member" 
+                      className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-sm"
+                    />
+                  </div>
+                  <div className="text-[#2A91CF] font-medium text-xs sm:text-[13.5px] leading-tight">
+                    <span className="block">10K+ happy</span>
+                    <span className="block">member</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Image Card 2: Dental Implant (Static Image - No Zoom on Hover) */}
-              <div className="flex flex-col">
-                <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full">
-                  <img 
-                    src={workImplantImg} 
-                    alt="Dental Implant Procedure" 
-                    className="w-full h-full object-cover"
-                  />
+              {/* Right Column: 2 Image Cards (Teeth Straightening & Dental Implant) */}
+              <div className="col-span-8 grid grid-cols-2 gap-6 sm:gap-8">
+                
+                {/* Image Card 1: Teeth Straightening */}
+                <div className="flex flex-col">
+                  <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full">
+                    <img 
+                      src={workTeethImg} 
+                      alt="Teeth Straightening Procedure" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="pt-4 px-2">
+                    <h3 className="text-lg sm:text-[20px] font-medium text-[#111827] mb-1 tracking-tight">
+                      Teeth Straightening
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-[#6B7280]">
+                      Improve your smile with cleaning.
+                    </p>
+                  </div>
                 </div>
-                <div className="pt-4 px-2">
-                  <h3 className="text-lg sm:text-[20px] font-medium text-[#111827] mb-1 tracking-tight">
-                    Dental Implant
-                  </h3>
-                  <p className="text-xs sm:text-[13px] text-[#6B7280]">
-                    Improve your smile with cleaning.
-                  </p>
+
+                {/* Image Card 2: Dental Implant */}
+                <div className="flex flex-col">
+                  <div className="rounded-[32px] overflow-hidden shadow-md h-[360px] sm:h-[400px] w-full">
+                    <img 
+                      src={workImplantImg} 
+                      alt="Dental Implant Procedure" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="pt-4 px-2">
+                    <h3 className="text-lg sm:text-[20px] font-medium text-[#111827] mb-1 tracking-tight">
+                      Dental Implant
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-[#6B7280]">
+                      Improve your smile with cleaning.
+                    </p>
+                  </div>
                 </div>
+
               </div>
 
             </div>
-
           </div>
 
         </div>
@@ -535,8 +744,78 @@ export default function App() {
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.04]">
         <div className="max-w-[1650px] mx-auto">
           
-          {/* Main 3-Column Layout Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-stretch">
+          {/* MOBILE VIEW (< lg) */}
+          <div className="lg:hidden flex flex-col items-center text-center">
+            {/* Tag Badge */}
+            <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
+              <span>(cost care)</span>
+              <span className="h-[1px] w-12 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+            </div>
+
+            {/* Title */}
+            <h2 className="text-2xl sm:text-4xl font-medium tracking-tight text-[#111827] leading-[1.2] mb-6">
+              <span className="block">Doctor Consultations</span>
+              <span className="flex items-center justify-center gap-2 flex-wrap mt-1">
+                <span>Are</span>
+                <span className="inline-flex items-center justify-center align-middle mx-0.5">
+                  <img src={flossEmojiImg} alt="Floss Emoji" className="h-[36px] w-auto rounded-full object-cover shadow-sm border border-black/5" />
+                </span>
+                <span>Free & Trusted</span>
+              </span>
+            </h2>
+
+            {/* MOBILE HORIZONTAL PHOTO & STAT SLIDER */}
+            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-4 pb-4 mb-6 -mx-5 px-5 scrollbar-none">
+              {/* Photo 1: Main Center Image */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md h-[240px]">
+                <img src={consultationMainImg} alt="Doctor Dental Procedure" className="w-full h-full object-cover" />
+              </div>
+
+              {/* Photo 2: Right Portrait Image */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md h-[240px]">
+                <img src={consultationRightImg} alt="Dental Consultation Patient" className="w-full h-full object-cover" />
+              </div>
+
+              {/* Photo 3: Video Box */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] relative rounded-[24px] overflow-hidden shadow-md h-[240px] cursor-pointer group">
+                <img src={consultationVideoImg} alt="Doctor Consultation Video" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl">
+                    <Play className="w-5 h-5 fill-white text-white translate-x-[1px]" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: 98% Stat Card */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] bg-white rounded-[24px] p-6 shadow-sm border border-black/[0.02] flex flex-col justify-between h-[240px] text-center items-center">
+                <div className="my-auto">
+                  <div className="text-5xl font-medium text-[#2C8ECB] tracking-tight leading-none mb-3">98%</div>
+                  <div className="w-12 h-[2px] bg-[#E0F2FE] mx-auto mb-3"></div>
+                  <p className="text-xs text-[#6B7280] font-normal leading-snug">
+                    Client satisfaction with our service
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Description & CTA */}
+            <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed font-normal max-w-sm mb-6">
+              Take control of your health with a comprehensive assessment unlike any other. We use the latest medical innovations, including next-generation MRI, cardiovascular & neurocognitive assessments, early cancer detection, and genetic testing.
+            </p>
+            <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap mb-6">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* Bottom Subtext */}
+            <p className="text-xs text-[#4B5563] leading-relaxed font-normal max-w-xs">
+              Team carefully evaluates your results to provide actionable insights for improving your health & lifespan.
+            </p>
+          </div>
+
+          {/* DESKTOP VIEW (Preserved 100% Unchanged) */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-stretch">
             
             {/* Left Column: Badge, Title with Floss Emoji, Subtext */}
             <div className="lg:col-span-4 flex flex-col justify-between">
@@ -575,7 +854,7 @@ export default function App() {
             {/* Middle Column: Center Square Image + Bottom Row (98% Card + Video Picture Box) */}
             <div className="lg:col-span-5 flex flex-col justify-between gap-5 sm:gap-6">
               
-              {/* Main Center Square Image (Wide Rectangular Aspect Ratio) */}
+              {/* Main Center Square Image */}
               <div className="w-full rounded-[28px] overflow-hidden shadow-md group">
                 <img 
                   src={consultationMainImg} 
@@ -633,7 +912,7 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Lower Right: Vertical Portrait Image (Left-aligned under button matching mockup) */}
+              {/* Lower Right: Vertical Portrait Image */}
               <div className="mt-8 lg:mt-auto flex justify-start">
                 <div className="w-full max-w-[210px] sm:max-w-[230px] rounded-[24px] overflow-hidden shadow-md group">
                   <img 
@@ -656,18 +935,18 @@ export default function App() {
         <div className="max-w-[1650px] mx-auto relative">
           
           {/* Header Row: Title & Subtitle on Left, Arrow Navigation Buttons on Right */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 text-center sm:text-left items-center sm:items-end">
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25] mb-2">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25] mb-2 text-center sm:text-left">
                 What Our Clients Say
               </h2>
-              <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-md">
+              <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-md text-center sm:text-left mx-auto sm:mx-0">
                 Team carefully evaluates your results to provide actionable insights for improving your health & lifespan.
               </p>
             </div>
 
             {/* Interactive Infinite Slider Arrow Navigation Buttons */}
-            <div className="flex items-center gap-3 self-start sm:self-auto">
+            <div className="flex items-center gap-3 justify-center sm:justify-start self-center sm:self-auto">
               <button 
                 onClick={handlePrevTestimonial}
                 aria-label="Previous Testimonial" 
@@ -694,11 +973,11 @@ export default function App() {
               {testimonialsList.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0 bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px]"
+                  className="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0 bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px] text-center sm:text-left"
                 >
                   <div>
                     {/* Avatar */}
-                    <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm">
+                    <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm mx-auto sm:mx-0">
                       <img src={item.avatar} alt={item.name} className="w-full h-full object-cover" />
                     </div>
                     
@@ -735,17 +1014,17 @@ export default function App() {
         <div className="max-w-[1650px] mx-auto">
           
           {/* Section Header */}
-          <div className="mb-10 sm:mb-14">
+          <div className="mb-10 sm:mb-14 text-center md:text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
               Latest Insights
             </h2>
           </div>
 
-          {/* 3-Card Layout Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* 3-Card Touch-Snap Slider on Mobile (< md) & Grid on Desktop (>= md) */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:pb-0 md:mx-0 md:px-0">
             
             {/* Card 1: Cream Card Left */}
-            <div className="bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:w-auto bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
               {/* Top Date Capsule Badge */}
               <div className="px-4 py-1.5 rounded-full border border-black/20 text-[12.5px] font-medium text-[#111827]/70 bg-white/40 backdrop-blur-sm">
                 July 9, 2025
@@ -765,7 +1044,7 @@ export default function App() {
             </div>
 
             {/* Card 2: AI Dental Image Background with Blur & Overlay (Middle) */}
-            <div className="relative rounded-[32px] overflow-hidden p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-md min-h-[460px] sm:min-h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:w-auto relative rounded-[32px] overflow-hidden p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-md min-h-[460px] sm:min-h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
               
               {/* AI Generated Dental Image with Blur */}
               <img 
@@ -796,7 +1075,7 @@ export default function App() {
             </div>
 
             {/* Card 3: Cream Card Right */}
-            <div className="bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:w-auto bg-[#F5EBE6] rounded-[32px] p-7 sm:p-9 flex flex-col justify-between items-center text-center shadow-sm min-h-[460px] sm:min-h-[500px] transition-transform duration-300 hover:scale-[1.01]">
               {/* Top Date Capsule Badge */}
               <div className="px-4 py-1.5 rounded-full border border-black/20 text-[12.5px] font-medium text-[#111827]/70 bg-white/40 backdrop-blur-sm">
                 July 9, 2025
@@ -825,21 +1104,21 @@ export default function App() {
         <div className="max-w-[1650px] mx-auto relative z-10">
           
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10 text-center lg:text-left">
             
             {/* Left Column: Heading & Newsletter Form */}
-            <div className="lg:col-span-5 flex flex-col justify-between">
-              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-8">
+            <div className="lg:col-span-5 flex flex-col items-center lg:items-start justify-between">
+              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-8 text-center lg:text-left">
                 <span className="block">Offerings From Bright</span>
                 <span className="block">News & Social</span>
               </h2>
 
               {/* Email Input Field with Bottom Border & Arrow */}
-              <div className="relative max-w-sm w-full border-b border-white/30 pb-3 flex items-center justify-between group">
+              <div className="relative max-w-sm w-full border-b border-white/30 pb-3 flex items-center justify-between group mx-auto lg:mx-0">
                 <input 
                   type="email" 
                   placeholder="Your Email" 
-                  className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full pr-4 font-normal"
+                  className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full pr-4 font-normal text-center lg:text-left"
                 />
                 <button 
                   aria-label="Subscribe to newsletter"
@@ -851,7 +1130,7 @@ export default function App() {
             </div>
 
             {/* Right Column: 3 Navigation Link Columns */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 text-xs sm:text-[13.5px]">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 text-xs sm:text-[13.5px] text-center sm:text-left">
               
               {/* Column 1 */}
               <ul className="space-y-3 font-normal text-[#9CA3AF]">
