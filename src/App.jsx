@@ -28,6 +28,8 @@ export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+  const [isServicesVideoPlaying, setIsServicesVideoPlaying] = useState(false);
+  const [isConsultationVideoPlaying, setIsConsultationVideoPlaying] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -402,7 +404,43 @@ export default function App() {
           {/* MOBILE VIEW CAROUSEL SLIDER (< lg) */}
           <div className="lg:hidden flex flex-col items-center">
             <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none mb-6">
-              {/* Card 1 */}
+              
+              {/* Card 1 (Video - Placed First on Mobile) */}
+              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] relative rounded-[32px] overflow-hidden h-[340px] shadow-md group cursor-pointer bg-black">
+                {isServicesVideoPlaying ? (
+                  <div className="relative w-full h-full">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setIsServicesVideoPlaying(false); }}
+                      className="absolute top-3 right-3 z-30 w-8 h-8 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer shadow-lg border border-white/20"
+                      title="Close Video"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                    <iframe
+                      src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
+                      title="Dental Procedure Patient Video"
+                      className="w-full h-full border-0 rounded-[32px]"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <div 
+                    onClick={() => setIsServicesVideoPlaying(true)}
+                    className="w-full h-full relative"
+                  >
+                    <img src={servicesVideoImg} alt="Dental Procedure Patient Video" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform">
+                        <Play className="w-6 h-6 fill-white text-white translate-x-[2px]" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Card 2 (Cavity Protection) */}
               <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#CFECF0] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -426,7 +464,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Card 2 */}
+              {/* Card 3 (Root Canal Treatment) */}
               <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FBF9BA] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -450,7 +488,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Card 3 */}
+              {/* Card 4 (Oral Surgery) */}
               <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FCBCFF] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -470,17 +508,6 @@ export default function App() {
                       <span className="underline underline-offset-4">Read More</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 4 (Video) */}
-              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] relative rounded-[32px] overflow-hidden h-[340px] shadow-md group cursor-pointer">
-                <img src={servicesVideoImg} alt="Dental Procedure Patient Video" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl">
-                    <Play className="w-6 h-6 fill-white text-white translate-x-[2px]" />
                   </div>
                 </div>
               </div>
@@ -599,20 +626,44 @@ export default function App() {
               </div>
 
               {/* Card 4: Video Image Card (Fills remaining width, Height 350px) */}
-              <div className="flex-1 relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group h-[350px]">
-                <img 
-                  src={servicesVideoImg} 
-                  alt="Dental Procedure Patient Video" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                    <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-white translate-x-[2px]" />
+              <div className="flex-1 relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group h-[350px] bg-black">
+                {isServicesVideoPlaying ? (
+                  <div className="relative w-full h-full">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setIsServicesVideoPlaying(false); }}
+                      className="absolute top-3 right-3 z-30 w-8 h-8 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer shadow-lg border border-white/20"
+                      title="Close Video"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                    <iframe
+                      src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
+                      title="Dental Procedure Patient Video"
+                      className="w-full h-full border-0 rounded-[32px]"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div 
+                    onClick={() => setIsServicesVideoPlaying(true)}
+                    className="w-full h-full relative"
+                  >
+                    <img 
+                      src={servicesVideoImg} 
+                      alt="Dental Procedure Patient Video" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                    
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                        <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-white translate-x-[2px]" />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -823,25 +874,50 @@ export default function App() {
 
             {/* MOBILE HORIZONTAL PHOTO & STAT SLIDER */}
             <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-4 pb-4 mb-6 -mx-5 px-5 scrollbar-none">
-              {/* Photo 1: Main Center Image */}
+              
+              {/* Photo 1: Video Box (Placed First on Mobile) */}
+              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] relative rounded-[24px] overflow-hidden shadow-md h-[240px] cursor-pointer group bg-black">
+                {isConsultationVideoPlaying ? (
+                  <div className="relative w-full h-full">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setIsConsultationVideoPlaying(false); }}
+                      className="absolute top-3 right-3 z-30 w-7 h-7 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer shadow-lg border border-white/20"
+                      title="Close Video"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                    <iframe
+                      src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
+                      title="Doctor Consultation Video"
+                      className="w-full h-full border-0 rounded-[24px]"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <div 
+                    onClick={() => setIsConsultationVideoPlaying(true)}
+                    className="w-full h-full relative"
+                  >
+                    <img src={consultationVideoImg} alt="Doctor Consultation Video" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                        <Play className="w-5 h-5 fill-white text-white translate-x-[1px]" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Photo 2: Main Center Image */}
               <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md h-[240px]">
                 <img src={consultationMainImg} alt="Doctor Dental Procedure" className="w-full h-full object-cover" />
               </div>
 
-              {/* Photo 2: Right Portrait Image */}
+              {/* Photo 3: Right Portrait Image */}
               <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md h-[240px]">
                 <img src={consultationRightImg} alt="Dental Consultation Patient" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Photo 3: Video Box */}
-              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] relative rounded-[24px] overflow-hidden shadow-md h-[240px] cursor-pointer group">
-                <img src={consultationVideoImg} alt="Doctor Consultation Video" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl">
-                    <Play className="w-5 h-5 fill-white text-white translate-x-[1px]" />
-                  </div>
-                </div>
               </div>
 
               {/* Card 4: 98% Stat Card */}
@@ -936,20 +1012,44 @@ export default function App() {
                 </div>
 
                 {/* Video Picture Box */}
-                <div className="flex-1 relative rounded-[24px] overflow-hidden shadow-md cursor-pointer group h-[145px] sm:h-[155px]">
-                  <img 
-                    src={consultationVideoImg} 
-                    alt="Doctor Consultation Video" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                  
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
-                      <Play className="w-4.5 h-4.5 fill-white text-white translate-x-[1px]" />
+                <div 
+                  onClick={() => !isConsultationVideoPlaying && setIsConsultationVideoPlaying(true)}
+                  className="flex-1 relative rounded-[24px] overflow-hidden shadow-md cursor-pointer group h-[145px] sm:h-[155px] bg-black"
+                >
+                  {isConsultationVideoPlaying ? (
+                    <div className="relative w-full h-full">
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); setIsConsultationVideoPlaying(false); }}
+                        className="absolute top-2 right-2 z-30 w-6 h-6 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer shadow-lg border border-white/20"
+                        title="Close Video"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                      <iframe
+                        src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
+                        title="Doctor Consultation Video"
+                        className="w-full h-full border-0 rounded-[24px]"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="w-full h-full relative">
+                      <img 
+                        src={consultationVideoImg} 
+                        alt="Doctor Consultation Video" 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                      
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                          <Play className="w-4.5 h-4.5 fill-white text-white translate-x-[1px]" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
               </div>
@@ -988,9 +1088,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION ("What Our Clients Say" - Full Ratio Screen Width) */}
-      <section className="w-full bg-[#E2F1F8] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.03]">
-        <div className="max-w-[1650px] mx-auto relative">
+      {/* TESTIMONIALS SECTION ("What Our Clients Say" - Full Screen Ratio on Left Side) */}
+      <section className="w-full bg-[#E2F1F8] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] pl-6 sm:pl-12 md:pl-16 lg:pl-20 xl:pl-24 pr-5 sm:pr-10 md:pr-14 lg:pr-18 xl:pr-24 overflow-hidden border-t border-black/[0.03]">
+        <div className="w-full relative">
           
           {/* Header Row: Title & Subtitle on Left, Desktop Navigation Buttons on Right */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 sm:mb-16 text-center sm:text-left items-center sm:items-end">
@@ -1022,8 +1122,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Interactive Testimonial Cards Carousel Slider */}
-          <div className="overflow-hidden w-full">
+          {/* Interactive Testimonial Cards Carousel Slider - Full Ratio on Left Side */}
+          <div className="overflow-hidden w-full -ml-6 sm:-ml-12 md:-ml-16 lg:-ml-20 xl:-ml-24 pl-6 sm:pl-12 md:pl-16 lg:pl-20 xl:pl-24">
             <div 
               className={`flex gap-6 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
               style={{ transform: `translateX(-${testimonialIndex * (isMobile ? 100 : 33.333333)}%)` }}
@@ -1213,7 +1313,7 @@ export default function App() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 text-xs sm:text-[13.5px] text-center sm:text-left">
               
               {/* Column 1 */}
-              <ul className="space-y-3 font-normal text-[#9CA3AF]">
+              <ul className="space-y-3 font-normal text-[#E5E7EB]">
                 <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Why our network</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Charging solutions</a></li>
@@ -1222,7 +1322,7 @@ export default function App() {
               </ul>
 
               {/* Column 2 */}
-              <ul className="space-y-3 font-normal text-[#9CA3AF]">
+              <ul className="space-y-3 font-normal text-[#E5E7EB]">
                 <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
@@ -1231,7 +1331,7 @@ export default function App() {
               </ul>
 
               {/* Column 3 */}
-              <ul className="space-y-3 font-normal text-[#9CA3AF]">
+              <ul className="space-y-3 font-normal text-[#E5E7EB]">
                 <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
