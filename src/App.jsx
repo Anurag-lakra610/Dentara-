@@ -130,27 +130,27 @@ export default function App() {
               A Simple Way to Save on Dental Care
             </h2>
 
-            {/* MOBILE HORIZONTAL PHOTO SLIDER */}
-            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-4 pb-4 mb-6 -mx-5 px-5 scrollbar-none">
-              <div className="snap-center flex-shrink-0 w-[82vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md">
+            {/* MOBILE & TABLET HORIZONTAL PHOTO SLIDER (Full Active Focus + Subtle Edge Peek) */}
+            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-3.5 sm:gap-5 pb-4 mb-6 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] rounded-[24px] overflow-hidden shadow-md">
                 <img 
                   src={aboutLeftImg} 
                   alt="Dental Team at Work" 
-                  className="w-full h-[260px] object-cover block"
+                  className="w-full h-[260px] sm:h-[300px] md:h-[330px] object-cover block"
                 />
               </div>
-              <div className="snap-center flex-shrink-0 w-[82vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] rounded-[24px] overflow-hidden shadow-md">
                 <img 
                   src={aboutCenterImg} 
                   alt="Dental Teeth Cleaning Procedure" 
-                  className="w-full h-[260px] object-cover block"
+                  className="w-full h-[260px] sm:h-[300px] md:h-[330px] object-cover block"
                 />
               </div>
-              <div className="snap-center flex-shrink-0 w-[82vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] rounded-[24px] overflow-hidden shadow-md">
                 <img 
                   src={aboutRightImg} 
                   alt="Teeth Whitening Procedure" 
-                  className="w-full h-[260px] object-cover block"
+                  className="w-full h-[260px] sm:h-[300px] md:h-[330px] object-cover block"
                 />
               </div>
             </div>
@@ -282,12 +282,12 @@ export default function App() {
             </div>
           </div>
 
-          {/* MOBILE VIEW CAROUSEL SLIDER (< lg) */}
+          {/* MOBILE VIEW CAROUSEL SLIDER (< lg - Full Active Focus + Subtle Edge Peek) */}
           <div className="lg:hidden flex flex-col items-center">
-            <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-none mb-6">
+            <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-5 pb-4 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden mb-6">
               
               {/* Card 1 (Video - Placed First on Mobile) */}
-              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] relative rounded-[32px] overflow-hidden h-[340px] shadow-md group cursor-pointer bg-black">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] relative rounded-[32px] overflow-hidden h-[340px] sm:h-[360px] shadow-md group cursor-pointer bg-black">
                 {isServicesVideoPlaying ? (
                   <div className="relative w-full h-full">
                     <button 
@@ -322,7 +322,7 @@ export default function App() {
               </div>
 
               {/* Card 2 (Cavity Protection) */}
-              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#CFECF0] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] bg-[#CFECF0] rounded-[32px] p-6 sm:p-7 flex flex-col justify-between h-[340px] sm:h-[360px] shadow-sm">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
                     <img src={iconCavityReal} alt="Cavity Protection Icon" className="w-6 h-6 object-contain" />
@@ -346,7 +346,7 @@ export default function App() {
               </div>
 
               {/* Card 3 (Root Canal Treatment) */}
-              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FBF9BA] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] bg-[#FBF9BA] rounded-[32px] p-6 sm:p-7 flex flex-col justify-between h-[340px] sm:h-[360px] shadow-sm">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
                     <img src={iconRootCanalReal} alt="Root Canal Treatment Icon" className="w-6 h-6 object-contain" />
@@ -370,7 +370,7 @@ export default function App() {
               </div>
 
               {/* Card 4 (Oral Surgery) */}
-              <div className="snap-center flex-shrink-0 w-[85vw] max-w-[360px] bg-[#FCBCFF] rounded-[32px] p-7 flex flex-col justify-between h-[340px] shadow-sm">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] bg-[#FCBCFF] rounded-[32px] p-6 sm:p-7 flex flex-col justify-between h-[340px] sm:h-[360px] shadow-sm">
                 <div className="flex items-start justify-between w-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
                     <img src={iconOralSurgeryReal} alt="Oral Surgery Icon" className="w-6 h-6 object-contain" />
@@ -755,11 +755,11 @@ export default function App() {
               </span>
             </h2>
 
-            {/* MOBILE HORIZONTAL PHOTO & STAT SLIDER */}
-            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-4 pb-4 mb-6 -mx-5 px-5 scrollbar-none">
+            {/* MOBILE & TABLET HORIZONTAL PHOTO SLIDER */}
+            <div className="w-full overflow-x-auto flex snap-x snap-mandatory gap-3.5 sm:gap-5 pb-4 mb-6 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               
               {/* Photo 1: Video Box (Placed First on Mobile) */}
-              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] relative rounded-[24px] overflow-hidden shadow-md h-[240px] cursor-pointer group bg-black">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] relative rounded-[24px] overflow-hidden shadow-md h-[240px] sm:h-[280px] cursor-pointer group bg-black">
                 {isConsultationVideoPlaying ? (
                   <div className="relative w-full h-full">
                     <button 
@@ -794,38 +794,39 @@ export default function App() {
               </div>
 
               {/* Photo 2: Main Center Image */}
-              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md h-[240px]">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] rounded-[24px] overflow-hidden shadow-md h-[240px] sm:h-[280px]">
                 <img src={consultationMainImg} alt="Doctor Dental Procedure" className="w-full h-full object-cover" />
               </div>
 
               {/* Photo 3: Right Portrait Image */}
-              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] rounded-[24px] overflow-hidden shadow-md h-[240px]">
+              <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] rounded-[24px] overflow-hidden shadow-md h-[240px] sm:h-[280px]">
                 <img src={consultationRightImg} alt="Dental Consultation Patient" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Card 4: 98% Stat Card */}
-              <div className="snap-center flex-shrink-0 w-[84vw] max-w-[340px] bg-white rounded-[24px] p-6 shadow-sm border border-black/[0.02] flex flex-col justify-between h-[240px] text-center items-center">
-                <div className="my-auto">
-                  <div className="text-5xl font-medium text-[#2C8ECB] tracking-tight leading-none mb-3">98%</div>
-                  <div className="w-12 h-[2px] bg-[#E0F2FE] mx-auto mb-3"></div>
-                  <p className="text-xs text-[#6B7280] font-normal leading-snug">
-                    Client satisfaction with our service
-                  </p>
-                </div>
               </div>
             </div>
 
-            {/* Description & CTA */}
-            <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed font-normal max-w-sm mb-6">
+            {/* Description Paragraph */}
+            <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed font-normal max-w-sm mb-6 text-center">
               Take control of your health with a comprehensive assessment unlike any other. We use the latest medical innovations, including next-generation MRI, cardiovascular & neurocognitive assessments, early cancer detection, and genetic testing.
             </p>
+
+            {/* 98% Stat Badge (Above CTA Button on Mobile) */}
+            <div className="text-center mb-6">
+              <div className="text-4xl sm:text-6xl font-medium text-[#2C8ECB] tracking-tight leading-none mb-1.5">
+                98%
+              </div>
+              <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-snug">
+                Client satisfaction with our service
+              </p>
+            </div>
+
+            {/* CTA Button */}
             <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap mb-6">
               <span>Book Appointment</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Bottom Subtext */}
-            <p className="text-xs text-[#4B5563] leading-relaxed font-normal max-w-xs">
+            <p className="text-xs text-[#4B5563] leading-relaxed font-normal max-w-xs text-center">
               Team carefully evaluates your results to provide actionable insights for improving your health & lifespan.
             </p>
           </div>
@@ -971,17 +972,17 @@ export default function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION ("What Our Clients Say" - Full Screen Ratio on Left Side) */}
-      <section className="w-full bg-[#E2F1F8] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] pl-6 sm:pl-12 md:pl-16 lg:pl-20 xl:pl-24 pr-5 sm:pr-10 md:pr-14 lg:pr-18 xl:pr-24 overflow-hidden border-t border-black/[0.03]">
+      {/* TESTIMONIALS SECTION ("What Our Clients Say" - Ultra Responsive with 20% Peek Mobile Carousel) */}
+      <section className="w-full bg-[#E2F1F8] text-[#111827] pt-[50px] sm:pt-[80px] lg:pt-[100px] pb-[50px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.03]">
         <div className="w-full relative">
           
           {/* Header Row: Title & Subtitle on Left, Desktop Navigation Buttons on Right */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 sm:mb-16 text-center sm:text-left items-center sm:items-end">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-14 text-center sm:text-left items-center sm:items-end">
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25] mb-2 text-center sm:text-left">
+              <h2 className="text-[24px] min-[380px]:text-[27px] sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.2] mb-2 text-center sm:text-left whitespace-normal sm:whitespace-nowrap">
                 What Our Clients Say
               </h2>
-              <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-md text-center sm:text-left mx-auto sm:mx-0">
+              <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-sm sm:max-w-md text-center sm:text-left mx-auto sm:mx-0">
                 Team carefully evaluates your results to provide actionable insights for improving your health & lifespan.
               </p>
             </div>
@@ -1005,41 +1006,41 @@ export default function App() {
             </div>
           </div>
 
-          {/* Interactive Testimonial Cards Carousel Slider - Full Ratio on Left Side */}
-          <div className="overflow-hidden w-full -ml-6 sm:-ml-12 md:-ml-16 lg:-ml-20 xl:-ml-24 pl-6 sm:pl-12 md:pl-16 lg:pl-20 xl:pl-24">
+          {/* Interactive Testimonial Cards Carousel Slider with Subtle Next-Card Peek on Mobile & Tablet */}
+          <div className="overflow-hidden w-full">
             <div 
-              className={`flex gap-6 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
-              style={{ transform: `translateX(-${testimonialIndex * (100 / cardsToShow)}%)` }}
+              className={`flex gap-3.5 sm:gap-5 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
+              style={{ transform: `translateX(-${testimonialIndex * (cardsToShow === 1 ? 90 : cardsToShow === 2 ? 46.5 : 100 / cardsToShow)}%)` }}
             >
               {testimonialsList.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.07rem)] flex-shrink-0 bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px] text-center sm:text-left"
+                  className="w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] lg:w-[calc(33.333%-1.07rem)] flex-shrink-0 bg-white rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 flex flex-col justify-between shadow-sm min-h-[290px] sm:min-h-[310px] text-left"
                 >
                   <div>
                     {/* Avatar */}
-                    <div className="w-14 h-14 rounded-full overflow-hidden mb-6 shadow-sm mx-auto sm:mx-0">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden mb-4 sm:mb-6 shadow-sm">
                       <img src={item.avatar} alt={item.name} className="w-full h-full object-cover" />
                     </div>
                     
                     {/* Content */}
-                    <h3 className="text-lg sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight">
+                    <h3 className="text-base sm:text-[19px] font-medium text-[#111827] mb-2 tracking-tight leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-6">
+                    <p className="text-xs sm:text-[13.5px] text-[#475569] font-normal leading-[1.65] mb-4 sm:mb-6">
                       {item.quote}
                     </p>
                   </div>
 
                   {/* Card Footer: Name & Rating */}
-                  <div className="flex items-center justify-between pt-4 border-t border-black/[0.04]">
-                    <span className="font-medium text-sm text-[#111827]">{item.name}</span>
-                    <div className="flex items-center gap-1 text-[#F59E0B]">
-                      <Star className="w-4 h-4 fill-[#F59E0B]" />
-                      <Star className="w-4 h-4 fill-[#F59E0B]" />
-                      <Star className="w-4 h-4 fill-[#F59E0B]" />
-                      <Star className="w-4 h-4 fill-[#F59E0B]" />
-                      <Star className="w-4 h-4 fill-[#F59E0B]" />
+                  <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-black/[0.04]">
+                    <span className="font-medium text-xs sm:text-sm text-[#111827]">{item.name}</span>
+                    <div className="flex items-center gap-0.5 sm:gap-1 text-[#F59E0B]">
+                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F59E0B]" />
+                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F59E0B]" />
+                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F59E0B]" />
+                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F59E0B]" />
+                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F59E0B]" />
                     </div>
                   </div>
                 </div>
@@ -1052,14 +1053,14 @@ export default function App() {
             <button 
               onClick={handlePrevTestimonial}
               aria-label="Previous Testimonial" 
-              className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-md hover:bg-gray-100 active:scale-95 transition-all cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-md hover:bg-gray-100 active:scale-95 transition-all cursor-pointer"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={handleNextTestimonial}
               aria-label="Next Testimonial" 
-              className="w-12 h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -1079,11 +1080,11 @@ export default function App() {
             </h2>
           </div>
 
-          {/* 3-Card Grid on Desktop & Hidden Scrollbar Touch Slider on Mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:pb-0 md:mx-0 md:px-0 md:overflow-visible">
+          {/* 3-Card Grid on Desktop & Subtle Touch-Snap Edge Peek Slider on Mobile/Tablet */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:pb-0 lg:mx-0 lg:px-0 lg:overflow-visible">
             
             {/* Card 1: Cream Card Left (Warm Peach-Cream #F2E7E1) */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-none md:w-full bg-[#F2E7E1] rounded-[28px] p-7 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-sm h-[450px] sm:h-[480px] lg:h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+            <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] lg:w-full bg-[#F2E7E1] rounded-[28px] p-6 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-sm h-[430px] sm:h-[480px] lg:h-[500px] transition-transform duration-300 hover:scale-[1.01]">
               {/* Top Date Capsule Badge with Spacious Padding */}
               <div className="px-6 py-2 rounded-full border border-black/20 text-xs sm:text-[13px] font-medium tracking-wide text-[#111827]/75 bg-white/50 backdrop-blur-sm">
                 July 9, 2025
@@ -1091,7 +1092,7 @@ export default function App() {
 
               {/* Center Title */}
               <div className="my-auto py-4">
-                <h3 className="text-xl sm:text-[25px] lg:text-[28px] font-medium text-[#111827] tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
+                <h3 className="text-lg sm:text-[25px] lg:text-[28px] font-medium text-[#111827] tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
                   Medicare And Long Term Care
                 </h3>
               </div>
@@ -1103,7 +1104,7 @@ export default function App() {
             </div>
 
             {/* Card 2: User Provided Dental Image Background (media_1789572195511.jpg) */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-none md:w-full relative rounded-[28px] overflow-hidden p-7 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-md h-[450px] sm:h-[480px] lg:h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
+            <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] lg:w-full relative rounded-[28px] overflow-hidden p-6 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-md h-[430px] sm:h-[480px] lg:h-[500px] group transition-transform duration-300 hover:scale-[1.01]">
               
               {/* User Provided Exact Dental Image */}
               <img 
@@ -1122,7 +1123,7 @@ export default function App() {
 
               {/* Center Title */}
               <div className="relative z-10 my-auto py-4">
-                <h3 className="text-xl sm:text-[25px] lg:text-[28px] font-medium text-white tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
+                <h3 className="text-lg sm:text-[25px] lg:text-[28px] font-medium text-white tracking-tight leading-snug max-w-[320px] sm:max-w-[360px] mx-auto">
                   Medicare And Long Term Care
                 </h3>
               </div>
@@ -1134,7 +1135,7 @@ export default function App() {
             </div>
 
             {/* Card 3: Cream Card Right (Warm Peach-Cream #F2E7E1) */}
-            <div className="snap-center flex-shrink-0 w-[85vw] max-w-[340px] md:max-w-none md:w-full bg-[#F2E7E1] rounded-[28px] p-7 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-sm h-[450px] sm:h-[480px] lg:h-[500px] transition-transform duration-300 hover:scale-[1.01]">
+            <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] lg:w-full bg-[#F2E7E1] rounded-[28px] p-6 sm:p-9 lg:p-10 flex flex-col justify-between items-center text-center shadow-sm h-[430px] sm:h-[480px] lg:h-[500px] transition-transform duration-300 hover:scale-[1.01]">
               {/* Top Date Capsule Badge with Spacious Padding */}
               <div className="px-6 py-2 rounded-full border border-black/20 text-xs sm:text-[13px] font-medium tracking-wide text-[#111827]/75 bg-white/50 backdrop-blur-sm">
                 July 9, 2025
@@ -1159,44 +1160,44 @@ export default function App() {
       </section>
 
       {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background) */}
-      <footer className="w-full bg-[#070707] text-white pt-8 sm:pt-10 lg:pt-12 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-[60px] sm:mt-[80px]">
+      <footer className="w-full bg-[#070707] text-white pt-6 sm:pt-10 lg:pt-12 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-8 sm:mt-[60px] lg:mt-[80px]">
         <div className="max-w-[1650px] mx-auto relative z-10">
           
           {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10 text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 items-start relative z-10 text-center lg:text-left">
             
             {/* Left Column: Heading & Rectangle Newsletter Form */}
             <div className="lg:col-span-5 flex flex-col items-center lg:items-start justify-between">
-              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-8 text-center lg:text-left">
+              <h2 className="text-xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-4 sm:mb-8 text-center lg:text-left">
                 <span className="block">Offerings From Bright</span>
                 <span className="block">News & Social</span>
               </h2>
 
               {/* Underline Email Newsletter Form matching reference mockup */}
               <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
-                <div className="relative flex items-center border-b border-white/30 focus-within:border-white pb-3 transition-colors">
+                <div className="relative flex items-center border-b border-white/30 focus-within:border-white pb-2.5 transition-colors">
                   <input 
                     type="email" 
                     placeholder="Your Email" 
-                    className="bg-transparent text-sm text-white placeholder-gray-400 focus:outline-none w-full font-normal text-left pr-8"
+                    className="bg-transparent text-xs sm:text-sm text-white placeholder-gray-400 focus:outline-none w-full font-normal text-left pr-8"
                     required
                   />
                   <button 
                     type="submit"
                     aria-label="Subscribe to newsletter"
-                    className="text-white hover:text-white/80 active:scale-95 transition-all cursor-pointer absolute right-0 bottom-3"
+                    className="text-white hover:text-white/80 active:scale-95 transition-all cursor-pointer absolute right-0 bottom-2.5"
                   >
-                    <ArrowRight className="w-4.5 h-4.5" />
+                    <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </button>
                 </div>
               </form>
             </div>
 
-            {/* Right Column: 3 Navigation Link Columns */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 text-xs sm:text-[13.5px] text-center sm:text-left">
+            {/* Right Column: 3 Navigation Link Columns (3-column Grid on Mobile to prevent tall scrolling) */}
+            <div className="lg:col-span-7 grid grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-8 text-[11.5px] sm:text-[13.5px] text-center sm:text-left pt-2 lg:pt-0">
               
               {/* Column 1 */}
-              <ul className="space-y-3 font-normal text-[#E5E7EB]">
+              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB]">
                 <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Why our network</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Charging solutions</a></li>
@@ -1205,7 +1206,7 @@ export default function App() {
               </ul>
 
               {/* Column 2 */}
-              <ul className="space-y-3 font-normal text-[#E5E7EB]">
+              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB]">
                 <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
@@ -1214,7 +1215,7 @@ export default function App() {
               </ul>
 
               {/* Column 3 */}
-              <ul className="space-y-3 font-normal text-[#E5E7EB]">
+              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB]">
                 <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
@@ -1228,9 +1229,9 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - SHIFTED AN ADDITIONAL 5PX DOWN (TOTAL 10PX DOWN) */}
-        <div className="w-full text-center pointer-events-none select-none pt-8 sm:pt-12 lg:pt-14 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
-          <h1 className="text-[52px] min-[380px]:text-[64px] sm:text-[130px] md:text-[180px] lg:text-[250px] xl:text-[310px] font-medium text-white/[0.08] tracking-tight leading-none text-center whitespace-nowrap inline-block mx-auto translate-y-[10px]">
+        {/* Bottom Watermark Branding Text - Mobile/Tablet enhanced, Desktop intact */}
+        <div className="w-full text-center pointer-events-none select-none pt-12 min-[400px]:pt-14 sm:pt-18 md:pt-20 lg:pt-14 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
+          <h1 className="text-[78px] min-[380px]:text-[90px] min-[440px]:text-[104px] sm:text-[160px] md:text-[215px] lg:text-[250px] xl:text-[310px] font-medium text-white/[0.08] tracking-tight leading-none text-center whitespace-nowrap inline-block mx-auto translate-y-[6px] lg:translate-y-[10px]">
             Dentara
           </h1>
         </div>
