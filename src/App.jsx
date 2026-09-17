@@ -496,11 +496,11 @@ export default function App() {
           {/* DESKTOP VIEW CARDS CONTAINER */}
           <div className="hidden lg:flex lg:flex-col gap-6 lg:gap-8 relative">
             
-            {/* Row 1: Cavity Protection (flex-1) + Vertical Label 'our services' + Root Canal Treatment (500px) */}
+            {/* Row 1: Cavity Protection (flex-1 / 800px on 2xl) + Vertical Label 'our services' + Root Canal Treatment */}
             <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-8 relative">
               
-              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width 800px - increased by 50px, Height 350px) */}
-              <div className="w-full lg:w-[800px] flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 1: Cavity Protection (Pastel Cyan Blue #CFECF0, Width fluid flex-1 / 800px on 2xl, Height 350px) */}
+              <div className="w-full lg:flex-1 2xl:w-[800px] 2xl:flex-none flex-shrink-0 bg-[#CFECF0] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -537,8 +537,8 @@ export default function App() {
                   <div className="w-[1px] h-24 bg-[#CBD5E1]"></div>
                 </div>
 
-                {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 500px, Height 350px) */}
-                <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+                {/* Card 2: Root Canal Treatment (Pastel Cream Yellow #FBF9BA, Width 360px on lg, 440px on xl, 500px on 2xl, Height 350px) */}
+                <div className="w-full lg:w-[360px] xl:w-[440px] 2xl:w-[500px] flex-shrink-0 bg-[#FBF9BA] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
@@ -567,11 +567,11 @@ export default function App() {
             </div>
             </div>
 
-            {/* Row 2: Oral Surgery (500px - EXACT match with Root Canal Treatment) + Video Image Card (Fills remaining width) */}
+            {/* Row 2: Oral Surgery (360px lg / 440px xl / 500px 2xl) + Video Image Card (Fills remaining width) */}
             <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
               
-              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 500px, Height 350px - EXACT match with Root Canal Treatment) */}
-              <div className="w-full lg:w-[500px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
+              {/* Card 3: Oral Surgery (Pastel Lavender Pink #FCBCFF, Width 360px lg / 440px xl / 500px 2xl, Height 350px) */}
+              <div className="w-full lg:w-[360px] xl:w-[440px] 2xl:w-[500px] flex-shrink-0 bg-[#FCBCFF] rounded-[32px] p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between relative group h-[350px]">
                 <div className="flex items-start justify-between w-full">
                   {/* Single White Circle Badge with Real Icon */}
                   <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-black/5">
