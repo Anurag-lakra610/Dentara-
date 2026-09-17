@@ -3,6 +3,7 @@ import { Phone, ArrowRight, ArrowLeft, Star, Menu, X, Play, Plus } from 'lucide-
 import logoImg from './assets/logo.png';
 import heroBgImg from './assets/hero-bg.jpg';
 import toothEmojiImg from './assets/tooth-emoji.png';
+import HeroSection from './components/HeroSection';
 import aboutLeftImg from './assets/about-left.jpg';
 import aboutCenterImg from './assets/about-center.png';
 import aboutRightImg from './assets/about-right.jpg';
@@ -31,8 +32,20 @@ export default function App() {
   const [isServicesVideoPlaying, setIsServicesVideoPlaying] = useState(false);
   const [isConsultationVideoPlaying, setIsConsultationVideoPlaying] = useState(false);
 
+  const getCardsToShow = () => {
+    if (typeof window === 'undefined') return 3;
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  };
+
+  const [cardsToShow, setCardsToShow] = useState(getCardsToShow);
+
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      setCardsToShow(getCardsToShow());
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -96,140 +109,8 @@ export default function App() {
   return (
     <div className="w-full bg-[#080808] font-sans antialiased">
       
-      {/* HERO SECTION */}
-      <div className="relative w-full min-h-screen bg-[#080808] overflow-hidden flex flex-col justify-between">
-        
-        {/* High Definition Hero Background Image */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
-            style={{ backgroundImage: `url(${heroBgImg})` }}
-          />
-          {/* Left-to-Right dark gradient overlay for website view text readability + subtle top/bottom gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/75" />
-        </div>
-
-        {/* Header Navigation */}
-        <header className="relative z-20 w-full px-6 sm:px-12 md:px-16 lg:px-20 pt-[39px] pb-6 flex items-center justify-between">
-          
-          {/* Logo */}
-          <a href="#" className="flex items-center h-[45px] group focus:outline-none">
-            <img 
-              src={logoImg} 
-              alt="Dentara Logo" 
-              className="h-[32px] sm:h-[36px] w-auto object-contain mix-blend-screen drop-shadow-md transition-transform group-hover:scale-105"
-            />
-          </a>
-
-          {/* Desktop Navigation Capsule */}
-          <nav className="hidden md:flex items-center h-[45px] gap-1 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-xl">
-            {navItems.map((item) => {
-              const isActive = activeNav === item;
-              return (
-                <button
-                  key={item}
-                  onClick={() => setActiveNav(item)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-white text-black font-semibold shadow-md'
-                      : 'text-white/80 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  {item}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* Right Action Button (Call Now) */}
-          <div className="flex items-center gap-3">
-            <a
-              href="tel:+1234567890"
-              className="hidden sm:flex items-center justify-center gap-3 h-[45px] px-7 rounded-full bg-white text-black text-[15px] font-semibold hover:bg-white/95 active:scale-95 transition-all shadow-xl cursor-pointer"
-            >
-              <Phone className="w-[19px] h-[19px] stroke-[2.2] text-black" />
-              <span className="tracking-tight">Call Now</span>
-            </a>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden relative z-30 mx-6 p-4 rounded-2xl bg-black/95 backdrop-blur-xl border border-white/15 flex flex-col gap-2 animate-in fade-in duration-200">
-            {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  setActiveNav(item);
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition ${
-                  activeNav === item ? 'bg-white text-black font-semibold' : 'text-white/80 hover:bg-white/10'
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-            <a
-              href="tel:+1234567890"
-              className="sm:hidden flex items-center justify-center gap-3 mt-2 h-[45px] px-7 rounded-full bg-white text-black font-semibold text-[15px] text-center"
-            >
-              <Phone className="w-[19px] h-[19px] stroke-[2.2] text-black" />
-              <span>Call Now</span>
-            </a>
-          </div>
-        )}
-
-        {/* Hero Section Content */}
-        <main className="relative z-10 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-12 md:py-16 max-w-3xl flex flex-col items-center sm:items-start text-center sm:text-left mx-auto sm:mx-0">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold text-white tracking-tight leading-[1.05] text-center sm:text-left">
-            Seamless
-            <br />
-            <span className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 mt-1">
-              <span>Dental</span>
-              
-              {/* Tooth Emoji Asset */}
-              <span className="inline-flex items-center justify-center mx-1 transform translate-y-[-2px]">
-                <img 
-                  src={toothEmojiImg} 
-                  alt="Tooth Emoji" 
-                  className="h-[42px] sm:h-[59px] md:h-[67px] w-auto object-contain drop-shadow-md"
-                />
-              </span>
-
-              <span>Care</span>
-            </span>
-          </h1>
-
-          {/* Subtext */}
-          <p className="mt-5 mb-8 text-white/80 text-sm sm:text-base font-normal leading-relaxed tracking-wide max-w-xl text-center sm:text-left mx-auto sm:mx-0">
-            Whether it's a leaky faucet or a major plumbing emergency,
-            <br className="hidden sm:inline" />
-            {' '}our experienced professionals are just a call away
-          </p>
-
-          <div className="flex justify-center sm:justify-start w-full">
-            <button className="group flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
-              <span>Book Appointment</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
-          </div>
-        </main>
-
-        {/* Bottom Hero Spacer for Seamless Transition */}
-        <div className="relative z-10 h-12" />
-
-      </div>
+      {/* HERO SECTION (Separated Mobile/Tablet & Desktop Components) */}
+      <HeroSection navItems={navItems} activeNav={activeNav} setActiveNav={setActiveNav} />
 
       {/* ABOUT US SECTION - Ultra-Responsive Full Screen Ratio with 100px Padding */}
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
@@ -680,8 +561,9 @@ export default function App() {
           <div className="lg:hidden flex flex-col items-center text-center">
             {/* Top Badge & Title */}
             <div className="flex items-center justify-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
+              <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
               <span>(our works)</span>
-              <span className="h-[1px] w-16 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
+              <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40"></span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-medium tracking-tight text-[#111827] leading-[1.25] mb-6">
               Services We Provide Are Listed Below
@@ -742,8 +624,9 @@ export default function App() {
             {/* Top Header Row: (our works) badge on left, Title on right */}
             <div className="flex flex-row items-start justify-between gap-8 mb-12 sm:mb-16">
               
-              {/* Top Left: (our works) Badge with horizontal line */}
+              {/* Top Left: (our works) Badge with horizontal line on both sides */}
               <div className="flex items-center gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide">
+                <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40"></span>
                 <span>(our works)</span>
                 <span className="h-[1px] w-20 sm:w-28 bg-gradient-to-r from-[#2A91CF]/40 to-transparent"></span>
               </div>
@@ -1126,12 +1009,12 @@ export default function App() {
           <div className="overflow-hidden w-full -ml-6 sm:-ml-12 md:-ml-16 lg:-ml-20 xl:-ml-24 pl-6 sm:pl-12 md:pl-16 lg:pl-20 xl:pl-24">
             <div 
               className={`flex gap-6 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
-              style={{ transform: `translateX(-${testimonialIndex * (isMobile ? 100 : 33.333333)}%)` }}
+              style={{ transform: `translateX(-${testimonialIndex * (100 / cardsToShow)}%)` }}
             >
               {testimonialsList.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0 bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px] text-center sm:text-left"
+                  className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.07rem)] flex-shrink-0 bg-white rounded-[32px] p-7 sm:p-8 flex flex-col justify-between shadow-sm min-h-[310px] text-center sm:text-left"
                 >
                   <div>
                     {/* Avatar */}
