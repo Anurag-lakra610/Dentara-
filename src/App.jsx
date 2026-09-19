@@ -1006,8 +1006,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Interactive Testimonial Cards Carousel Slider with Subtle Next-Card Peek on Mobile & Tablet */}
-          <div className="overflow-hidden w-full">
+          {/* Interactive Testimonial Cards Carousel Slider - Full Screen Ratio Bleed on Left Side Only */}
+          <div className="overflow-hidden -ml-5 sm:-ml-10 md:-ml-14 lg:-ml-18 xl:-ml-24 pl-5 sm:pl-10 md:pl-14 lg:pl-18 xl:pl-24 w-[calc(100%+1.25rem)] sm:w-[calc(100%+2.5rem)] md:w-[calc(100%+3.5rem)] lg:w-[calc(100%+4.5rem)] xl:w-[calc(100%+6rem)]">
             <div 
               className={`flex gap-3.5 sm:gap-5 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
               style={{ transform: `translateX(-${testimonialIndex * (cardsToShow === 1 ? 90 : cardsToShow === 2 ? 46.5 : 100 / cardsToShow)}%)` }}
