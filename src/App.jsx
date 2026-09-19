@@ -261,30 +261,42 @@ export default function App() {
       <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden border-t border-black/[0.04]">
         <div className="max-w-[1650px] mx-auto">
           
-          {/* Section Header: Title & Description centered on mobile */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-16 text-center md:text-left items-center md:items-end">
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.25]">
-                <span className="block mb-1.5">Services We Provide</span>
+          {/* Section Header: Asymmetric on Desktop (lg:), Centered on Mobile/Tablet (< lg) */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-14 text-center lg:text-left items-center lg:items-end">
+            
+            {/* Left Header Block (Desktop Left / Mobile & Tablet Center) */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              {/* Tag Badge: (our works) */}
+              <div className="flex items-center justify-center lg:justify-start gap-3 text-[#2A91CF] font-medium text-xs sm:text-sm tracking-wide mb-3">
+                <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-r from-transparent to-[#2A91CF]/40 lg:hidden"></span>
+                <span>(our works)</span>
+                <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-l from-transparent to-[#2A91CF]/40 lg:w-20"></span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.2] text-center lg:text-left">
+                <span className="block mb-1">Services We Provide</span>
                 <span className="block">Are Listed Below</span>
               </h2>
             </div>
 
-            {/* Right Side: Description Text on Top (CTA Button moved below boxes on mobile) */}
-            <div className="flex flex-col items-center md:items-end gap-3.5 text-center md:text-right max-w-md">
-              <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed font-normal">
+            {/* Right Header Block (Desktop Right with Paragraph & CTA Button / Mobile & Tablet Center Paragraph) */}
+            <div className="flex flex-col items-center lg:items-end text-center lg:text-right max-w-md mx-auto lg:mx-0">
+              <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed font-normal text-center lg:text-right mb-0 lg:mb-4 max-w-md">
                 The blocks & components you need to build a professional website are based drivers.
               </p>
-              <button className="hidden md:inline-flex group items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+
+              {/* Desktop Only CTA Button */}
+              <button className="hidden lg:inline-flex group items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
                 <span>Book Appointment</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
+
           </div>
 
           {/* MOBILE VIEW CAROUSEL SLIDER (< lg - Full Active Focus + Subtle Edge Peek) */}
           <div className="lg:hidden flex flex-col items-center">
-            <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-5 pb-4 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden mb-6">
+            <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-5 pb-4 -mx-5 px-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               
               {/* Card 1 (Video - Placed First on Mobile) */}
               <div className="snap-start flex-shrink-0 w-[86%] min-[400px]:w-[88%] sm:w-[calc(46%-0.75rem)] md:w-[calc(45%-0.75rem)] relative rounded-[32px] overflow-hidden h-[340px] sm:h-[360px] shadow-md group cursor-pointer bg-black">
@@ -393,12 +405,6 @@ export default function App() {
                 </div>
               </div>
             </div>
-
-            {/* Mobile CTA Button (Below Carousel Boxes) */}
-            <button className="md:hidden group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
-              <span>Book Appointment</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
           {/* DESKTOP VIEW CARDS CONTAINER */}
@@ -548,6 +554,14 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+
+          {/* Centered CTA Button After Cards (Mobile & Tablet only) */}
+          <div className="w-full flex justify-center mt-8 sm:mt-12 lg:hidden">
+            <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+              <span>Book Appointment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
         </div>
@@ -1193,11 +1207,11 @@ export default function App() {
               </form>
             </div>
 
-            {/* Right Column: 3 Navigation Link Columns (3-column Grid on Mobile to prevent tall scrolling) */}
-            <div className="lg:col-span-7 grid grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-8 text-[11.5px] sm:text-[13.5px] text-center sm:text-left pt-2 lg:pt-0">
+            {/* Right Column: 3 Navigation Link Columns (Centered on Mobile & Tablet, Left-Aligned on Desktop) */}
+            <div className="lg:col-span-7 grid grid-cols-3 gap-3 sm:gap-8 md:gap-10 text-[11.5px] sm:text-[13.5px] md:text-[14px] text-center lg:text-left pt-4 lg:pt-0 max-w-xl sm:max-w-2xl mx-auto lg:max-w-none lg:mx-0 w-full">
               
               {/* Column 1 */}
-              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB]">
+              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB] text-center lg:text-left">
                 <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Why our network</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Charging solutions</a></li>
@@ -1206,7 +1220,7 @@ export default function App() {
               </ul>
 
               {/* Column 2 */}
-              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB]">
+              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB] text-center lg:text-left">
                 <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
@@ -1215,7 +1229,7 @@ export default function App() {
               </ul>
 
               {/* Column 3 */}
-              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB]">
+              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB] text-center lg:text-left">
                 <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
