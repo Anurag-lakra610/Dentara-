@@ -1297,17 +1297,17 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Column: 3 Navigation Link Columns */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-[1fr_1fr_1.35fr] gap-6 sm:gap-6 md:gap-8 text-[12px] sm:text-[13px] md:text-[13.5px] text-center lg:text-left pt-4 lg:pt-0 w-full">
+            {/* Right Column: 3 Navigation Link Columns (Side-by-Side 2-Column Grid on Mobile to optimize height!) */}
+            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-[1fr_1fr_1.35fr] gap-x-4 sm:gap-x-8 gap-y-6 text-[12px] sm:text-[13px] md:text-[13.5px] text-left pt-2 lg:pt-0 w-full">
               
               {/* Column 1: Quick Links (Inner Pages) */}
-              <div>
+              <div className="col-span-1">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Quick Links</h4>
-                <ul className="space-y-2.5 font-normal text-[#E5E7EB]">
+                <ul className="space-y-2 font-normal text-[#E5E7EB]">
                   <li>
                     <button 
                       onClick={() => setActiveNav('Home')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Home Page
                     </button>
@@ -1315,7 +1315,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => setActiveNav('About')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       About Us
                     </button>
@@ -1323,7 +1323,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => setActiveNav('Services')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Our Services
                     </button>
@@ -1331,7 +1331,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => setActiveNav('Contact')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Contact Us
                     </button>
@@ -1339,22 +1339,22 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => handleOpenAppointment('General Consultation')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
-                      Book Appointment
+                      Book Visit
                     </button>
                   </li>
                 </ul>
               </div>
 
               {/* Column 2: Treatments */}
-              <div>
+              <div className="col-span-1">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Treatments</h4>
-                <ul className="space-y-2.5 font-normal text-[#E5E7EB]">
+                <ul className="space-y-2 font-normal text-[#E5E7EB]">
                   <li>
                     <button 
                       onClick={() => handleOpenAppointment('Dental Implants')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Dental Implants
                     </button>
@@ -1362,7 +1362,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => handleOpenAppointment('Root Canal Treatment')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Root Canal Care
                     </button>
@@ -1370,7 +1370,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => handleOpenAppointment('Braces & Orthodontics')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Braces & Aligners
                     </button>
@@ -1378,7 +1378,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => handleOpenAppointment('Teeth Whitening')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Teeth Whitening
                     </button>
@@ -1386,7 +1386,7 @@ export default function App() {
                   <li>
                     <button 
                       onClick={() => handleOpenAppointment('Smile Makeover')} 
-                      className="hover:text-white transition-colors cursor-pointer"
+                      className="hover:text-white transition-colors cursor-pointer text-left whitespace-nowrap"
                     >
                       Smile Makeover
                     </button>
@@ -1394,17 +1394,17 @@ export default function App() {
                 </ul>
               </div>
 
-              {/* Column 3: Contact Info (Icons ONLY Here) */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3.5 flex items-center justify-center lg:justify-start gap-2">
+              {/* Column 3: Contact Info (Full-width card under Quick Links & Treatments on Mobile, 3rd column on Desktop) */}
+              <div className="col-span-2 lg:col-span-1 border-t border-white/10 pt-4 lg:pt-0 lg:border-0 mt-1 lg:mt-0">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3 flex items-center justify-start gap-2 whitespace-nowrap">
                   <MapPin className="w-3.5 h-3.5 text-[#2A91CF]" />
                   <span>CONTACT INFO</span>
                 </h4>
-                <ul className="space-y-2.5 font-normal text-[#E5E7EB]">
+                <ul className="space-y-2 font-normal text-[#E5E7EB]">
                   <li>
                     <a 
                       href={clinicConfig.phoneTel} 
-                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors"
+                      className="inline-flex items-center gap-2 hover:text-[#3BB0E5] transition-colors whitespace-nowrap"
                     >
                       <Phone className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
                       <span>Call: {clinicConfig.phoneDisplay}</span>
@@ -1415,7 +1415,7 @@ export default function App() {
                       href={clinicConfig.whatsappUrl} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors"
+                      className="inline-flex items-center gap-2 hover:text-[#3BB0E5] transition-colors whitespace-nowrap"
                     >
                       <MessageSquare className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
                       <span>WhatsApp: {clinicConfig.whatsappDisplay}</span>
@@ -1424,7 +1424,7 @@ export default function App() {
                   <li>
                     <a 
                       href={`mailto:${clinicConfig.email}`} 
-                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors whitespace-nowrap"
+                      className="inline-flex items-center gap-2 hover:text-[#3BB0E5] transition-colors whitespace-nowrap"
                     >
                       <Mail className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
                       <span>Email: {clinicConfig.email}</span>
@@ -1435,14 +1435,14 @@ export default function App() {
                       href={clinicConfig.googleMapsUrl} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors text-left"
+                      className="inline-flex items-center gap-2 hover:text-[#3BB0E5] transition-colors text-left whitespace-nowrap"
                     >
                       <MapPin className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
                       <span>Sangrur Location</span>
                     </a>
                   </li>
                   <li>
-                    <div className="inline-flex items-center gap-2.5 text-[#9CA3AF] text-[11px] sm:text-xs text-left">
+                    <div className="inline-flex items-center gap-2 text-[#9CA3AF] text-[11px] sm:text-xs text-left whitespace-nowrap">
                       <Clock className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
                       <span>Mon-Sat: 9:30AM - 7:30PM</span>
                     </div>
