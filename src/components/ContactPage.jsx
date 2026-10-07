@@ -340,10 +340,17 @@ Thank you.`;
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full flex items-center justify-center gap-2.5 py-4 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-bold text-base shadow-md active:scale-95 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 sm:gap-2.5 px-5 py-3.5 sm:py-4 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-bold text-sm sm:text-base tracking-wide shadow-md active:scale-95 transition-all duration-200 cursor-pointer text-center leading-snug"
                   >
-                    <span>{submitting ? 'Preparing Request...' : 'Confirm Appointment via WhatsApp'}</span>
-                    <ArrowRight className="w-5 h-5" />
+                    {submitting ? (
+                      <span>Preparing Request...</span>
+                    ) : (
+                      <>
+                        <span className="hidden sm:inline">Confirm Appointment via WhatsApp</span>
+                        <span className="sm:hidden">Confirm via WhatsApp</span>
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                      </>
+                    )}
                   </button>
                 </div>
 

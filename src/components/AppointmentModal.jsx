@@ -253,9 +253,16 @@ Thank you.`;
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-bold text-sm shadow-md active:scale-95 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all duration-200 cursor-pointer text-center leading-snug"
               >
-                {submitting ? 'Opening WhatsApp...' : 'Book Appointment via WhatsApp →'}
+                {submitting ? (
+                  <span>Opening WhatsApp...</span>
+                ) : (
+                  <>
+                    <span className="hidden sm:inline">Book Appointment via WhatsApp →</span>
+                    <span className="sm:hidden">Book via WhatsApp →</span>
+                  </>
+                )}
               </button>
             </div>
 
