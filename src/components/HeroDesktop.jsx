@@ -3,8 +3,9 @@ import { Phone, ArrowRight } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import heroBgImg from '../assets/hero-bg.jpg';
 import toothEmojiImg from '../assets/tooth-emoji.png';
+import { clinicConfig } from '../clinicConfig';
 
-export default function HeroDesktop({ navItems, activeNav, setActiveNav }) {
+export default function HeroDesktop({ navItems, activeNav, setActiveNav, onBookClick }) {
   return (
     <div className="hidden lg:flex relative w-full min-h-screen bg-[#080808] overflow-hidden flex-col justify-between">
       
@@ -14,7 +15,6 @@ export default function HeroDesktop({ navItems, activeNav, setActiveNav }) {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-x-[-1] scale-105"
           style={{ backgroundImage: `url(${heroBgImg})` }}
         />
-        {/* Left-to-Right dark gradient overlay for website view text readability + subtle top/bottom gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/75" />
       </div>
@@ -23,11 +23,11 @@ export default function HeroDesktop({ navItems, activeNav, setActiveNav }) {
       <header className="relative z-20 w-full px-16 lg:px-20 pt-[39px] pb-6 flex items-center justify-between">
         
         {/* Logo */}
-        <a href="#" className="flex items-center h-[45px] group focus:outline-none">
+        <a href="#" className="flex items-center group focus:outline-none">
           <img 
             src={logoImg} 
-            alt="Dentara Logo" 
-            className="h-[36px] w-auto object-contain mix-blend-screen drop-shadow-md transition-transform group-hover:scale-105"
+            alt="Dental Lounge Logo" 
+            className="h-[58px] w-auto object-contain drop-shadow-md transition-transform group-hover:scale-105"
           />
         </a>
 
@@ -54,10 +54,10 @@ export default function HeroDesktop({ navItems, activeNav, setActiveNav }) {
         {/* Right Action Button (Call Now) */}
         <div className="flex items-center gap-3">
           <a
-            href="tel:+1234567890"
-            className="flex items-center justify-center gap-3 h-[45px] px-7 rounded-full bg-white text-black text-[15px] font-semibold hover:bg-white/95 active:scale-95 transition-all shadow-xl cursor-pointer"
+            href={clinicConfig.phoneTel}
+            className="flex items-center justify-center gap-3 h-[45px] px-7 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white text-[15px] font-semibold active:scale-95 transition-colors duration-200 shadow-xl cursor-pointer group"
           >
-            <Phone className="w-[19px] h-[19px] stroke-[2.2] text-black" />
+            <Phone className="w-[19px] h-[19px] stroke-[2.2] text-white" />
             <span className="tracking-tight">Call Now</span>
           </a>
         </div>
@@ -85,14 +85,15 @@ export default function HeroDesktop({ navItems, activeNav, setActiveNav }) {
         </h1>
 
         {/* Subtext */}
-        <p className="mt-5 mb-8 text-white/80 text-base font-normal leading-relaxed tracking-wide max-w-xl text-left">
-          Whether it's a leaky faucet or a major plumbing emergency,
-          <br className="inline" />
-          {' '}our experienced professionals are just a call away
+        <p className="mt-5 mb-8 text-white/90 text-base font-normal leading-relaxed tracking-wide max-w-xl text-left">
+          {clinicConfig.intro}
         </p>
 
         <div className="flex justify-start w-full">
-          <button className="group flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-base hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-xl cursor-pointer">
+          <button 
+            onClick={() => onBookClick && onBookClick('General Consultation')}
+            className="group flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-semibold text-base active:scale-95 transition-colors duration-200 shadow-xl cursor-pointer"
+          >
             <span>Book Appointment</span>
             <ArrowRight className="w-5 h-5 stroke-[2.2] group-hover:translate-x-1 transition-transform duration-200" />
           </button>

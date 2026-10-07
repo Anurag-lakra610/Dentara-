@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, ArrowRight, ArrowLeft, Star, Menu, X, Play, Plus } from 'lucide-react';
+import { Phone, ArrowRight, ArrowLeft, Star, Menu, X, Play, Plus, Home, Info, Stethoscope, MapPin, Mail, MessageSquare, Clock, Calendar, Sparkles, ChevronRight } from 'lucide-react';
 import logoImg from './assets/logo.png';
 import heroBgImg from './assets/hero-bg.jpg';
 import toothEmojiImg from './assets/tooth-emoji.png';
@@ -24,6 +24,14 @@ import consultationRightImg from './assets/consultation-right.png';
 import consultationVideoImg from './assets/consultation-video.png';
 import flossEmojiImg from './assets/floss-emoji.png';
 import insightDentalImg from './assets/insight-dental.jpg';
+import logoLightImg from './assets/logo-light.png';
+import AppointmentModal from './components/AppointmentModal';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
+import HeaderNav from './components/HeaderNav';
+import AboutPage from './components/AboutPage';
+import ServicesPage from './components/ServicesPage';
+import ContactPage from './components/ContactPage';
+import { clinicConfig } from './clinicConfig';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
@@ -31,6 +39,18 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
   const [isServicesVideoPlaying, setIsServicesVideoPlaying] = useState(false);
   const [isConsultationVideoPlaying, setIsConsultationVideoPlaying] = useState(false);
+
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [selectedTreatment, setSelectedTreatment] = useState('General Consultation');
+
+  const handleOpenAppointment = (treatment = 'General Consultation') => {
+    setSelectedTreatment(treatment);
+    setIsAppointmentModalOpen(true);
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeNav]);
 
   const getCardsToShow = () => {
     if (typeof window === 'undefined') return 3;
@@ -51,9 +71,41 @@ export default function App() {
   }, []);
 
   const testimonialsBase = [
-    { id: 1, name: 'Alex Morgan', title: 'Schedules that work for you', avatar: avatarGlassesImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
-    { id: 2, name: 'David Miller', title: 'Health screenings for seniors', avatar: avatarBeardedImg, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
-    { id: 3, name: 'Sarah Jenkins', title: 'Seniors stay independent', avatar: avatarFemaleDoctor, quote: '"Our visual designer lets you quickly an of drag and drop your own way to custom-apps for both keep desktop, mobile & also tab for report."' },
+    { 
+      id: 1, 
+      name: 'Priya Sharma', 
+      title: 'Painless Root Canal & Crown', 
+      avatar: avatarFemaleDoctor, 
+      quote: '"Dr. Ankush Gupta made my root canal treatment completely painless. I was nervous initially, but his gentle approach and modern clinic setup in Sangrur put me at total ease. Highly recommended!"' 
+    },
+    { 
+      id: 2, 
+      name: 'Gurpreet Singh', 
+      title: 'Best Dental Implant Experience', 
+      avatar: avatarBeardedImg, 
+      quote: '"Got my tooth implant done at Dental Lounge Sangrur. Dr. Ankush explained the procedure clearly and the result feels just like my natural tooth. Excellent hygiene standards and very supportive staff!"' 
+    },
+    { 
+      id: 3, 
+      name: 'Rajesh Kumar', 
+      title: 'Teeth Whitening & Smile Care', 
+      avatar: avatarGlassesImg, 
+      quote: '"Visited Dental Lounge opposite Namdev Gurudwara for teeth whitening before my family event. The results were amazing in just one session! Very professional care and honest guidance."' 
+    },
+    { 
+      id: 4, 
+      name: 'Simran Kaur', 
+      title: 'Clear Aligners & Orthodontics', 
+      avatar: avatarFemaleDoctor, 
+      quote: '"Extremely satisfied with my aligner treatment. The clinic is equipped with modern technology, super clean, and Dr. Ankush gives individual attention to every detail during visits."' 
+    },
+    { 
+      id: 5, 
+      name: 'Harmanpreet Verma', 
+      title: 'Expert Wisdom Tooth Extraction', 
+      avatar: avatarBeardedImg, 
+      quote: '"As an Oral & Maxillofacial Surgeon, Dr. Ankush removed my impacted wisdom tooth smoothly without any pain or post-op complications. Hands down the best dental surgeon in Sangrur!"' 
+    },
   ];
 
   // Extended array for seamless, infinite wrap-around slider
@@ -104,16 +156,28 @@ export default function App() {
     }
   }, [isTransitioning]);
 
-  const navItems = ['Home', 'About', 'Product', 'Services', 'Appointment'];
+  const navItems = ['Home', 'About', 'Services', 'Contact'];
 
   return (
     <div className="w-full bg-[#080808] font-sans antialiased">
       
-      {/* HERO SECTION (Separated Mobile/Tablet & Desktop Components) */}
-      <HeroSection navItems={navItems} activeNav={activeNav} setActiveNav={setActiveNav} />
+      {/* HOMEPAGE HERO SECTION (ONLY ON HOME PAGE) */}
+      {activeNav === 'Home' ? (
+        <HeroSection navItems={navItems} activeNav={activeNav} setActiveNav={setActiveNav} onBookClick={handleOpenAppointment} />
+      ) : (
+        /* INNER PAGE STICKY TOP NAVIGATION BAR */
+        <HeaderNav navItems={navItems} activeNav={activeNav} setActiveNav={setActiveNav} />
+      )}
 
-      {/* ABOUT US SECTION - Ultra-Responsive Full Screen Ratio with 100px Padding */}
-      <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
+      {/* INNER PAGES VIEW */}
+      {activeNav === 'About' && <AboutPage onBookClick={handleOpenAppointment} />}
+      {activeNav === 'Services' && <ServicesPage onBookClick={handleOpenAppointment} />}
+      {activeNav === 'Contact' && <ContactPage onBookClick={handleOpenAppointment} />}
+
+      {activeNav === 'Home' && (
+        <>
+          {/* ABOUT US SECTION - Ultra-Responsive Full Screen Ratio with 100px Padding */}
+          <section className="w-full bg-[#FAF8F5] text-[#111827] pt-[60px] sm:pt-[80px] lg:pt-[100px] pb-[60px] sm:pb-[80px] lg:pb-[100px] px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden">
         <div className="max-w-[1650px] mx-auto">
           
           {/* MOBILE VIEW (Centered Hierarchy + Horizontal Touch-Snap Photo Slider) */}
@@ -171,7 +235,10 @@ export default function App() {
             </div>
 
             {/* Blue Cerulean Gradient CTA Button (Below Stat Badge on Mobile) */}
-            <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#32A7DC] via-[#2A94D1] to-[#1C81BD] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-md shadow-[#2A94D1]/20 cursor-pointer">
+            <button 
+              onClick={() => handleOpenAppointment('General Consultation')}
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#07852F] to-[#067228] hover:from-[#216FA7] hover:to-[#1D6091] text-white font-medium text-sm active:scale-95 transition-all duration-300 shadow-md shadow-[#216FA7]/20 cursor-pointer"
+            >
               <span>Book Appointment</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -202,7 +269,10 @@ export default function App() {
                 </p>
 
                 {/* Blue Cerulean Gradient CTA Button */}
-                <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#32A7DC] via-[#2A94D1] to-[#1C81BD] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-md shadow-[#2A94D1]/20 cursor-pointer mx-auto">
+                <button 
+                  onClick={() => handleOpenAppointment('General Consultation')}
+                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#07852F] to-[#067228] hover:from-[#216FA7] hover:to-[#1D6091] text-white font-medium text-sm active:scale-95 transition-all duration-300 shadow-md shadow-[#216FA7]/20 cursor-pointer mx-auto"
+                >
                   <span>Book Appointment</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -286,7 +356,10 @@ export default function App() {
               </p>
 
               {/* Desktop Only CTA Button */}
-              <button className="hidden lg:inline-flex group items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+              <button 
+                onClick={() => handleOpenAppointment('Services We Provide')}
+                className="hidden lg:inline-flex group items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap"
+              >
                 <span>Book Appointment</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -310,8 +383,8 @@ export default function App() {
                       <X className="w-4 h-4" />
                     </button>
                     <iframe
-                      src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
-                      title="Dental Procedure Patient Video"
+                      src="https://www.youtube.com/embed/3wvVrkMKim8?autoplay=1&rel=0"
+                      title="Dental Procedure Video"
                       className="w-full h-full border-0 rounded-[32px]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -524,8 +597,8 @@ export default function App() {
                       <X className="w-4 h-4" />
                     </button>
                     <iframe
-                      src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
-                      title="Dental Procedure Patient Video"
+                      src="https://www.youtube.com/embed/3wvVrkMKim8?autoplay=1&rel=0"
+                      title="Dental Procedure Video"
                       className="w-full h-full border-0 rounded-[32px]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -558,7 +631,10 @@ export default function App() {
 
           {/* Centered CTA Button After Cards (Mobile & Tablet only) */}
           <div className="w-full flex justify-center mt-8 sm:mt-12 lg:hidden">
-            <button className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+            <button 
+              onClick={() => handleOpenAppointment('Services We Provide')}
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap"
+            >
               <span>Book Appointment</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -627,7 +703,10 @@ export default function App() {
             </div>
 
             {/* CTA Button (Below Avatar Stack on Mobile) */}
-            <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+            <button 
+              onClick={() => handleOpenAppointment('Our Works')}
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap"
+            >
               <span>Book Appointment</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -663,7 +742,10 @@ export default function App() {
                   <p className="text-xs sm:text-[14px] text-[#475569] leading-relaxed font-normal max-w-sm mb-8">
                     Our team of skilled and experienced dental professionals strives to create comfortable and welcoming environment for each.
                   </p>
-                  <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+                  <button 
+                    onClick={() => handleOpenAppointment('Our Works')}
+                    className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap"
+                  >
                     <span>Book Appointment</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -784,8 +866,8 @@ export default function App() {
                       <X className="w-3.5 h-3.5" />
                     </button>
                     <iframe
-                      src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
-                      title="Doctor Consultation Video"
+                      src="https://www.youtube.com/embed/3wvVrkMKim8?autoplay=1&rel=0"
+                      title="Doctor Consultation Dental Procedure Video"
                       className="w-full h-full border-0 rounded-[24px]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -834,7 +916,10 @@ export default function App() {
             </div>
 
             {/* CTA Button */}
-            <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap mb-6">
+            <button 
+              onClick={() => handleOpenAppointment('Doctor Consultation')}
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap mb-6"
+            >
               <span>Book Appointment</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -924,8 +1009,8 @@ export default function App() {
                         <X className="w-3.5 h-3.5" />
                       </button>
                       <iframe
-                        src="https://www.youtube.com/embed/Wx8GGSnT9_Y?autoplay=1&rel=0"
-                        title="Doctor Consultation Video"
+                        src="https://www.youtube.com/embed/3wvVrkMKim8?autoplay=1&rel=0"
+                        title="Doctor Consultation Dental Procedure Video"
                         className="w-full h-full border-0 rounded-[24px]"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -962,7 +1047,10 @@ export default function App() {
                 <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed font-normal">
                   Take control of your health with a comprehensive assessment unlike any other. We use the latest medical innovations, including next-generation MRI, cardiovascular & neurocognitive assessments, early cancer detection, and genetic testing.
                 </p>
-                <button className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] text-white font-medium text-sm hover:opacity-95 active:scale-95 transition-all shadow-[0_6px_20px_rgba(28,125,189,0.25)] cursor-pointer whitespace-nowrap">
+                <button 
+                  onClick={() => handleOpenAppointment('Doctor Consultation')}
+                  className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap"
+                >
                   <span>Book Appointment</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -997,7 +1085,7 @@ export default function App() {
                 What Our Clients Say
               </h2>
               <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-sm sm:max-w-md text-center sm:text-left mx-auto sm:mx-0">
-                Team carefully evaluates your results to provide actionable insights for improving your health & lifespan.
+                Read genuine reviews from patients who experienced compassionate, pain-free dental care at Dental Lounge Sangrur.
               </p>
             </div>
 
@@ -1006,14 +1094,14 @@ export default function App() {
               <button 
                 onClick={handlePrevTestimonial}
                 aria-label="Previous Testimonial" 
-                className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-sm hover:bg-gray-100 active:scale-95 transition-all cursor-pointer"
+                className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-sm hover:bg-[#216FA7] hover:text-white active:scale-95 transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <button 
                 onClick={handleNextTestimonial}
                 aria-label="Next Testimonial" 
-                className="w-12 h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
+                className="w-12 h-12 rounded-full bg-[#07852F] hover:bg-[#216FA7] flex items-center justify-center text-white shadow-md active:scale-95 transition-colors cursor-pointer"
               >
                 <ArrowRight className="w-5 h-5" />
               </button>
@@ -1067,14 +1155,14 @@ export default function App() {
             <button 
               onClick={handlePrevTestimonial}
               aria-label="Previous Testimonial" 
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-md hover:bg-gray-100 active:scale-95 transition-all cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center text-[#111827] shadow-md hover:bg-[#216FA7] hover:text-white active:scale-95 transition-colors cursor-pointer"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={handleNextTestimonial}
               aria-label="Next Testimonial" 
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-[#3BB0E5] via-[#2A97D1] to-[#1C7DBB] flex items-center justify-center text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#07852F] hover:bg-[#216FA7] flex items-center justify-center text-white shadow-md active:scale-95 transition-colors cursor-pointer"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -1172,70 +1260,195 @@ export default function App() {
 
         </div>
       </section>
+      </>
+      )}
 
       {/* GLOBAL FOOTER SECTION (Full Ratio Screen Width Black Background) */}
-      <footer className="w-full bg-[#070707] text-white pt-6 sm:pt-10 lg:pt-12 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-8 sm:mt-[60px] lg:mt-[80px]">
+      <footer className="w-full bg-[#070707] text-white pt-10 sm:pt-14 lg:pt-16 pb-0 px-5 sm:px-10 md:px-14 lg:px-18 xl:px-24 overflow-hidden relative mt-8 sm:mt-[60px] lg:mt-[80px]">
         <div className="max-w-[1650px] mx-auto relative z-10">
           
-          {/* Top Row: Left Email Newsletter + Right 3 Navigation Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 items-start relative z-10 text-center lg:text-left">
+          {/* Top Row: Logo + Left Contact Details & Newsletter + Right 3 Navigation Columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10 text-center lg:text-left">
             
-            {/* Left Column: Heading & Rectangle Newsletter Form */}
-            <div className="lg:col-span-5 flex flex-col items-center lg:items-start justify-between">
-              <h2 className="text-xl sm:text-3xl lg:text-[34px] font-medium text-white tracking-tight leading-snug mb-4 sm:mb-8 text-center lg:text-left">
-                <span className="block">Offerings From Bright</span>
-                <span className="block">News & Social</span>
-              </h2>
+            {/* Left Column: Dental Lounge Logo & Intro & CTA Button */}
+            <div className="lg:col-span-4 flex flex-col items-center lg:items-start justify-between">
+              {/* Dental Lounge Logo in Footer */}
+              <div className="mb-4">
+                <img 
+                  src={logoImg} 
+                  alt="Dental Lounge Logo" 
+                  className="h-[44px] sm:h-[52px] w-auto object-contain drop-shadow-md"
+                />
+              </div>
 
-              {/* Underline Email Newsletter Form matching reference mockup */}
-              <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
-                <div className="relative flex items-center border-b border-white/30 focus-within:border-white pb-2.5 transition-colors">
-                  <input 
-                    type="email" 
-                    placeholder="Your Email" 
-                    className="bg-transparent text-xs sm:text-sm text-white placeholder-gray-400 focus:outline-none w-full font-normal text-left pr-8"
-                    required
-                  />
-                  <button 
-                    type="submit"
-                    aria-label="Subscribe to newsletter"
-                    className="text-white hover:text-white/80 active:scale-95 transition-all cursor-pointer absolute right-0 bottom-2.5"
-                  >
-                    <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-                  </button>
-                </div>
-              </form>
+              <p className="text-xs sm:text-sm text-[#9CA3AF] font-medium max-w-sm mb-4 text-center lg:text-left">
+                {clinicConfig.tagline} — {clinicConfig.intro}
+              </p>
+
+              {/* CTA Button under Logo & Tagline */}
+              <div className="mt-2">
+                <button
+                  onClick={() => handleOpenAppointment()}
+                  className="group inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-[#07852F] hover:bg-[#216FA7] text-white font-medium text-sm active:scale-95 transition-all duration-200 shadow-md cursor-pointer whitespace-nowrap"
+                >
+                  <span>Book Appointment</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
 
-            {/* Right Column: 3 Navigation Link Columns (Centered on Mobile & Tablet, Left-Aligned on Desktop) */}
-            <div className="lg:col-span-7 grid grid-cols-3 gap-3 sm:gap-8 md:gap-10 text-[11.5px] sm:text-[13.5px] md:text-[14px] text-center lg:text-left pt-4 lg:pt-0 max-w-xl sm:max-w-2xl mx-auto lg:max-w-none lg:mx-0 w-full">
+            {/* Right Column: 3 Navigation Link Columns */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-[1fr_1fr_1.35fr] gap-6 sm:gap-6 md:gap-8 text-[12px] sm:text-[13px] md:text-[13.5px] text-center lg:text-left pt-4 lg:pt-0 w-full">
               
-              {/* Column 1 */}
-              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB] text-center lg:text-left">
-                <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Why our network</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Charging solutions</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Technology</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-              </ul>
+              {/* Column 1: Quick Links (Inner Pages) */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Quick Links</h4>
+                <ul className="space-y-2.5 font-normal text-[#E5E7EB]">
+                  <li>
+                    <button 
+                      onClick={() => setActiveNav('Home')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Home Page
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => setActiveNav('About')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      About Us
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => setActiveNav('Services')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Our Services
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => setActiveNav('Contact')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Contact Us
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => handleOpenAppointment('General Consultation')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Book Appointment
+                    </button>
+                  </li>
+                </ul>
+              </div>
 
-              {/* Column 2 */}
-              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB] text-center lg:text-left">
-                <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Press releases</a></li>
-              </ul>
+              {/* Column 2: Treatments */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Treatments</h4>
+                <ul className="space-y-2.5 font-normal text-[#E5E7EB]">
+                  <li>
+                    <button 
+                      onClick={() => handleOpenAppointment('Dental Implants')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Dental Implants
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => handleOpenAppointment('Root Canal Treatment')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Root Canal Care
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => handleOpenAppointment('Braces & Orthodontics')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Braces & Aligners
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => handleOpenAppointment('Teeth Whitening')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Teeth Whitening
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => handleOpenAppointment('Smile Makeover')} 
+                      className="hover:text-white transition-colors cursor-pointer"
+                    >
+                      Smile Makeover
+                    </button>
+                  </li>
+                </ul>
+              </div>
 
-              {/* Column 3 */}
-              <ul className="space-y-2 sm:space-y-3 font-normal text-[#E5E7EB] text-center lg:text-left">
-                <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Linkedin</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Youtube</a></li>
-              </ul>
+              {/* Column 3: Contact Info (Icons ONLY Here) */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3.5 flex items-center justify-center lg:justify-start gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#2A91CF]" />
+                  <span>CONTACT INFO</span>
+                </h4>
+                <ul className="space-y-2.5 font-normal text-[#E5E7EB]">
+                  <li>
+                    <a 
+                      href={clinicConfig.phoneTel} 
+                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
+                      <span>Call: {clinicConfig.phoneDisplay}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href={clinicConfig.whatsappUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
+                      <span>WhatsApp: {clinicConfig.whatsappDisplay}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href={`mailto:${clinicConfig.email}`} 
+                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors whitespace-nowrap"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
+                      <span>Email: {clinicConfig.email}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href={clinicConfig.googleMapsUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-flex items-center gap-2.5 hover:text-[#3BB0E5] transition-colors text-left"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
+                      <span>Sangrur Location</span>
+                    </a>
+                  </li>
+                  <li>
+                    <div className="inline-flex items-center gap-2.5 text-[#9CA3AF] text-[11px] sm:text-xs text-left">
+                      <Clock className="w-3.5 h-3.5 text-[#2A91CF] flex-shrink-0" />
+                      <span>Mon-Sat: 9:30AM - 7:30PM</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
 
             </div>
 
@@ -1243,14 +1456,24 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - Mobile/Tablet enhanced, Desktop intact */}
+        {/* Bottom Watermark Branding Text */}
         <div className="w-full text-center pointer-events-none select-none pt-12 min-[400px]:pt-14 sm:pt-18 md:pt-20 lg:pt-14 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
-          <h1 className="text-[78px] min-[380px]:text-[90px] min-[440px]:text-[104px] sm:text-[160px] md:text-[215px] lg:text-[250px] xl:text-[310px] font-medium text-white/[0.08] tracking-tight leading-none text-center whitespace-nowrap inline-block mx-auto translate-y-[6px] lg:translate-y-[10px]">
-            Dentara
+          <h1 className="text-[54px] min-[380px]:text-[64px] min-[440px]:text-[76px] sm:text-[120px] md:text-[150px] lg:text-[180px] xl:text-[210px] font-bold text-white/[0.08] tracking-wider uppercase leading-none text-center whitespace-nowrap inline-block mx-auto translate-y-[6px] lg:translate-y-[10px]">
+            DENTAL LOUNGE
           </h1>
         </div>
 
       </footer>
+
+      {/* Appointment Booking Modal */}
+      <AppointmentModal 
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        defaultTreatment={selectedTreatment}
+      />
+
+      {/* Permanent Bottom-Right Floating WhatsApp Action */}
+      <FloatingWhatsApp />
 
     </div>
   );
