@@ -1456,11 +1456,30 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - 100% Fluid Responsive & Zero-Overflow */}
-        <div className="w-full text-center pointer-events-none select-none pt-8 sm:pt-14 md:pt-16 lg:pt-12 flex justify-center items-end overflow-hidden -mb-1.5 sm:-mb-3 lg:-mb-5">
-          <h1 className="text-[9.5vw] sm:text-[10.5vw] lg:text-[11.5vw] xl:text-[190px] font-black text-white/[0.07] tracking-tighter uppercase leading-none text-center whitespace-nowrap inline-block mx-auto max-w-full transform-gpu">
-            DENTAL LOUNGE
-          </h1>
+        {/* Bottom Watermark Branding Text - 100% Expert SVG Fluid Vector (Zero Clipping on Mobile, Tablet & Desktop) */}
+        <div className="w-full text-center pointer-events-none select-none pt-6 sm:pt-10 md:pt-12 lg:pt-14 pb-1 sm:pb-2 flex justify-center items-end overflow-hidden -mb-1 sm:-mb-2">
+          <svg 
+            viewBox="0 0 1000 135" 
+            className="w-full h-auto max-w-[1650px] mx-auto block pointer-events-none select-none"
+            preserveAspectRatio="xMidYMax meet"
+            aria-hidden="true"
+          >
+            <text 
+              x="50%" 
+              y="50%" 
+              textAnchor="middle" 
+              dominantBaseline="central" 
+              className="fill-white/[0.07] font-black uppercase"
+              style={{ 
+                fontSize: '104px', 
+                fontWeight: 900, 
+                fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                letterSpacing: '-0.04em'
+              }}
+            >
+              DENTAL LOUNGE
+            </text>
+          </svg>
         </div>
 
       </footer>
