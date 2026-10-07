@@ -1456,9 +1456,9 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text */}
-        <div className="w-full text-center pointer-events-none select-none pt-12 min-[400px]:pt-14 sm:pt-18 md:pt-20 lg:pt-14 flex justify-center items-end overflow-visible -mb-2 sm:-mb-4 lg:-mb-6">
-          <h1 className="text-[54px] min-[380px]:text-[64px] min-[440px]:text-[76px] sm:text-[120px] md:text-[150px] lg:text-[180px] xl:text-[210px] font-bold text-white/[0.08] tracking-wider uppercase leading-none text-center whitespace-nowrap inline-block mx-auto translate-y-[6px] lg:translate-y-[10px]">
+        {/* Bottom Watermark Branding Text - 100% Fluid Responsive & Zero-Overflow */}
+        <div className="w-full text-center pointer-events-none select-none pt-8 sm:pt-14 md:pt-16 lg:pt-12 flex justify-center items-end overflow-hidden -mb-1.5 sm:-mb-3 lg:-mb-5">
+          <h1 className="text-[9.5vw] sm:text-[10.5vw] lg:text-[11.5vw] xl:text-[190px] font-black text-white/[0.07] tracking-tighter uppercase leading-none text-center whitespace-nowrap inline-block mx-auto max-w-full transform-gpu">
             DENTAL LOUNGE
           </h1>
         </div>
