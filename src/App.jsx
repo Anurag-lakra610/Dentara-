@@ -1456,11 +1456,14 @@ export default function App() {
 
         </div>
 
-        {/* Bottom Watermark Branding Text - HTML H1 with 0px Letter Spacing & Fully Responsive Viewport Sizing */}
-        <div className="w-full text-center pointer-events-none select-none pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-0 flex justify-center items-end overflow-hidden -mb-1 sm:-mb-2 lg:-mb-3">
+        {/* Bottom Watermark Branding Text - 20px Left/Right Padding Fit for Mobile & Tablet */}
+        <div className="w-full text-center pointer-events-none select-none pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-0 flex justify-center items-end overflow-hidden -mb-1 sm:-mb-2 lg:-mb-3 px-5 sm:px-5 md:px-5 lg:px-0">
           <h1 
-            className="text-[6.8vw] min-[400px]:text-[7.2vw] sm:text-[8.2vw] md:text-[8.8vw] lg:text-[9.5vw] xl:text-[145px] 2xl:text-[170px] font-black text-white/[0.07] uppercase leading-none text-center whitespace-nowrap inline-block mx-auto max-w-full transform-gpu"
-            style={{ letterSpacing: '0px' }}
+            className="font-black text-white/[0.07] uppercase leading-none text-center whitespace-nowrap inline-block mx-auto max-w-full transform-gpu"
+            style={{ 
+              fontSize: 'clamp(32px, calc((100vw - 40px) / 8.52), 175px)',
+              letterSpacing: '0px' 
+            }}
           >
             DENTAL LOUNGE
           </h1>
